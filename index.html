@@ -355,10 +355,10 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
 .config-result-value { font-weight: 700; color: var(--orange); }
 
 /* ═══════════ PRICING ═══════════ */
-.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
+.pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
 .pricing-card {
   background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius-xl); padding: 40px;
+  border-radius: var(--radius-xl); padding: 32px;
   position: relative; transition: all 0.3s;
 }
 .pricing-card:hover { box-shadow: var(--shadow-xl); }
@@ -765,7 +765,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
   .problems-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .team-tasks { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr 1fr; }
   .steps { flex-direction: column; gap: 24px; }
   .steps::before { display: none; }
   .config-options { grid-template-columns: 1fr; }
@@ -780,6 +780,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
 }
 
 @media (max-width: 640px) {
+  .pricing-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr; }
   .dash-grid { grid-template-columns: 1fr; }
   .hero { padding: 120px 16px 60px; }
@@ -836,7 +837,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
         <div class="hero-stat-label">Always On</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">£500–3k</div>
+        <div class="hero-stat-num">$500–3k</div>
         <div class="hero-stat-label">Extra Revenue / Month</div>
       </div>
       <div class="hero-stat">
@@ -862,25 +863,25 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
         <div class="problem-icon red">📱</div>
         <h3>Enquiries Go Cold</h3>
         <p>Someone messages at 9pm asking about membership. By the time you reply next morning, they've joined the gym down the road.</p>
-        <div class="problem-cost">↓ ~£3,600/year in lost sign-ups</div>
+        <div class="problem-cost">↓ ~$3,600/year in lost sign-ups</div>
       </div>
       <div class="problem-card">
         <div class="problem-icon red">📷</div>
         <h3>Social Media Goes Quiet</h3>
         <p>You post for a week, get busy, then nothing for a month. Your online presence goes cold and new leads dry up.</p>
-        <div class="problem-cost">↓ ~£2,400/year in missed reach</div>
+        <div class="problem-cost">↓ ~$2,400/year in missed reach</div>
       </div>
       <div class="problem-card">
         <div class="problem-icon red">🚪</div>
         <h3>Members Drift Away</h3>
         <p>A member stops coming. Nobody notices for weeks. By then they've cancelled and it costs 5x more to win them back.</p>
-        <div class="problem-cost">↓ ~£6,000/year in churn</div>
+        <div class="problem-cost">↓ ~$6,000/year in churn</div>
       </div>
       <div class="problem-card">
         <div class="problem-icon red">📋</div>
         <h3>Follow-Ups Fall Through</h3>
         <p>That person who visited last Tuesday? You meant to follow up. Life got in the way. Another warm lead gone.</p>
-        <div class="problem-cost">↓ ~£4,800/year in unconverted trials</div>
+        <div class="problem-cost">↓ ~$4,800/year in unconverted trials</div>
       </div>
       <div class="problem-card">
         <div class="problem-icon red">⏰</div>
@@ -1321,7 +1322,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
         <h4>The Ghost Member</h4>
         <p>Sarah hasn't been in for 3 weeks. Nobody notices. She cancels her direct debit. You find out a month later when the payment bounces.</p>
         <div class="scenario-after">With GymOS</div>
-        <p>Retention Specialist flags Sarah after 5 days. Sends her a personal message. She books back in. Stays for another year. That's £600 saved.</p>
+        <p>Retention Specialist flags Sarah after 5 days. Sends her a personal message. She books back in. Stays for another year. That's $600 saved.</p>
       </div>
       <div class="scenario-card">
         <div class="scenario-before">Without GymOS</div>
@@ -1345,44 +1346,83 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
 <section class="section" id="pricing">
   <div class="container section-center">
     <div class="section-label">Pricing</div>
-    <h2 class="section-title">Two Ways to Get Started</h2>
-    <p class="section-sub">Own it outright or let us handle everything. Both get you the full team.</p>
+    <h2 class="section-title">Four Ways to Get Started</h2>
+    <p class="section-sub">From self-serve to fully managed. Pick the level that fits your gym.</p>
     <div class="pricing-grid">
+
+      <!-- LITE -->
       <div class="pricing-card">
-        <h3>Own It</h3>
-        <p class="pricing-desc">Buy the platform. Run it yourself. Keep it forever.</p>
-        <div class="pricing-amount">£997 <span>one-time</span></div>
-        <p class="pricing-note">Plus your own AI API costs (~£20-50/month)</p>
+        <h3>Lite</h3>
+        <p class="pricing-desc">Get the platform. Set it up yourself.</p>
+        <div class="pricing-amount">$997 <span>one-time</span></div>
+        <p class="pricing-note">or $297/month · cancel any time</p>
         <ul class="pricing-features">
-          <li>All 8+1 AI team members (Ω orchestrator + 8 specialists)</li>
-          <li>Full source code — it's one HTML file you own</li>
-          <li>Connect your own API keys (Claude, ChatGPT, etc.)</li>
-          <li>Social media integrations (Facebook, Instagram, Google)</li>
-          <li>WhatsApp and email automation</li>
-          <li>Lifetime updates for 12 months</li>
+          <li>All 8+1 AI team members</li>
+          <li>Full source code — one HTML file you own</li>
+          <li>Connect your own API keys</li>
+          <li>Social media integrations</li>
           <li>Setup guide and video walkthrough</li>
-          <li>Your data stays on your machine. Always.</li>
+          <li>12 months of updates</li>
+          <li>Community support</li>
         </ul>
         <button class="pricing-btn pricing-btn-outline" onclick="scrollTo('#pilot')">Start Pilot →</button>
       </div>
+
+      <!-- PRO -->
       <div class="pricing-card featured">
         <div class="pricing-badge">Most Popular</div>
-        <h3>Done For You</h3>
-        <p class="pricing-desc">We set it up, customise it, and keep it running.</p>
-        <div class="pricing-amount">£497 <span>/month</span></div>
-        <p class="pricing-note">Cancel any time. No contracts.</p>
+        <h3>Pro</h3>
+        <p class="pricing-desc">We build it for your gym. Branded. Configured.</p>
+        <div class="pricing-amount">$2,500–$5,000</div>
+        <p class="pricing-note">One-time setup · plus your API costs</p>
         <ul class="pricing-features">
-          <li>Everything in Own It</li>
-          <li>We configure all API integrations for you</li>
-          <li>Custom brand voice and content training</li>
-          <li>Monthly strategy review call</li>
-          <li>Priority support (respond within 4 hours)</li>
-          <li>We handle all platform updates</li>
-          <li>Content calendar planning each month</li>
-          <li>Dedicated success manager</li>
+          <li>Everything in Lite</li>
+          <li>Custom brand voice training</li>
+          <li>All API integrations configured</li>
+          <li>Content calendar for first 3 months</li>
+          <li>2 hours onboarding call</li>
+          <li>Priority email support (24hr)</li>
+          <li>Quarterly strategy review</li>
         </ul>
         <button class="pricing-btn pricing-btn-primary" onclick="scrollTo('#pilot')">Start Pilot →</button>
       </div>
+
+      <!-- ENTERPRISE -->
+      <div class="pricing-card">
+        <h3>Enterprise</h3>
+        <p class="pricing-desc">Multi-site. Custom features. Full integration.</p>
+        <div class="pricing-amount">$10k–$25k<span>+</span></div>
+        <p class="pricing-note">Scoped per project</p>
+        <ul class="pricing-features">
+          <li>Everything in Pro</li>
+          <li>Multi-location support</li>
+          <li>Custom agent development</li>
+          <li>CRM and booking system integration</li>
+          <li>Dedicated Slack channel</li>
+          <li>SLA with 4-hour response</li>
+          <li>On-site or video training</li>
+        </ul>
+        <button class="pricing-btn pricing-btn-outline" onclick="scrollTo('#pilot')">Talk to Us →</button>
+      </div>
+
+      <!-- MANAGED -->
+      <div class="pricing-card">
+        <h3>Managed</h3>
+        <p class="pricing-desc">We run the whole thing. You focus on training.</p>
+        <div class="pricing-amount">$497–$997 <span>/mo</span></div>
+        <p class="pricing-note">Cancel any time · no contracts</p>
+        <ul class="pricing-features">
+          <li>Everything in Pro, ongoing</li>
+          <li>We handle all content &amp; posting</li>
+          <li>Monthly strategy review call</li>
+          <li>Lead follow-up management</li>
+          <li>Platform updates handled for you</li>
+          <li>Dedicated success manager</li>
+          <li>Weekly performance reports</li>
+        </ul>
+        <button class="pricing-btn pricing-btn-primary" onclick="scrollTo('#pilot')">Start Pilot →</button>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1395,7 +1435,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
     <p class="section-sub">Conservative numbers. Move the sliders to match your gym.</p>
     <div class="roi-calc">
       <div class="roi-row">
-        <label class="roi-label">Monthly membership price <span id="roiPriceVal">£50</span></label>
+        <label class="roi-label">Monthly membership price <span id="roiPriceVal">$50</span></label>
         <input type="range" class="roi-slider" id="roiPrice" min="20" max="200" value="50" oninput="calcROI()">
       </div>
       <div class="roi-row">
@@ -1412,7 +1452,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       </div>
       <div class="roi-results">
         <div class="roi-result">
-          <div class="roi-result-num" id="roiRevenue">£1,050</div>
+          <div class="roi-result-num" id="roiRevenue">$1,050</div>
           <div class="roi-result-label">Extra Revenue / Month</div>
         </div>
         <div class="roi-result">
@@ -1420,7 +1460,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
           <div class="roi-result-label">Time Saved / Week</div>
         </div>
         <div class="roi-result">
-          <div class="roi-result-num" id="roiAnnual">£12,600</div>
+          <div class="roi-result-num" id="roiAnnual">$12,600</div>
           <div class="roi-result-label">Annual Impact</div>
         </div>
       </div>
@@ -1468,7 +1508,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">What are the AI running costs?</div>
-        <div class="faq-a">Typically £20-50 per month for a standard gym, depending on how much content you generate. You use your own API key from Claude (Anthropic), ChatGPT (OpenAI), or other providers. You only pay for what you use.</div>
+        <div class="faq-a">Typically $20-50 per month for a standard gym, depending on how much content you generate. You use your own API key from Claude (Anthropic), ChatGPT (OpenAI), or other providers. You only pay for what you use.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Can it actually post to my social media?</div>
@@ -1480,7 +1520,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">What if I want to stop using it?</div>
-        <div class="faq-a">If you bought the Own It package, the file is yours forever. No subscription to cancel. If you're on Done For You, cancel any time — no contracts, no penalties, no lock-in. Export your data and go.</div>
+        <div class="faq-a">If you bought Lite or Pro, the file is yours forever. No subscription to cancel. If you're on Managed, cancel any time — no contracts, no penalties, no lock-in. Export your data and go.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Can I try it before I pay?</div>
@@ -1865,7 +1905,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
                   <li>Create an account or sign in</li>
                   <li>Go to API Keys → Create Key</li>
                   <li>Copy the key and paste it above</li>
-                  <li>Add credit (£5 minimum, lasts most gyms a month)</li>
+                  <li>Add credit ($5 minimum, lasts most gyms a month)</li>
                 </ol>
               </div>
               <div class="api-btn-row">
@@ -1898,7 +1938,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
                   <li>Sign in or create an account</li>
                   <li>Go to API Keys → Create new secret key</li>
                   <li>Copy the key and paste it above</li>
-                  <li>Add credit (pay-as-you-go, £5 minimum)</li>
+                  <li>Add credit (pay-as-you-go, $5 minimum)</li>
                 </ol>
               </div>
               <div class="api-btn-row">
@@ -2378,17 +2418,17 @@ function buildConfigResult() {
     </div>
     <div class="config-result-row">
       <span class="config-result-label">Estimated Monthly Impact</span>
-      <span class="config-result-value" style="font-size:1.1rem;">£${roi.min} – £${roi.max}/month</span>
+      <span class="config-result-value" style="font-size:1.1rem;">$${roi.min} – $${roi.max}/month</span>
     </div>
     <div class="config-result-row">
       <span class="config-result-label">Estimated Annual Impact</span>
-      <span class="config-result-value" style="font-size:1.1rem;">£${roi.min*12} – £${roi.max*12}/year</span>
+      <span class="config-result-value" style="font-size:1.1rem;">$${roi.min*12} – $${roi.max*12}/year</span>
     </div>
     <div style="margin-top:20px;padding:16px;background:rgba(34,165,88,0.1);border-radius:8px;border:1px solid rgba(34,165,88,0.2);">
       <div style="font-weight:700;color:#22a558;margin-bottom:4px;">Recommendation</div>
       <div style="font-size:0.88rem;color:rgba(255,255,255,0.8);">
         Based on your ${typeNames[gymType] || 'gym'} with ${sizeNames[size] || 'your team'} focusing on ${(problemNames[problem] || 'growth').toLowerCase()},
-        we recommend starting with the ${size === 'solo' ? 'Own It' : 'Done For You'} package.
+        we recommend starting with the ${size === 'solo' ? 'Lite' : size === 'large' ? 'Enterprise' : 'Pro'} package.
         Try the demo below to see your AI team in action.
       </div>
     </div>
@@ -2402,7 +2442,7 @@ function calcROI() {
   const churn = parseInt(document.getElementById('roiChurn').value);
   const hours = parseInt(document.getElementById('roiHours').value);
 
-  document.getElementById('roiPriceVal').textContent = '£' + price;
+  document.getElementById('roiPriceVal').textContent = '$' + price;
   document.getElementById('roiMissVal').textContent = miss;
   document.getElementById('roiChurnVal').textContent = churn;
   document.getElementById('roiHoursVal').textContent = hours;
@@ -2414,9 +2454,9 @@ function calcROI() {
   const timeSaved = Math.round(hours * 0.7);
   const annual = monthlyRev * 12;
 
-  document.getElementById('roiRevenue').textContent = '£' + monthlyRev.toLocaleString();
+  document.getElementById('roiRevenue').textContent = '$' + monthlyRev.toLocaleString();
   document.getElementById('roiTime').textContent = timeSaved + ' hrs';
-  document.getElementById('roiAnnual').textContent = '£' + annual.toLocaleString();
+  document.getElementById('roiAnnual').textContent = '$' + annual.toLocaleString();
 }
 
 // ═══════════ APP SWITCHING ═══════════
