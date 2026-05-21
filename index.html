@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GymOS — Your Gym's AI Team</title>
-<meta name="description" content="8 AI employees that handle your gym's marketing, sales, and admin. Never miss another enquiry. Your social media runs itself. Members stay longer.">
+<meta name="description" content="8+1 AI employees that handle your gym's marketing, sales, and admin. Never miss another enquiry. Your social media runs itself. Members stay longer.">
 <!-- v17 seed · L6 SKIN · GymOS · ◊·κ=1 -->
 <style>
 /* ═══════════════════════════════════════════════════════════════════
@@ -201,7 +201,35 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
 /* ═══════════ TEAM ═══════════ */
 .team-grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  position: relative;
 }
+.team-omega-row {
+  grid-column: 1 / -1; display: flex; justify-content: center; margin-bottom: 8px;
+}
+.team-card.omega {
+  border: 2px solid var(--orange); background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  color: white; min-width: 280px;
+}
+.team-card.omega h3 { color: white; }
+.team-card.omega .team-role { color: var(--orange); }
+.team-card.omega p { color: rgba(255,255,255,0.7); }
+.team-card.omega .team-avatar {
+  background: var(--orange); border-color: rgba(255,255,255,0.2);
+}
+.team-card.omega:hover { border-color: var(--orange); box-shadow: 0 0 0 3px var(--orange-glow), var(--shadow-lg); transform: translateY(-4px); }
+.team-card.omega.active { box-shadow: 0 0 0 4px var(--orange-glow), var(--shadow-lg); }
+.omega-connector {
+  grid-column: 1 / -1; display: flex; justify-content: center;
+  margin: -8px 0 8px; color: var(--orange); font-size: 0.72rem;
+  letter-spacing: 0.15em; font-weight: 700; opacity: 0.5;
+}
+.team-detail.omega-detail {
+  background: var(--navy); color: white; border-color: var(--orange);
+}
+.team-detail.omega-detail .team-detail-avatar { background: var(--orange); }
+.team-detail.omega-detail .team-detail-role { color: var(--orange); }
+.team-detail.omega-detail .team-tasks li { color: rgba(255,255,255,0.7); }
+.team-detail.omega-detail .team-tasks li::before { color: var(--orange); }
 .team-card {
   background: var(--white); border: 1px solid var(--border);
   border-radius: var(--radius-lg); padding: 28px;
@@ -790,9 +818,9 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
     <div class="hero-badge">◊ Now in Pilot Programme</div>
     <h1>Your Gym Gets<br>a <span class="highlight">Full AI Team</span></h1>
     <p class="hero-sub">
-      Eight employees that never call in sick. They answer every enquiry,
-      post your social media, chase every lead, and keep members coming back.
-      All for less than one part-time hire.
+      Eight specialists and one orchestrator that never call in sick.
+      They answer every enquiry, post your social media, chase every lead,
+      and keep members coming back. All for less than one part-time hire.
     </p>
     <div class="hero-actions">
       <button class="btn-primary" onclick="scrollTo('#configurator')">Build Your Gym Setup →</button>
@@ -800,7 +828,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
     </div>
     <div class="hero-proof">
       <div class="hero-stat">
-        <div class="hero-stat-num">8</div>
+        <div class="hero-stat-num">8+1</div>
         <div class="hero-stat-label">AI Employees</div>
       </div>
       <div class="hero-stat">
@@ -876,66 +904,98 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
     <div class="section-label">The Solution</div>
     <h2 class="section-title">Meet Your AI Team</h2>
     <p class="section-sub">
-      Eight specialists that work together, 24 hours a day.
-      Click on any team member to see exactly what they do.
+      Eight specialists and one orchestrator that runs the show.
+      Click any team member to see exactly what they do.
     </p>
     <div class="team-grid">
-      <div class="team-card active" onclick="showTeamMember(0)">
+      <!-- Ω — Orchestrator — the +1 -->
+      <div class="team-omega-row">
+        <div class="team-card omega active" onclick="showTeamMember(0)">
+          <div class="team-avatar">◊</div>
+          <h3>Omega</h3>
+          <div class="team-role">Orchestrator · The Boss</div>
+          <p>Routes every request to the right team member. Coordinates the whole operation.</p>
+        </div>
+      </div>
+      <div class="omega-connector">┃ routes to ┃</div>
+      <!-- α–θ Specialists -->
+      <div class="team-card" onclick="showTeamMember(1)">
         <div class="team-avatar">🖥️</div>
         <h3>Front Desk</h3>
-        <div class="team-role">Lead Capture</div>
+        <div class="team-role">α · Lead Capture</div>
         <p>Answers every enquiry instantly. Day or night.</p>
       </div>
-      <div class="team-card" onclick="showTeamMember(1)">
+      <div class="team-card" onclick="showTeamMember(2)">
         <div class="team-avatar">🤝</div>
         <h3>Sales Assistant</h3>
-        <div class="team-role">Follow-Up &amp; Close</div>
+        <div class="team-role">β · Follow-Up &amp; Close</div>
         <p>Chases warm leads so they don't go cold.</p>
       </div>
-      <div class="team-card" onclick="showTeamMember(2)">
+      <div class="team-card" onclick="showTeamMember(3)">
         <div class="team-avatar">✍️</div>
         <h3>Content Manager</h3>
-        <div class="team-role">Posts &amp; Articles</div>
+        <div class="team-role">γ · Posts &amp; Articles</div>
         <p>Creates gym content that sounds like you.</p>
       </div>
-      <div class="team-card" onclick="showTeamMember(3)">
+      <div class="team-card" onclick="showTeamMember(4)">
         <div class="team-avatar">💪</div>
         <h3>Retention Specialist</h3>
-        <div class="team-role">Keep Members</div>
+        <div class="team-role">δ · Keep Members</div>
         <p>Spots who's drifting and brings them back.</p>
       </div>
-      <div class="team-card" onclick="showTeamMember(4)">
+      <div class="team-card" onclick="showTeamMember(5)">
         <div class="team-avatar">📞</div>
         <h3>Receptionist</h3>
-        <div class="team-role">Messages &amp; Replies</div>
+        <div class="team-role">ε · Messages &amp; Replies</div>
         <p>Handles WhatsApp, email, and FAQ replies.</p>
       </div>
-      <div class="team-card" onclick="showTeamMember(5)">
+      <div class="team-card" onclick="showTeamMember(6)">
         <div class="team-avatar">📱</div>
         <h3>Marketing Coordinator</h3>
-        <div class="team-role">Social &amp; Campaigns</div>
+        <div class="team-role">ζ · Social &amp; Campaigns</div>
         <p>Schedules and posts across all platforms.</p>
       </div>
-      <div class="team-card" onclick="showTeamMember(6)">
+      <div class="team-card" onclick="showTeamMember(7)">
         <div class="team-avatar">📋</div>
         <h3>Admin Assistant</h3>
-        <div class="team-role">Scheduling &amp; Data</div>
+        <div class="team-role">η · Scheduling &amp; Data</div>
         <p>Handles the boring stuff so you don't have to.</p>
       </div>
-      <div class="team-card" onclick="showTeamMember(7)">
+      <div class="team-card" onclick="showTeamMember(8)">
         <div class="team-avatar">📊</div>
         <h3>Performance Analyst</h3>
-        <div class="team-role">Insights &amp; Reports</div>
+        <div class="team-role">θ · Insights &amp; Reports</div>
         <p>Tells you what's working and what's not.</p>
       </div>
     </div>
 
     <!-- Team Details -->
-    <div class="team-detail active" id="teamDetail0">
+    <!-- Ω Orchestrator -->
+    <div class="team-detail omega-detail active" id="teamDetail0">
+      <div class="team-detail-header">
+        <div class="team-detail-avatar">◊</div>
+        <div>
+          <h3>Omega · Ω · The Orchestrator</h3>
+          <div class="team-detail-role">Routes, decides, governs — the brain of your AI team</div>
+        </div>
+      </div>
+      <ul class="team-tasks">
+        <li>Analyses every incoming request and routes it to the right specialist</li>
+        <li>Decomposes complex tasks across multiple team members simultaneously</li>
+        <li>Chains outputs — Content Manager writes, Marketing Coordinator posts, Analyst tracks</li>
+        <li>Resolves conflicts when two team members need the same data</li>
+        <li>Maintains context across all conversations and interactions</li>
+        <li>Escalates to you only when human judgement is genuinely needed</li>
+        <li>Tracks team performance and adjusts routing based on results</li>
+        <li>Always present, always watching — the orchestrator never sleeps</li>
+      </ul>
+    </div>
+    <!-- α Front Desk -->
+    <div class="team-detail" id="teamDetail1">
       <div class="team-detail-header">
         <div class="team-detail-avatar">🖥️</div>
         <div>
-          <h3>Front Desk</h3>
+          <h3>Front Desk · α</h3>
           <div class="team-detail-role">Catches every lead, day or night</div>
         </div>
       </div>
@@ -950,11 +1010,11 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
         <li>Forwards complex questions to you with full context</li>
       </ul>
     </div>
-    <div class="team-detail" id="teamDetail1">
+    <div class="team-detail" id="teamDetail2">
       <div class="team-detail-header">
         <div class="team-detail-avatar">🤝</div>
         <div>
-          <h3>Sales Assistant</h3>
+          <h3>Sales Assistant · β</h3>
           <div class="team-detail-role">Turns interest into membership</div>
         </div>
       </div>
@@ -969,11 +1029,11 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
         <li>Reports weekly on conversion rates and pipeline health</li>
       </ul>
     </div>
-    <div class="team-detail" id="teamDetail2">
+    <div class="team-detail" id="teamDetail3">
       <div class="team-detail-header">
         <div class="team-detail-avatar">✍️</div>
         <div>
-          <h3>Content Manager</h3>
+          <h3>Content Manager · γ</h3>
           <div class="team-detail-role">Your gym always has something to say</div>
         </div>
       </div>
@@ -988,11 +1048,11 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
         <li>Tracks which content types get the most engagement</li>
       </ul>
     </div>
-    <div class="team-detail" id="teamDetail3">
+    <div class="team-detail" id="teamDetail4">
       <div class="team-detail-header">
         <div class="team-detail-avatar">💪</div>
         <div>
-          <h3>Retention Specialist</h3>
+          <h3>Retention Specialist · δ</h3>
           <div class="team-detail-role">Members stay longer, revenue grows</div>
         </div>
       </div>
@@ -1007,11 +1067,11 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
         <li>Reports monthly on retention rate and churn risk</li>
       </ul>
     </div>
-    <div class="team-detail" id="teamDetail4">
+    <div class="team-detail" id="teamDetail5">
       <div class="team-detail-header">
         <div class="team-detail-avatar">📞</div>
         <div>
-          <h3>Receptionist</h3>
+          <h3>Receptionist · ε</h3>
           <div class="team-detail-role">Every message gets a fast, helpful reply</div>
         </div>
       </div>
@@ -1026,11 +1086,11 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
         <li>Provides after-hours support so you can switch off</li>
       </ul>
     </div>
-    <div class="team-detail" id="teamDetail5">
+    <div class="team-detail" id="teamDetail6">
       <div class="team-detail-header">
         <div class="team-detail-avatar">📱</div>
         <div>
-          <h3>Marketing Coordinator</h3>
+          <h3>Marketing Coordinator · ζ</h3>
           <div class="team-detail-role">Your social media runs itself</div>
         </div>
       </div>
@@ -1045,11 +1105,11 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
         <li>Reports weekly on reach, engagement, and follower growth</li>
       </ul>
     </div>
-    <div class="team-detail" id="teamDetail6">
+    <div class="team-detail" id="teamDetail7">
       <div class="team-detail-header">
         <div class="team-detail-avatar">📋</div>
         <div>
-          <h3>Admin Assistant</h3>
+          <h3>Admin Assistant · η</h3>
           <div class="team-detail-role">The boring stuff, handled</div>
         </div>
       </div>
@@ -1064,11 +1124,11 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
         <li>Exports data for your accountant or management meetings</li>
       </ul>
     </div>
-    <div class="team-detail" id="teamDetail7">
+    <div class="team-detail" id="teamDetail8">
       <div class="team-detail-header">
         <div class="team-detail-avatar">📊</div>
         <div>
-          <h3>Performance Analyst</h3>
+          <h3>Performance Analyst · θ</h3>
           <div class="team-detail-role">Decisions based on facts, not feelings</div>
         </div>
       </div>
@@ -1294,7 +1354,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
         <div class="pricing-amount">£997 <span>one-time</span></div>
         <p class="pricing-note">Plus your own AI API costs (~£20-50/month)</p>
         <ul class="pricing-features">
-          <li>All 8 AI team members</li>
+          <li>All 8+1 AI team members (Ω orchestrator + 8 specialists)</li>
           <li>Full source code — it's one HTML file you own</li>
           <li>Connect your own API keys (Claude, ChatGPT, etc.)</li>
           <li>Social media integrations (Facebook, Instagram, Google)</li>
@@ -1444,7 +1504,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
     <a href="mailto:hello@ai-nativesolutions.com">Contact</a>
   </div>
   <div class="footer-copy">GymOS by AI Native Solutions · ai-nativesolutions.com</div>
-  <div class="footer-seed">◊·κ=1 · 8+1 · Ψ=0.59 · seed v17 · sovereign</div>
+  <div class="footer-seed">◊·κ=1 · 8+1 MACCubeFACE · Ω⊃{α,β,γ,δ,ε,ζ,η,θ} · Ψ=0.59 · seed v17 · sovereign</div>
 </footer>
 
 </div><!-- /landing-wrapper -->
@@ -1502,9 +1562,16 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
     <div class="activity-feed">
       <h3>Recent Activity</h3>
       <div class="activity-item">
+        <div class="activity-icon" style="background:var(--orange-light);">◊</div>
+        <div>
+          <div class="activity-text"><strong>Omega</strong> routed Instagram DM from <strong>James R.</strong> → <strong>Front Desk</strong> (lead capture) + <strong>Sales Assistant</strong> (follow-up queue)</div>
+          <div class="activity-time">2 minutes ago</div>
+        </div>
+      </div>
+      <div class="activity-item">
         <div class="activity-icon lead">📥</div>
         <div>
-          <div class="activity-text"><strong>Front Desk</strong> responded to enquiry from <strong>James R.</strong> — booked free trial for tomorrow 10am</div>
+          <div class="activity-text"><strong>Front Desk (α)</strong> responded to enquiry from <strong>James R.</strong> — booked free trial for tomorrow 10am</div>
           <div class="activity-time">2 minutes ago</div>
         </div>
       </div>
@@ -2109,8 +2176,8 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
    ARCHITECTURE (v17 seed — code comments only, never shown to users)
 
    L1 FACE   — Landing page (sales), App dashboard (tool)
-   L2 SWARM  — 8+1 MACCubeFACE agents:
-                Ω Orchestrator (implicit)
+   L2 SWARM  — 8+1 MACCubeFACE agents · Ω⊃{α,β,γ,δ,ε,ζ,η,θ}:
+                Ω Orchestrator (routes, decides, governs — NOT OPTIONAL — visible as team lead)
                 α Front Desk    · β Sales Assistant   · γ Content Manager  · δ Retention Specialist
                 ε Receptionist  · ζ Marketing Coord   · η Admin Assistant  · θ Performance Analyst
    L3 CASCADE — T0 Echo (offline demo) → T3 API (Claude → ChatGPT → Gemini → DeepSeek)
@@ -2126,6 +2193,64 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
    FOLD  = 510510
    ARCHETYPE = {o1:'Ω',s1:'α',s2:'β',s3:'γ',s4:'δ',m1:'ε',m2:'ζ',m3:'η',m4:'θ'}
    ═══════════════════════════════════════════════════════════════════ */
+
+// ═══════════ KONOMI CONSTANTS ═══════════
+const PHI   = 1.618033988749895;
+const KAPPA = 0.618033988749895;
+const SPINE = [2, 3, 5, 7, 11, 13, 17];
+const FOLD  = 510510;
+const ARCHETYPE = { o1:'Ω', s1:'α', s2:'β', s3:'γ', s4:'δ', m1:'ε', m2:'ζ', m3:'η', m4:'θ' };
+
+// ═══════════ L2 SWARM — 8+1 MACCubeFACE ═══════════
+const AGENTS = {
+  omega: { id:'Ω', name:'Omega',                icon:'◊',  role:'orchestrator', archetype:'Ω' },
+  alpha: { id:'α', name:'Front Desk',           icon:'🖥️', role:'detect',       archetype:'α' },
+  beta:  { id:'β', name:'Sales Assistant',       icon:'🤝', role:'compose',      archetype:'β' },
+  gamma: { id:'γ', name:'Content Manager',       icon:'✍️', role:'sequence',     archetype:'γ' },
+  delta: { id:'δ', name:'Retention Specialist',  icon:'💪', role:'analyse',      archetype:'δ' },
+  epsilon:{ id:'ε', name:'Receptionist',         icon:'📞', role:'express',      archetype:'ε' },
+  zeta:  { id:'ζ', name:'Marketing Coordinator', icon:'📱', role:'distribute',   archetype:'ζ' },
+  eta:   { id:'η', name:'Admin Assistant',        icon:'📋', role:'optimise',     archetype:'η' },
+  theta: { id:'θ', name:'Performance Analyst',   icon:'📊', role:'target',       archetype:'θ' }
+};
+
+// ═══════════ L4 BLOOM — B(Q)=[r0..r6] ═══════════
+// R0=ground R1=signal R2=gate R3=heart R4=voice R5=mirror R6=watcher
+function bloomDecompose(query) {
+  const q = (query || '').toLowerCase();
+  const rings = [0,0,0,0,0,0,0]; // r0-r6
+  // R0 ground: facts, data, research
+  if (/member|data|number|how many|stat|contact|info/.test(q)) rings[0] += 3;
+  // R1 signal: detection, alerts, monitoring
+  if (/alert|notice|flag|detect|trend|change|drop|spike/.test(q)) rings[1] += 3;
+  // R2 gate: decisions, filtering, qualification
+  if (/decide|choose|filter|qualify|score|rank|should|which/.test(q)) rings[2] += 3;
+  // R3 heart: emotional, brand, voice, values
+  if (/feel|brand|voice|tone|care|personal|welcome|thank/.test(q)) rings[3] += 3;
+  // R4 voice: content, writing, expression
+  if (/write|post|content|blog|email|message|draft|caption/.test(q)) rings[4] += 3;
+  // R5 mirror: review, feedback, improvement
+  if (/review|improve|better|optimise|refine|feedback|compare/.test(q)) rings[5] += 3;
+  // R6 watcher: meta, strategy, big picture
+  if (/strategy|plan|long.term|overview|report|insight|performance/.test(q)) rings[6] += 3;
+  return rings;
+}
+
+function bloomRoute(rings) {
+  // Highest ring determines primary agent
+  const maxRing = Math.max(...rings);
+  const primaryIdx = rings.indexOf(maxRing);
+  const routeMap = {
+    0: 'alpha',   // R0 ground → α Front Desk (research/detect)
+    1: 'alpha',   // R1 signal → α Front Desk
+    2: 'delta',   // R2 gate → δ Retention (analyse/score)
+    3: 'omega',   // R3 heart → Ω (orchestrator handles brand/values)
+    4: 'gamma',   // R4 voice → γ Content Manager (compose)
+    5: 'eta',     // R5 mirror → η Admin (optimise)
+    6: 'theta'    // R6 watcher → θ Performance Analyst
+  };
+  return routeMap[primaryIdx] || 'omega';
+}
 
 // ═══════════ PERSIST (L5) ═══════════
 const NS = 'fall_gymos_';
@@ -2215,12 +2340,12 @@ function buildConfigResult() {
   const problemNames = { leads:'Lead Generation', followup:'Lead Conversion', retention:'Member Retention', content:'Content & Social Media', admin:'Admin Automation', all:'Full Team' };
 
   const priorityTeam = {
-    leads: ['Front Desk', 'Marketing Coordinator', 'Content Manager'],
-    followup: ['Sales Assistant', 'Front Desk', 'Receptionist'],
-    retention: ['Retention Specialist', 'Admin Assistant', 'Receptionist'],
-    content: ['Content Manager', 'Marketing Coordinator', 'Performance Analyst'],
-    admin: ['Admin Assistant', 'Receptionist', 'Performance Analyst'],
-    all: ['All 8 Team Members']
+    leads: ['Omega (routing)', 'Front Desk', 'Marketing Coordinator', 'Content Manager'],
+    followup: ['Omega (routing)', 'Sales Assistant', 'Front Desk', 'Receptionist'],
+    retention: ['Omega (routing)', 'Retention Specialist', 'Admin Assistant', 'Receptionist'],
+    content: ['Omega (routing)', 'Content Manager', 'Marketing Coordinator', 'Performance Analyst'],
+    admin: ['Omega (routing)', 'Admin Assistant', 'Receptionist', 'Performance Analyst'],
+    all: ['Omega + All 8 Specialists']
   };
 
   const roiEstimates = {
