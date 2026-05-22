@@ -1200,9 +1200,9 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
             <h4>🏋️ CrossFit / Functional Fitness</h4>
             <p>Class-based, community-focused</p>
           </div>
-          <div class="config-option" onclick="selectConfig(0, this, 'mma')">
-            <h4>🥊 MMA / Martial Arts Academy</h4>
-            <p>Combat sports and self-defence</p>
+          <div class="config-option" onclick="selectConfig(0, this, 'maa')">
+            <h4>🥋 Martial Arts Academy</h4>
+            <p>Discipline-based training and grading</p>
           </div>
           <div class="config-option" onclick="selectConfig(0, this, 'commercial')">
             <h4>🏢 Commercial Gym</h4>
@@ -2375,7 +2375,7 @@ function updateConfigUI() {
 
 function buildConfigResult() {
   const [gymType, size, problem] = state.configChoices;
-  const typeNames = { pt_studio:'PT / Personal Training Studio', crossfit:'CrossFit Box', mma:'MMA / Martial Arts Academy', commercial:'Commercial Gym', yoga:'Yoga / Pilates Studio', bootcamp:'Bootcamp / Outdoor Fitness' };
+  const typeNames = { pt_studio:'PT / Personal Training Studio', crossfit:'CrossFit Box', maa:'Martial Arts Academy', commercial:'Commercial Gym', yoga:'Yoga / Pilates Studio', bootcamp:'Bootcamp / Outdoor Fitness' };
   const sizeNames = { solo:'Solo Operator', small:'Small Team (2-5)', medium:'Medium (6-15)', large:'Large (15+)' };
   const problemNames = { leads:'Lead Generation', followup:'Lead Conversion', retention:'Member Retention', content:'Content & Social Media', admin:'Admin Automation', all:'Full Team' };
 
