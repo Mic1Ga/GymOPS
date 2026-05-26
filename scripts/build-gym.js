@@ -114,9 +114,24 @@ function buildGym(configPath) {
   }
 
   // 4) Replace logo text (Gym + OS dot) with gym name (best-effort, falls back if structure changed)
+  // The product subtext ("gym-os" by default) can be overridden via cfg.product_subtext or hidden
   if (cfg.gym_logo_text) {
+    var subtext = cfg.product_subtext !== undefined ? cfg.product_subtext : 'gym-os';
+    var subHtml = subtext ? `<span class="dot"> · ${esc(subtext)}</span>` : '';
     html = html.replace(/<div class="app-nav-logo">Gym<span class="dot">OS<\/span><\/div>/,
-      `<div class="app-nav-logo">${esc(cfg.gym_logo_text)}<span class="dot"> · gym-os</span></div>`);
+      `<div class="app-nav-logo">${esc(cfg.gym_logo_text)}${subHtml}</div>`);
+  }
+
+  // 4a) Product name override — replace "GymOS" mentions in hero/labels with cfg.product_name if set
+  if (cfg.product_name) {
+    html = html.replace(/\bGymOS\b/g, cfg.product_name);
+  }
+
+  // 4c) Hide Konomi/KCC badges for this gym (shims still run silently in the code)
+  // Set `konomi_visible: false` to hide. Reversible — flip flag, rebuild, badges return.
+  if (cfg.konomi_visible === false) {
+    var hideCss = `\n/* gym build: hide Konomi/KCC badges (shims still run for future re-enable) */\n#kcc-badge,#konomi-badge{display:none !important;}\n`;
+    html = html.replace('</style>', hideCss + '</style>');
   }
 
   // 4b) Landing page branding — hero + tagline + nav logo
@@ -131,10 +146,13 @@ function buildGym(configPath) {
       /<div class="hero-badge">◊ Now in Pilot Programme<\/div>/,
       `<div class="hero-badge">◊ ${esc(cfg.gym_name)} · Sovereign Build · Prime ${prime}</div>`
     );
-    // Landing nav brand (different selector from app nav — find first occurrence with Gym + OS)
+    // Landing nav: <div class="nav-logo">Gym<span class="dot">OS</span></div>
+    var navText = cfg.gym_logo_text || cfg.gym_name;
+    var navSub = cfg.product_subtext !== undefined ? cfg.product_subtext : 'OS';
+    var navSubHtml = navSub ? `<span class="dot">${esc(navSub)}</span>` : '';
     html = html.replace(
-      /<a href="#"[^>]*class="logo"[^>]*>[\s\S]*?<\/a>/,
-      `<a href="#" class="logo"><strong>${esc(cfg.gym_name)}</strong> <span style="opacity:.6;font-weight:400">· gym-os</span></a>`
+      /<div class="nav-logo">Gym<span class="dot">OS<\/span><\/div>/,
+      `<div class="nav-logo">${esc(navText)}${navSubHtml}</div>`
     );
   }
 

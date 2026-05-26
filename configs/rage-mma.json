@@ -1,6 +1,9 @@
 {
   "gym_name": "Rage MMA",
   "slug": "rage-mma",
+  "product_name": "RageOps",
+  "product_subtext": "",
+  "konomi_visible": false,
   "tagline": "Mixed martial arts · BJJ · Muay Thai · S&C. Pattaya.",
   "gym_logo_text": "Rage",
   "contact_name": "Michel",
