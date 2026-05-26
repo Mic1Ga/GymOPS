@@ -1,0 +1,17 @@
+{
+  "gym_name": "Acme Fight Gym",
+  "slug": "acme-fight-gym",
+  "tagline": "Sovereign AI for your gym. Your data, your device.",
+  "gym_logo_text": "Acme",
+  "contact_name": "Jane Owner",
+  "contact_email": "owner@acmegym.com",
+  "contact_phone": "+44 7xxx xxx xxx",
+  "website": "https://acmegym.com",
+  "start_date": "2026-05-26",
+  "trial_days": 30,
+  "brand": {
+    "primary": "#d4351c",
+    "accent": "#1a2744",
+    "text": "#1a2744"
+  }
+}

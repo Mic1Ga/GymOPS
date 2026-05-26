@@ -1,0 +1,17 @@
+{
+  "gym_name": "Rage MMA",
+  "slug": "rage-mma",
+  "tagline": "Mixed martial arts · BJJ · Muay Thai · S&C. Pattaya.",
+  "gym_logo_text": "Rage",
+  "contact_name": "Michel",
+  "contact_email": "michel@ragemma.com",
+  "contact_phone": "+66 xx xxx xxxx",
+  "website": "https://ragemma.com",
+  "start_date": "2026-05-26",
+  "trial_days": 30,
+  "brand": {
+    "primary": "#c8102e",
+    "accent": "#1a1a1a",
+    "text": "#1a1a1a"
+  }
+}
