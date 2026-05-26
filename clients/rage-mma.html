@@ -4,7 +4,7 @@
   slug:        rage-mma
   prime:       29
   master:      sjgant80-hub/gymos (prime 23)
-  built:       2026-05-26T01:53:46.533Z
+  built:       2026-05-26T02:05:02.154Z
   trial:       signed (30 days)
 -->
 <!DOCTYPE html>
@@ -1995,11 +1995,22 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
     <div class="settings-grid">
       <div class="settings-menu">
         <div class="settings-menu-item active" onclick="switchSettings('gym')">🏋️ Gym Profile</div>
+        <div class="settings-menu-item" onclick="switchSettings('socials')">🔗 Social Links</div>
         <div class="settings-menu-item" onclick="switchSettings('ai')">🤖 AI Engine</div>
         <div class="settings-menu-item" onclick="switchSettings('meta')">📱 Facebook &amp; Instagram</div>
+        <div class="settings-menu-item" onclick="switchSettings('tiktok')">🎵 TikTok</div>
+        <div class="settings-menu-item" onclick="switchSettings('youtube')">▶️ YouTube</div>
+        <div class="settings-menu-item" onclick="switchSettings('linkedin')">💼 LinkedIn</div>
         <div class="settings-menu-item" onclick="switchSettings('google')">🔍 Google My Business</div>
         <div class="settings-menu-item" onclick="switchSettings('whatsapp')">💬 WhatsApp</div>
-        <div class="settings-menu-item" onclick="switchSettings('email')">📧 Email</div>
+        <div class="settings-menu-item" onclick="switchSettings('sms')">📲 SMS / Twilio</div>
+        <div class="settings-menu-item" onclick="switchSettings('email')">📧 Email Provider</div>
+        <div class="settings-menu-item" onclick="switchSettings('crm')">📋 CRM</div>
+        <div class="settings-menu-item" onclick="switchSettings('booking')">📅 Booking System</div>
+        <div class="settings-menu-item" onclick="switchSettings('phone')">📞 Phone AI</div>
+        <div class="settings-menu-item" onclick="switchSettings('analytics')">📊 Analytics &amp; Pixel</div>
+        <div class="settings-menu-item" onclick="switchSettings('reviews')">⭐ Reviews</div>
+        <div class="settings-menu-item" onclick="switchSettings('webhooks')">🪝 Webhooks</div>
       </div>
       <div class="settings-content">
 
@@ -2318,6 +2329,181 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- ──────── SOCIAL LINKS (public URLs) ──────── -->
+        <div class="settings-section" id="settings-socials">
+          <h3>🔗 Social links</h3>
+          <p>Your public profile URLs. Used by the AI agents when sending replies, in member emails, on auto-generated content, and on the public booking page.</p>
+          <div class="api-input-group"><label class="api-input-label">Instagram URL</label><input class="api-input" data-field="social_instagram" placeholder="https://instagram.com/yourgym"></div>
+          <div class="api-input-group"><label class="api-input-label">Facebook Page URL</label><input class="api-input" data-field="social_facebook" placeholder="https://facebook.com/yourgym"></div>
+          <div class="api-input-group"><label class="api-input-label">TikTok URL</label><input class="api-input" data-field="social_tiktok" placeholder="https://tiktok.com/@yourgym"></div>
+          <div class="api-input-group"><label class="api-input-label">YouTube channel URL</label><input class="api-input" data-field="social_youtube" placeholder="https://youtube.com/@yourgym"></div>
+          <div class="api-input-group"><label class="api-input-label">LinkedIn page URL</label><input class="api-input" data-field="social_linkedin" placeholder="https://linkedin.com/company/yourgym"></div>
+          <div class="api-input-group"><label class="api-input-label">X / Twitter URL</label><input class="api-input" data-field="social_x" placeholder="https://x.com/yourgym"></div>
+          <div class="api-input-group"><label class="api-input-label">WhatsApp business link (wa.me/...)</label><input class="api-input" data-field="social_whatsapp_link" placeholder="https://wa.me/447xxxxxxxxx"></div>
+          <div class="api-input-group"><label class="api-input-label">Google Maps link</label><input class="api-input" data-field="social_maps" placeholder="https://maps.app.goo.gl/..."></div>
+          <div class="api-input-group"><label class="api-input-label">Spotify (playlists)</label><input class="api-input" data-field="social_spotify" placeholder="https://open.spotify.com/user/..."></div>
+          <div class="api-btn-row"><button class="api-btn api-btn-save" onclick="saveSocialLinks()">Save links</button></div>
+        </div>
+
+        <!-- ──────── TIKTOK ──────── -->
+        <div class="settings-section" id="settings-tiktok">
+          <h3>🎵 TikTok</h3>
+          <p>For scheduled posting + comment-DM automation. Account login is held by the gym — we use the TikTok Business API or a scheduling tool (Buffer, Later) with collaborator access.</p>
+          <div class="api-input-group"><label class="api-input-label">TikTok Business Account handle</label><input class="api-input" data-field="tiktok_handle" placeholder="@yourgym"></div>
+          <div class="api-input-group"><label class="api-input-label">TikTok Business Center ID (optional)</label><input class="api-input" data-field="tiktok_business_id" placeholder="71xxxxxxxxxxxxxxxx"></div>
+          <div class="api-input-group"><label class="api-input-label">Scheduler in use</label>
+            <select class="api-input" data-field="tiktok_scheduler"><option value="">— pick —</option><option>Buffer</option><option>Later</option><option>Hootsuite</option><option>Native (manual)</option></select>
+          </div>
+          <div class="api-input-group"><label class="api-input-label">Scheduler API key (optional)</label><input class="api-input" type="password" data-field="tiktok_scheduler_key" placeholder="paste API key"></div>
+          <div class="api-btn-row"><button class="api-btn api-btn-save" onclick="saveSettings('tiktok')">Save</button></div>
+        </div>
+
+        <!-- ──────── YOUTUBE ──────── -->
+        <div class="settings-section" id="settings-youtube">
+          <h3>▶️ YouTube</h3>
+          <p>For uploading class clips, member testimonials, training videos. Optional auto-captioning + auto-shorts repurposing.</p>
+          <div class="api-input-group"><label class="api-input-label">YouTube channel ID</label><input class="api-input" data-field="youtube_channel_id" placeholder="UCxxxxxxxxxxxxxxxxx"></div>
+          <div class="api-input-group"><label class="api-input-label">YouTube Data API v3 key (optional)</label><input class="api-input" type="password" data-field="youtube_api_key" placeholder="AIza..."></div>
+          <div class="api-input-group"><label class="api-input-label">OAuth refresh token (for posting)</label><input class="api-input" type="password" data-field="youtube_refresh_token" placeholder="1//0xxx..."></div>
+          <div class="api-btn-row"><button class="api-btn api-btn-save" onclick="saveSettings('youtube')">Save</button></div>
+        </div>
+
+        <!-- ──────── LINKEDIN ──────── -->
+        <div class="settings-section" id="settings-linkedin">
+          <h3>💼 LinkedIn</h3>
+          <p>For B2B outreach (corporate gym memberships, PT recruitment, partnership posts). Only relevant if the gym does any B2B.</p>
+          <div class="api-input-group"><label class="api-input-label">LinkedIn Company Page URL</label><input class="api-input" data-field="linkedin_page" placeholder="https://linkedin.com/company/yourgym"></div>
+          <div class="api-input-group"><label class="api-input-label">LinkedIn Page ID</label><input class="api-input" data-field="linkedin_page_id" placeholder="numeric ID from page URL"></div>
+          <div class="api-input-group"><label class="api-input-label">LinkedIn API access token</label><input class="api-input" type="password" data-field="linkedin_token" placeholder="paste OAuth token"></div>
+          <div class="api-btn-row"><button class="api-btn api-btn-save" onclick="saveSettings('linkedin')">Save</button></div>
+        </div>
+
+        <!-- ──────── SMS / TWILIO ──────── -->
+        <div class="settings-section" id="settings-sms">
+          <h3>📲 SMS / Twilio</h3>
+          <p>For booking reminders, no-show recovery, urgent alerts. Twilio is the most reliable choice. Account billed to the gym's card.</p>
+          <div class="api-input-group"><label class="api-input-label">Twilio Account SID</label><input class="api-input" data-field="twilio_account_sid" placeholder="ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></div>
+          <div class="api-input-group"><label class="api-input-label">Twilio Auth Token</label><input class="api-input" type="password" data-field="twilio_auth_token" placeholder="paste auth token"></div>
+          <div class="api-input-group"><label class="api-input-label">Twilio messaging number</label><input class="api-input" data-field="twilio_number" placeholder="+447xxxxxxxxx"></div>
+          <div class="api-input-group"><label class="api-input-label">Default sender name</label><input class="api-input" data-field="twilio_sender_name" placeholder="YourGym"></div>
+          <div class="api-btn-row"><button class="api-btn api-btn-save" onclick="saveSettings('sms')">Save</button><button class="api-btn api-btn-test" onclick="alert('Test SMS — wire to Twilio API')">Send test SMS</button></div>
+        </div>
+
+        <!-- ──────── CRM ──────── -->
+        <div class="settings-section" id="settings-crm">
+          <h3>📋 CRM</h3>
+          <p>The single source of truth for every lead and member. Connect once — all GymOS agents log here. Account billed to the gym.</p>
+          <div class="api-input-group"><label class="api-input-label">Provider</label>
+            <select class="api-input" data-field="crm_provider">
+              <option value="">— pick —</option>
+              <option value="gohighlevel">GoHighLevel (recommended)</option>
+              <option value="hubspot">HubSpot</option>
+              <option value="airtable">Airtable</option>
+              <option value="pipedrive">Pipedrive</option>
+              <option value="notion">Notion</option>
+              <option value="monday">Monday.com</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="api-input-group"><label class="api-input-label">API key / Personal access token</label><input class="api-input" type="password" data-field="crm_api_key" placeholder="paste API key"></div>
+          <div class="api-input-group"><label class="api-input-label">Account / Location / Base ID</label><input class="api-input" data-field="crm_location_id" placeholder="e.g. GHL location ID or Airtable base ID"></div>
+          <div class="api-input-group"><label class="api-input-label">Pipeline ID (default)</label><input class="api-input" data-field="crm_pipeline_id" placeholder="optional · for GHL/HubSpot"></div>
+          <div class="api-input-group"><label class="api-input-label">Webhook URL (for outbound events)</label><input class="api-input" data-field="crm_webhook" placeholder="https://hooks.yourcrm.com/..."></div>
+          <div class="api-btn-row"><button class="api-btn api-btn-save" onclick="saveSettings('crm')">Save</button><button class="api-btn api-btn-test" onclick="alert('Test CRM — wire per provider')">Test connection</button></div>
+        </div>
+
+        <!-- ──────── BOOKING ──────── -->
+        <div class="settings-section" id="settings-booking">
+          <h3>📅 Booking system</h3>
+          <p>We <strong>do not replace</strong> your booking system. We connect AI around it — reminders, no-show recovery, capacity alerts.</p>
+          <div class="api-input-group"><label class="api-input-label">Provider</label>
+            <select class="api-input" data-field="booking_provider">
+              <option value="">— pick —</option>
+              <option>Mindbody</option>
+              <option>ZenPlanner</option>
+              <option>Gymdesk</option>
+              <option>PushPress</option>
+              <option>Glofox</option>
+              <option>TeamUp</option>
+              <option>Calendly</option>
+              <option>Google Calendar</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="api-input-group"><label class="api-input-label">API key / OAuth token</label><input class="api-input" type="password" data-field="booking_api_key" placeholder="paste API key"></div>
+          <div class="api-input-group"><label class="api-input-label">Studio / Location ID</label><input class="api-input" data-field="booking_location_id" placeholder="e.g. Mindbody site ID"></div>
+          <div class="api-input-group"><label class="api-input-label">Public booking page URL</label><input class="api-input" data-field="booking_public_url" placeholder="https://clients.mindbodyonline.com/..."></div>
+          <div class="api-btn-row"><button class="api-btn api-btn-save" onclick="saveSettings('booking')">Save</button></div>
+        </div>
+
+        <!-- ──────── PHONE AI ──────── -->
+        <div class="settings-section" id="settings-phone">
+          <h3>📞 Phone AI</h3>
+          <p>Out-of-hours phone receptionist. ⚠️ Don't enable until Phase 1+2 are stable. Costs are per-minute — set a monthly cap.</p>
+          <div class="api-input-group"><label class="api-input-label">Provider</label>
+            <select class="api-input" data-field="phone_provider">
+              <option value="">— pick —</option>
+              <option value="vapi">VAPI (recommended)</option>
+              <option value="bland">Bland AI</option>
+              <option value="retell">Retell AI</option>
+              <option value="elevenlabs">ElevenLabs Agents</option>
+              <option value="twilio">Twilio Programmable Voice</option>
+            </select>
+          </div>
+          <div class="api-input-group"><label class="api-input-label">API key</label><input class="api-input" type="password" data-field="phone_api_key" placeholder="paste API key"></div>
+          <div class="api-input-group"><label class="api-input-label">Assistant / agent ID</label><input class="api-input" data-field="phone_assistant_id" placeholder="from provider dashboard"></div>
+          <div class="api-input-group"><label class="api-input-label">Forwarding / dedicated number</label><input class="api-input" data-field="phone_number" placeholder="+447xxxxxxxxx"></div>
+          <div class="api-input-group"><label class="api-input-label">Monthly spend cap (£)</label><input class="api-input" type="number" data-field="phone_cap" placeholder="100" value="100"></div>
+          <div class="api-input-group"><label class="api-input-label">Escalation contact (when AI hands off)</label><input class="api-input" data-field="phone_escalation" placeholder="+447xxxxxxxxx"></div>
+          <div class="api-btn-row"><button class="api-btn api-btn-save" onclick="saveSettings('phone')">Save</button></div>
+        </div>
+
+        <!-- ──────── ANALYTICS ──────── -->
+        <div class="settings-section" id="settings-analytics">
+          <h3>📊 Analytics &amp; Pixel</h3>
+          <p>Tracking IDs for the public site and booking funnel.</p>
+          <div class="api-input-group"><label class="api-input-label">Google Analytics 4 measurement ID</label><input class="api-input" data-field="ga4_id" placeholder="G-XXXXXXXXXX"></div>
+          <div class="api-input-group"><label class="api-input-label">Google Tag Manager container ID</label><input class="api-input" data-field="gtm_id" placeholder="GTM-XXXXXXX"></div>
+          <div class="api-input-group"><label class="api-input-label">Meta Pixel ID</label><input class="api-input" data-field="meta_pixel_id" placeholder="numeric pixel ID"></div>
+          <div class="api-input-group"><label class="api-input-label">Meta Conversions API token</label><input class="api-input" type="password" data-field="meta_capi_token" placeholder="EAAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></div>
+          <div class="api-input-group"><label class="api-input-label">TikTok Pixel ID</label><input class="api-input" data-field="tiktok_pixel_id" placeholder="CXXXXXXXXXXXXXXXXXX"></div>
+          <div class="api-btn-row"><button class="api-btn api-btn-save" onclick="saveSettings('analytics')">Save</button></div>
+        </div>
+
+        <!-- ──────── REVIEWS ──────── -->
+        <div class="settings-section" id="settings-reviews">
+          <h3>⭐ Reviews</h3>
+          <p>Auto-request reviews from happy members. Detect bad reviews fast and route to owner.</p>
+          <div class="api-input-group"><label class="api-input-label">Google Business Place ID</label><input class="api-input" data-field="google_place_id" placeholder="ChIJxxxxxxxxxxxxxxx"></div>
+          <div class="api-input-group"><label class="api-input-label">Google review link (auto-built)</label><input class="api-input" data-field="google_review_link" placeholder="https://g.page/r/..."></div>
+          <div class="api-input-group"><label class="api-input-label">Trustpilot business URL (optional)</label><input class="api-input" data-field="trustpilot_url" placeholder="https://www.trustpilot.com/review/..."></div>
+          <div class="api-input-group"><label class="api-input-label">Facebook reviews enabled</label>
+            <select class="api-input" data-field="fb_reviews_enabled"><option>No</option><option>Yes</option></select>
+          </div>
+          <div class="api-input-group"><label class="api-input-label">Send review-request after (event)</label>
+            <select class="api-input" data-field="review_trigger">
+              <option>5th class attended</option>
+              <option>10th class attended</option>
+              <option>30 days after joining</option>
+              <option>after trial completion</option>
+              <option>manual only</option>
+            </select>
+          </div>
+          <div class="api-btn-row"><button class="api-btn api-btn-save" onclick="saveSettings('reviews')">Save</button></div>
+        </div>
+
+        <!-- ──────── WEBHOOKS ──────── -->
+        <div class="settings-section" id="settings-webhooks">
+          <h3>🪝 Webhooks</h3>
+          <p>For custom integrations · Zapier, Make.com, n8n, or the gym's own systems.</p>
+          <div class="api-input-group"><label class="api-input-label">Inbound webhook secret (we send X-Signature)</label><input class="api-input" type="password" data-field="webhook_inbound_secret" placeholder="random 32+ char string"></div>
+          <div class="api-input-group"><label class="api-input-label">Outbound: lead created</label><input class="api-input" data-field="webhook_lead" placeholder="https://hooks.zapier.com/..."></div>
+          <div class="api-input-group"><label class="api-input-label">Outbound: trial booked</label><input class="api-input" data-field="webhook_trial_booked" placeholder="https://hooks.zapier.com/..."></div>
+          <div class="api-input-group"><label class="api-input-label">Outbound: member joined</label><input class="api-input" data-field="webhook_member_joined" placeholder="https://hooks.zapier.com/..."></div>
+          <div class="api-input-group"><label class="api-input-label">Outbound: member cancelled</label><input class="api-input" data-field="webhook_member_cancelled" placeholder="https://hooks.zapier.com/..."></div>
+          <div class="api-btn-row"><button class="api-btn api-btn-save" onclick="saveSettings('webhooks')">Save</button></div>
         </div>
 
       </div>
@@ -3139,7 +3325,74 @@ function switchSettings(section) {
   document.querySelectorAll('.settings-section').forEach(s => s.classList.remove('active'));
   event.currentTarget.classList.add('active');
   document.getElementById('settings-' + section).classList.add('active');
+  hydrateConnectionFields();
 }
+
+// ═══════════ CONNECTION FIELDS — generic save/load via [data-field] ═══════════
+const CONN_KEY = 'gymos_connections_v1';
+function loadConnections() { try { return JSON.parse(localStorage.getItem(CONN_KEY) || '{}'); } catch(_) { return {}; } }
+function saveConnections(obj) { localStorage.setItem(CONN_KEY, JSON.stringify(obj)); }
+function hydrateConnectionFields() {
+  const conn = loadConnections();
+  document.querySelectorAll('[data-field]').forEach(el => {
+    const k = el.getAttribute('data-field');
+    if (conn[k] !== undefined && el.value !== conn[k]) el.value = conn[k];
+    // Persist on change
+    if (!el._wired) {
+      el.addEventListener('change', () => {
+        const c = loadConnections(); c[el.getAttribute('data-field')] = el.value; saveConnections(c);
+        if (window.kcc) window.kcc.emit('connect:' + el.getAttribute('data-field'), 2, 0.5); // R2 filter
+        updateConnectionBadges();
+      });
+      el.addEventListener('input', () => {
+        const c = loadConnections(); c[el.getAttribute('data-field')] = el.value; saveConnections(c);
+        updateConnectionBadges();
+      });
+      el._wired = true;
+    }
+  });
+  updateConnectionBadges();
+}
+function saveSettings(section) {
+  // already auto-saved on change/input; this is a confirmation button
+  if (window.toast) toast(section + ' saved'); else alert(section + ' saved');
+  if (window.kcc) window.kcc.emit('save_settings:' + section, 4, 1); // R4 build
+}
+function saveSocialLinks() {
+  if (window.toast) toast('social links saved'); else alert('social links saved');
+  if (window.kcc) window.kcc.emit('save_settings:socials', 4, 1);
+}
+
+// Connection status — derive from which fields are filled per section
+const CONN_KEYS_PER_SECTION = {
+  socials:   ['social_instagram','social_facebook','social_tiktok','social_youtube','social_linkedin','social_x','social_whatsapp_link','social_maps'],
+  tiktok:    ['tiktok_handle','tiktok_business_id','tiktok_scheduler'],
+  youtube:   ['youtube_channel_id','youtube_api_key'],
+  linkedin:  ['linkedin_page','linkedin_token'],
+  sms:       ['twilio_account_sid','twilio_auth_token','twilio_number'],
+  crm:       ['crm_provider','crm_api_key'],
+  booking:   ['booking_provider','booking_api_key'],
+  phone:     ['phone_provider','phone_api_key'],
+  analytics: ['ga4_id','meta_pixel_id'],
+  reviews:   ['google_place_id'],
+  webhooks:  ['webhook_lead','webhook_trial_booked','webhook_member_joined']
+};
+function updateConnectionBadges() {
+  const conn = loadConnections();
+  Object.entries(CONN_KEYS_PER_SECTION).forEach(([section, fields]) => {
+    const filled = fields.filter(f => conn[f] && String(conn[f]).trim().length > 0).length;
+    const item = document.querySelector('.settings-menu-item[onclick*="\'' + section + '\'"]');
+    if (!item) return;
+    item.querySelectorAll('.conn-badge').forEach(b => b.remove());
+    const badge = document.createElement('span');
+    badge.className = 'conn-badge';
+    if (filled === 0) { badge.style.cssText='background:#f0ece7;color:#a0aec0;font-size:0.62rem;padding:1px 6px;border-radius:6px;margin-left:6px;letter-spacing:.04em'; badge.textContent='—'; }
+    else if (filled < fields.length) { badge.style.cssText='background:#fef3c7;color:#92400e;font-size:0.62rem;padding:1px 6px;border-radius:6px;margin-left:6px;font-weight:700'; badge.textContent=filled+'/'+fields.length; }
+    else { badge.style.cssText='background:#d1fae5;color:#065f46;font-size:0.62rem;padding:1px 6px;border-radius:6px;margin-left:6px;font-weight:700'; badge.textContent='✓'; }
+    item.appendChild(badge);
+  });
+}
+document.addEventListener('DOMContentLoaded', () => setTimeout(() => { hydrateConnectionFields(); }, 100));
 
 // ═══════════ API CARDS ═══════════
 function toggleApiCard(card) {
@@ -4218,12 +4471,27 @@ window.addEventListener('scroll', () => {
 </script>
 
 <script>
+(function connSeed(){
+  function tryPrefill(){
+    try {
+      var existing = JSON.parse(localStorage.getItem('gymos_connections_v1') || '{}');
+      var preset = {"social_instagram":"https://instagram.com/ragemma","social_facebook":"https://facebook.com/ragemma","social_tiktok":"https://tiktok.com/@ragemma","social_youtube":"https://youtube.com/@ragemma","social_whatsapp_link":"https://wa.me/66xxxxxxxxx","social_maps":"https://maps.app.goo.gl/example","crm_provider":"gohighlevel","booking_provider":"PushPress","booking_public_url":"https://members.pushpress.com/ragemma","phone_provider":"vapi","phone_cap":100,"review_trigger":"5th class attended","tiktok_handle":"@ragemma","tiktok_scheduler":"Buffer","twilio_sender_name":"RageMMA"};
+      var merged = Object.assign(preset, existing); // existing wins (don't clobber)
+      localStorage.setItem('gymos_connections_v1', JSON.stringify(merged));
+    } catch(_){}
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tryPrefill, { once:true });
+  else tryPrefill();
+})();
+</script>
+
+<script>
 (function preActivate(){
   function ap(){
     try {
       var k = 'konomi_licence_' + "rage-mma";
       if (localStorage.getItem(k)) return;
-      localStorage.setItem(k, "eyJwYXlsb2FkIjp7InYiOjEsImZvcmdlX2lkIjoiZmdfZ3ltX2U1MTAwYTQzZDgwMiIsInRvb2xfaWQiOiJyYWdlLW1tYSIsInRvb2xfcHJpbWUiOjI5LCJ0aWVyIjoidHJpYWwiLCJmZWF0dXJlcyI6WyJjb3JlIiwibWVzaF9pbmJvdW5kIiwib25ib2FyZGluZ19jb25zb2xlIl0sImlzc3VlZCI6IjIwMjYtMDUtMjZUMDE6NTM6NDYuNTMyWiIsImV4cGlyZXMiOiIyMDI2LTA2LTI1VDAxOjUzOjQ2LjUzMloiLCJpc3N1ZXIiOiJrb25vbWkifSwic2lnIjoid0NzNnkzRGx4SytpMFpRUzczUUdZN1c3R2t0WDE1TER0bE1oWkovL29STi9mRG15QWI3ckdLQnBVYU04enFmSkxndGY5K2o0cFg3RzZnTGhHemtSRHc9PSJ9");
+      localStorage.setItem(k, "eyJwYXlsb2FkIjp7InYiOjEsImZvcmdlX2lkIjoiZmdfZ3ltXzVkNWRlNDE5NGUyMCIsInRvb2xfaWQiOiJyYWdlLW1tYSIsInRvb2xfcHJpbWUiOjI5LCJ0aWVyIjoidHJpYWwiLCJmZWF0dXJlcyI6WyJjb3JlIiwibWVzaF9pbmJvdW5kIiwib25ib2FyZGluZ19jb25zb2xlIl0sImlzc3VlZCI6IjIwMjYtMDUtMjZUMDI6MDU6MDIuMTUzWiIsImV4cGlyZXMiOiIyMDI2LTA2LTI1VDAyOjA1OjAyLjE1M1oiLCJpc3N1ZXIiOiJrb25vbWkifSwic2lnIjoibDh3UTA5OFlCMXRzTU4rY3ByQzZaMTM5RDFyNDRheS9JeitBRDl5UENyVTNGS3A2Z1U2TDBsc0NBa2JyZFhsdUpnM1A4Q3dTemdqMlNsdXNwemtlQlE9PSJ9");
     } catch(_){}
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ap, { once:true });

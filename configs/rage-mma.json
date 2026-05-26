@@ -13,5 +13,22 @@
     "primary": "#c8102e",
     "accent": "#1a1a1a",
     "text": "#1a1a1a"
-  }
+  },
+  "socials": {
+    "instagram": "https://instagram.com/ragemma",
+    "facebook": "https://facebook.com/ragemma",
+    "tiktok": "https://tiktok.com/@ragemma",
+    "youtube": "https://youtube.com/@ragemma",
+    "whatsapp_link": "https://wa.me/66xxxxxxxxx",
+    "maps": "https://maps.app.goo.gl/example"
+  },
+  "tiktok":    { "handle": "@ragemma", "scheduler": "Buffer" },
+  "youtube":   { "channel_id": "" },
+  "linkedin":  { "page": "" },
+  "crm":       { "provider": "gohighlevel" },
+  "booking":   { "provider": "PushPress", "public_url": "https://members.pushpress.com/ragemma" },
+  "phone":     { "provider": "vapi", "cap": 100 },
+  "analytics": { "ga4_id": "", "meta_pixel_id": "" },
+  "reviews":   { "google_place_id": "", "trigger": "5th class attended" },
+  "sms":       { "sender_name": "RageMMA" }
 }

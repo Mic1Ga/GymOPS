@@ -172,6 +172,49 @@ function buildGym(configPath) {
     html = html.replace('</body>', seed + '\n</body>');
   }
 
+  // 5b) Pre-seed connection-fields data — every key the agency already knows
+  // (public socials, known IDs, etc.) gets baked in. Secrets stay blank for the gym to fill.
+  const preConn = {};
+  function pre(key, val) { if (val !== undefined && val !== null && val !== '') preConn[key] = val; }
+  if (cfg.socials) {
+    pre('social_instagram',     cfg.socials.instagram);
+    pre('social_facebook',      cfg.socials.facebook);
+    pre('social_tiktok',        cfg.socials.tiktok);
+    pre('social_youtube',       cfg.socials.youtube);
+    pre('social_linkedin',      cfg.socials.linkedin);
+    pre('social_x',             cfg.socials.x);
+    pre('social_whatsapp_link', cfg.socials.whatsapp_link);
+    pre('social_maps',          cfg.socials.maps);
+    pre('social_spotify',       cfg.socials.spotify);
+  }
+  if (cfg.crm)       { pre('crm_provider',     cfg.crm.provider);     pre('crm_location_id', cfg.crm.location_id); pre('crm_pipeline_id', cfg.crm.pipeline_id); }
+  if (cfg.booking)   { pre('booking_provider', cfg.booking.provider); pre('booking_location_id', cfg.booking.location_id); pre('booking_public_url', cfg.booking.public_url); }
+  if (cfg.phone)     { pre('phone_provider',   cfg.phone.provider);   pre('phone_number', cfg.phone.number); pre('phone_cap', cfg.phone.cap); pre('phone_escalation', cfg.phone.escalation); }
+  if (cfg.analytics) { pre('ga4_id', cfg.analytics.ga4_id); pre('gtm_id', cfg.analytics.gtm_id); pre('meta_pixel_id', cfg.analytics.meta_pixel_id); pre('tiktok_pixel_id', cfg.analytics.tiktok_pixel_id); }
+  if (cfg.reviews)   { pre('google_place_id', cfg.reviews.google_place_id); pre('google_review_link', cfg.reviews.google_review_link); pre('trustpilot_url', cfg.reviews.trustpilot_url); pre('review_trigger', cfg.reviews.trigger); }
+  if (cfg.youtube)   { pre('youtube_channel_id', cfg.youtube.channel_id); }
+  if (cfg.tiktok)    { pre('tiktok_handle', cfg.tiktok.handle); pre('tiktok_scheduler', cfg.tiktok.scheduler); }
+  if (cfg.linkedin)  { pre('linkedin_page', cfg.linkedin.page); pre('linkedin_page_id', cfg.linkedin.page_id); }
+  if (cfg.sms)       { pre('twilio_number', cfg.sms.number); pre('twilio_sender_name', cfg.sms.sender_name); }
+  if (Object.keys(preConn).length > 0) {
+    const connSeed = `
+<script>
+(function connSeed(){
+  function tryPrefill(){
+    try {
+      var existing = JSON.parse(localStorage.getItem('gymos_connections_v1') || '{}');
+      var preset = ${JSON.stringify(preConn)};
+      var merged = Object.assign(preset, existing); // existing wins (don't clobber)
+      localStorage.setItem('gymos_connections_v1', JSON.stringify(merged));
+    } catch(_){}
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tryPrefill, { once:true });
+  else tryPrefill();
+})();
+</script>`;
+    html = html.replace('</body>', connSeed + '\n</body>');
+  }
+
   // 6) Trial licence — auto-activate on first boot if KONOMI_PRIVATE_KEY set
   const trialEnv = mintTrial(slug, prime, cfg.trial_days || 30);
   if (trialEnv) {
