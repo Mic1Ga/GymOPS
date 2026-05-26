@@ -534,6 +534,66 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
 .app-panel { display: none; }
 .app-panel.active { display: block; }
 
+/* ─── Onboarding console ──────────────────────── */
+.ob-head { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; margin-bottom:20px; flex-wrap:wrap; }
+.ob-actions { display:flex; gap:10px; flex-wrap:wrap; }
+.ob-banner { display:flex; gap:14px; background:#f7f4ef; border:1px solid var(--border); border-radius:12px; padding:14px 18px; margin-bottom:24px; font-size:.88rem; color:var(--text-mid); line-height:1.55; }
+.ob-banner strong { color:var(--text); }
+.ob-banner-glyph { font-size:1.6rem; line-height:1; }
+.ob-client-info { background:#fff; border:1px solid var(--border); border-radius:14px; padding:20px; margin-bottom:24px; }
+.ob-section-head { display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:14px; }
+.ob-section-head h3 { font-size:1rem; font-weight:700; color:var(--text); }
+.ob-section-sub { font-size:.78rem; color:var(--text-dim); }
+.ob-form-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px; }
+.ob-phase-tabs { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:20px; }
+.ob-phase { background:#fff; border:1px solid var(--border); border-radius:12px; padding:12px 14px; cursor:pointer; text-align:left; transition:.2s; font:inherit; display:flex; flex-direction:column; gap:4px; }
+.ob-phase:hover { border-color:#cdb887; }
+.ob-phase.active { background:#1a2744; border-color:#1a2744; color:#fff; }
+.ob-phase strong { font-size:.92rem; font-weight:700; }
+.ob-phase span { font-size:.74rem; opacity:.7; }
+.ob-cards { display:grid; gap:14px; }
+.ob-card { background:#fff; border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+.ob-card-head { padding:14px 18px; cursor:pointer; display:flex; align-items:center; gap:12px; }
+.ob-card-head:hover { background:#fafaf7; }
+.ob-card-icon { font-size:1.4rem; line-height:1; width:40px; height:40px; display:flex; align-items:center; justify-content:center; background:#f7f4ef; border-radius:10px; flex-shrink:0; }
+.ob-card-meta { flex:1; min-width:0; }
+.ob-card-title { font-size:.98rem; font-weight:700; color:var(--text); margin-bottom:2px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.ob-card-owner { font-size:.7rem; padding:2px 7px; background:#f0ece7; border-radius:6px; color:var(--text-mid); font-weight:600; letter-spacing:.04em; }
+.ob-card-desc { font-size:.82rem; color:var(--text-dim); }
+.ob-status { font-size:.72rem; padding:4px 10px; border-radius:999px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; flex-shrink:0; }
+.ob-status[data-status="pending"] { background:#f0ece7; color:#718096; }
+.ob-status[data-status="needs-client"] { background:#fef3c7; color:#92400e; }
+.ob-status[data-status="in-progress"] { background:#dbeafe; color:#1e40af; }
+.ob-status[data-status="live"] { background:#d1fae5; color:#065f46; }
+.ob-card-arrow { color:var(--text-dim); transition:transform .2s; flex-shrink:0; }
+.ob-card.open .ob-card-arrow { transform:rotate(180deg); }
+.ob-card-body { display:none; padding:0 18px 18px; border-top:1px solid var(--border-light); }
+.ob-card.open .ob-card-body { display:block; }
+.ob-block { margin-top:18px; }
+.ob-block h4 { font-size:.78rem; font-weight:700; color:var(--text-dim); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; }
+.ob-checks { display:grid; gap:6px; }
+.ob-check { display:flex; align-items:flex-start; gap:10px; cursor:pointer; padding:8px 10px; border-radius:8px; transition:background .15s; }
+.ob-check:hover { background:#fafaf7; }
+.ob-check input[type="checkbox"] { margin-top:2px; cursor:pointer; flex-shrink:0; }
+.ob-check span { font-size:.86rem; color:var(--text); line-height:1.5; }
+.ob-check.done span { text-decoration:line-through; color:var(--text-dim); }
+.ob-providers { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.ob-prov { background:#f7f4ef; border:1px solid var(--border); border-radius:8px; padding:6px 12px; font-size:.82rem; cursor:pointer; transition:.15s; }
+.ob-prov:hover { border-color:#cdb887; }
+.ob-prov.selected { background:#1a2744; color:#fff; border-color:#1a2744; }
+.ob-prov small { display:block; font-size:.68rem; opacity:.65; margin-top:2px; }
+.ob-cost-row { display:grid; grid-template-columns:1fr 110px 130px; gap:10px; margin-top:8px; align-items:center; }
+.ob-cost-row input { width:100%; padding:7px 10px; border:1px solid var(--border); border-radius:8px; background:#fafaf7; font:inherit; font-size:.85rem; color:var(--text); }
+.ob-cost-row select { width:100%; padding:7px 10px; border:1px solid var(--border); border-radius:8px; background:#fafaf7; font:inherit; font-size:.85rem; color:var(--text); }
+.ob-status-select { margin-top:8px; padding:7px 10px; border:1px solid var(--border); border-radius:8px; background:#fff; font:inherit; font-size:.85rem; }
+.ob-empty { text-align:center; padding:40px 20px; color:var(--text-dim); font-size:.9rem; }
+@media (max-width:760px){
+  .ob-phase-tabs { grid-template-columns:1fr; }
+  .ob-cost-row { grid-template-columns:1fr; }
+}
+.api-btn.ghost { background:transparent; color:var(--text-mid); border:1px solid var(--border); }
+.api-btn.ghost:hover { background:#fafaf7; }
+
 /* Dashboard */
 .dash-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
 .dash-card {
@@ -1580,6 +1640,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
     <div class="app-tab" onclick="switchAppTab('content')"><span class="app-tab-icon">✍️</span> Content</div>
     <div class="app-tab" onclick="switchAppTab('leads')"><span class="app-tab-icon">📥</span> Leads</div>
     <div class="app-tab" onclick="switchAppTab('schedule')"><span class="app-tab-icon">📅</span> Schedule</div>
+    <div class="app-tab" onclick="switchAppTab('onboarding')"><span class="app-tab-icon">🚀</span> Onboarding</div>
     <div class="app-tab" onclick="switchAppTab('settings')"><span class="app-tab-icon">⚙️</span> Settings</div>
   </div>
   <button class="app-exit" onclick="exitApp()">← Back to Site</button>
@@ -1843,6 +1904,77 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- ONBOARDING — Client Deployment Console -->
+  <div class="app-panel" id="panel-onboarding">
+    <div class="ob-head">
+      <div>
+        <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:4px;">Client Deployment Console</h2>
+        <p style="font-size:.88rem;color:var(--text-mid);max-width:680px">From "yes, let's do it" → live. Each card shows what you need from the client, what you need to do, what it costs, which agent owns it.</p>
+      </div>
+      <div class="ob-actions">
+        <button class="api-btn" onclick="obExportRequirements()">📤 Export Client Requirements</button>
+        <button class="api-btn ghost" onclick="obExportCosts()">💰 Cost Sheet</button>
+      </div>
+    </div>
+
+    <div class="ob-banner">
+      <div class="ob-banner-glyph">⚖️</div>
+      <div>
+        <strong>Account ownership model.</strong> Client owns every account (email, social, CRM, WhatsApp number, scheduling). We're added as admin/editor. When the engagement ends, the infrastructure stays with the gym — no hostage data, no nightmare handover. Costs (Brevo, Twilio, GoHighLevel etc.) are billed to the client's card, not ours.
+      </div>
+    </div>
+
+    <div class="ob-client-info">
+      <div class="ob-section-head">
+        <h3>Client basics</h3>
+        <span class="ob-section-sub">Captured once, prefilled across every card</span>
+      </div>
+      <div class="ob-form-grid">
+        <div class="api-input-group">
+          <label class="api-input-label">Gym name</label>
+          <input class="api-input" data-ob-key="client.gym_name" placeholder="Acme Fight Gym" oninput="obSave(this)">
+        </div>
+        <div class="api-input-group">
+          <label class="api-input-label">Primary contact</label>
+          <input class="api-input" data-ob-key="client.contact_name" placeholder="Jane Owner" oninput="obSave(this)">
+        </div>
+        <div class="api-input-group">
+          <label class="api-input-label">Business email</label>
+          <input class="api-input" type="email" data-ob-key="client.business_email" placeholder="owner@acmegym.com" oninput="obSave(this)">
+        </div>
+        <div class="api-input-group">
+          <label class="api-input-label">Business phone</label>
+          <input class="api-input" data-ob-key="client.business_phone" placeholder="+44 7xxx xxx xxx" oninput="obSave(this)">
+        </div>
+        <div class="api-input-group">
+          <label class="api-input-label">Website URL</label>
+          <input class="api-input" data-ob-key="client.website" placeholder="https://acmegym.com" oninput="obSave(this)">
+        </div>
+        <div class="api-input-group">
+          <label class="api-input-label">Engagement start</label>
+          <input class="api-input" type="date" data-ob-key="client.start_date" oninput="obSave(this)">
+        </div>
+      </div>
+    </div>
+
+    <div class="ob-phase-tabs">
+      <button class="ob-phase active" data-phase="1" onclick="obSwitchPhase(1)">
+        <strong>Phase 1 · Launch</strong>
+        <span>web chat · email · social · content</span>
+      </button>
+      <button class="ob-phase" data-phase="2" onclick="obSwitchPhase(2)">
+        <strong>Phase 2 · Scale</strong>
+        <span>WhatsApp · CRM · class booking</span>
+      </button>
+      <button class="ob-phase" data-phase="3" onclick="obSwitchPhase(3)">
+        <strong>Phase 3 · Advanced</strong>
+        <span>phone AI · retention · analytics</span>
+      </button>
+    </div>
+
+    <div id="ob-cards" class="ob-cards"></div>
   </div>
 
   <!-- SETTINGS -->
@@ -2490,7 +2622,488 @@ function switchAppTab(tab) {
   document.querySelectorAll('.app-panel').forEach(p => p.classList.remove('active'));
   event.currentTarget.classList.add('active');
   document.getElementById('panel-' + tab).classList.add('active');
+  if (tab === 'onboarding') obRender();
 }
+
+// ═══════════ ONBOARDING — Client Deployment Console ═══════════
+// 8 deployment modules · Michel's tweaks · client-owns / agency-manages
+const OB_MODULES = [
+  // ── PHASE 1 · LAUNCH ──
+  { id:'webchat', phase:1, icon:'💬', title:'Website Chatbot', owner:'α Front Desk',
+    desc:'Lead-capture widget on the gym site. FAQ, hours, pricing, book-a-trial.',
+    client_needs:[
+      'Website CMS access (WordPress / Shopify / Wix / Squarespace)',
+      'OR permission to insert a code snippet via developer',
+      'Gym FAQ (top 20 questions answered)',
+      'Membership pricing + offers',
+      'Class timetable',
+      'Trial booking flow (what info to collect)'
+    ],
+    agency_steps:[
+      'Install widget on every page (or one-time snippet)',
+      'Train FAQ from gym\'s actual answers',
+      'Connect lead capture → CRM (Phase 2)',
+      'Set escalation rules to human (when chatbot can\'t answer)',
+      'Test on mobile + desktop',
+      'Brief client on handoff hours'
+    ],
+    providers:[
+      { id:'gymos-builtin', name:'GymOS widget', cost:'included', recommended:true, note:'no monthly fee · already wired' },
+      { id:'tidio', name:'Tidio', cost:'$24-749/mo', note:'feature-heavy alternative' },
+      { id:'intercom', name:'Intercom', cost:'$74+/mo', note:'enterprise · expensive' }
+    ]
+  },
+  { id:'email', phase:1, icon:'📧', title:'Email Automation', owner:'β Sales Assistant',
+    desc:'Welcome sequences, lead nurture, re-engagement, broadcast offers.',
+    client_needs:[
+      'Business email (owner@gymname.com — NOT personal/gmail)',
+      'DNS/domain access (for SPF/DKIM auth) — IT contact if needed',
+      'Existing mailing list export (CSV) if migrating',
+      'Logo + brand colours',
+      'Tone of voice samples (3 existing emails they liked)',
+      'Compliance: GDPR consent records if EU list'
+    ],
+    agency_steps:[
+      'Create account IN CLIENT\'S NAME (owner@gymname.com)',
+      'Authenticate sending domain (SPF + DKIM + DMARC)',
+      'Import existing list (if any) + tag by source',
+      'Build templates · branded · mobile-tested',
+      'Wire 4 core flows: welcome / abandoned trial / no-show / win-back',
+      'Connect web chat + CRM → email triggers',
+      'Schedule first broadcast · check rendering on Gmail/Outlook/iOS',
+      'Hand over admin login to client'
+    ],
+    providers:[
+      { id:'brevo', name:'Brevo', cost:'free → £12/mo', recommended:true, note:'cheap · 300/day free · best starter' },
+      { id:'mailchimp', name:'Mailchimp', cost:'£11+ /mo (scales hard)', note:'expensive at volume' },
+      { id:'convertkit', name:'Kit / ConvertKit', cost:'free → £25/mo', note:'creator-focused' },
+      { id:'activecampaign', name:'ActiveCampaign', cost:'£15+/mo', note:'automation-heavy' }
+    ]
+  },
+  { id:'social', phase:1, icon:'📱', title:'Social Media Automation', owner:'ζ Marketing Coordinator',
+    desc:'Content scheduling, captions, hashtag strategy, comment triage.',
+    client_needs:[
+      'Meta Business Manager access (admin invite, NEVER password)',
+      'Instagram + Facebook page access (added as Editor)',
+      'TikTok access (if used) — collaborator role',
+      '20+ existing photos/videos (training, members, gym shots)',
+      'Brand assets (logo, colour palette, font preference)',
+      'Tone: educational / motivational / community',
+      'Topics they\'ll NEVER post (politics, gossip, etc.)'
+    ],
+    agency_steps:[
+      'Get added via Meta Business Manager (never share passwords)',
+      'Audit existing posts · note what gets engagement',
+      'Build 30-day content calendar · 4 pillars: educate / showcase / offer / community',
+      'Caption templates · 5 reusable structures',
+      'Schedule first 2 weeks · review with client before posting',
+      'Set up comment-triage flow (auto-DM common questions)',
+      'Weekly review meeting · adjust based on what worked'
+    ],
+    providers:[
+      { id:'buffer', name:'Buffer', cost:'free → £6/mo', recommended:true, note:'simplest scheduling' },
+      { id:'later', name:'Later', cost:'£17+/mo', note:'visual calendar · Instagram-first' },
+      { id:'hootsuite', name:'Hootsuite', cost:'£89+/mo', note:'overkill for one gym' },
+      { id:'gymos-builtin', name:'GymOS Content tab', cost:'included', note:'caption + image gen · still needs scheduler' }
+    ]
+  },
+  { id:'content', phase:1, icon:'✍️', title:'Content Engine', owner:'γ Content Manager',
+    desc:'AI-drafted blog posts, captions, member emails — gym\'s voice, on autopilot.',
+    client_needs:[
+      'Existing content samples (3 captions, 2 blog posts they\'ve written or like)',
+      'Brand voice descriptors (e.g. "direct, no fluff, community-first")',
+      'Member personas (beginner / strength athlete / weight-loss / over-50)',
+      'Top 10 topics they want to cover',
+      'Approved photos/video footage',
+      'Calls to action (book trial / message us / join class)'
+    ],
+    agency_steps:[
+      'Train brand-voice profile (paste samples → extract style)',
+      'Build topic bank · 50+ ideas mapped to personas',
+      'First week: draft 7 captions + 2 blog posts · client approves',
+      'Lock approval flow · client reviews via shared doc, not chat',
+      'Weekly cadence: 5 captions + 1 blog draft delivered Friday',
+      'Quarterly review: which content drove enquiries'
+    ],
+    providers:[
+      { id:'gymos-builtin', name:'GymOS Content tab', cost:'included', recommended:true, note:'already built · uses your API key' },
+      { id:'claude-api', name:'Direct Anthropic key', cost:'~£0.01-0.10/post', note:'cheapest at volume · gym pays' }
+    ]
+  },
+
+  // ── PHASE 2 · SCALE ──
+  { id:'whatsapp', phase:2, icon:'💚', title:'WhatsApp AI Agent', owner:'α Front Desk',
+    desc:'24/7 enquiry handler · book trials · answer FAQ · escalate to human after hours.',
+    client_needs:[
+      'A dedicated business phone number (NOT owner\'s personal mobile)',
+      'WhatsApp Business account — fresh, not migrated from personal',
+      'Meta Business verification (passport/ID upload, takes 1-3 days)',
+      'Approved message templates (Meta pre-approves marketing templates)',
+      'FAQ library (same as web chat — reused)',
+      'Escalation contact (which staff number takes handoffs)',
+      'Operating hours (when AI auto-replies vs. queues for human)'
+    ],
+    agency_steps:[
+      'Order new SIM if needed (separate from owner\'s phone)',
+      'Set up WhatsApp Business on dedicated number',
+      'Connect provider account (Twilio / 360Dialog / WATI)',
+      'Submit Meta Business verification',
+      'Submit message templates for approval',
+      'Build conversation flows · 7 intents: pricing / classes / location / trial / hours / cancel / human',
+      'Wire to CRM · log every conversation',
+      'Test with 10 internal members before live',
+      'Monitor first week · tune responses'
+    ],
+    providers:[
+      { id:'twilio', name:'Twilio', cost:'£0.04-0.10/msg + £20/mo platform', recommended:true, note:'most reliable · per-conversation fees' },
+      { id:'360dialog', name:'360Dialog', cost:'€49+/mo + Meta fees', note:'official Meta partner · simpler pricing' },
+      { id:'wati', name:'WATI', cost:'£35+/mo', note:'no-code UI · good for non-devs' },
+      { id:'gupshup', name:'Gupshup', cost:'£0.005-0.05/msg', note:'cheap at scale' }
+    ]
+  },
+  { id:'crm', phase:2, icon:'📋', title:'CRM / Lead Management', owner:'η Admin Assistant',
+    desc:'Every enquiry tracked from first touch to trial to membership. Pipelines, automations, reporting.',
+    client_needs:[
+      'Existing customer/member data (CSV or DB export)',
+      'List of staff who need access + their roles',
+      'Trial-to-member pipeline stages (e.g. enquiry → booked → showed-up → joined)',
+      'Lead source categories (Google / Instagram / referral / walk-in)',
+      'Billing card for CRM monthly fee (CLIENT pays, not us)',
+      'Existing email/calendar to connect'
+    ],
+    agency_steps:[
+      'Create CRM account in client\'s name with client\'s billing',
+      'Import existing members + leads · dedupe',
+      'Build pipeline stages · tag every lead with source',
+      'Connect: web chat → CRM, email → CRM, WhatsApp → CRM',
+      'Automation: lead in → welcome email + WhatsApp + reminder',
+      'Reporting dashboard: weekly leads + conversion rate by source',
+      'Train staff (1hr session, recorded)',
+      'Hand over admin access'
+    ],
+    providers:[
+      { id:'gohighlevel', name:'GoHighLevel', cost:'£82+/mo (SaaS mode)', recommended:true, note:'all-in-one · CRM + SMS + email + funnels' },
+      { id:'hubspot', name:'HubSpot', cost:'free → £41+/mo', note:'free tier works for small gyms' },
+      { id:'airtable', name:'Airtable', cost:'£8+/mo', note:'spreadsheet-feel · cheaper · less automation' },
+      { id:'pipedrive', name:'Pipedrive', cost:'£12+/mo', note:'sales-pipeline focused' }
+    ]
+  },
+  { id:'booking', phase:2, icon:'📅', title:'Class Booking / Scheduling', owner:'η Admin Assistant',
+    desc:'Don\'t replace their existing system. Integrate AI around it.',
+    client_needs:[
+      'Current booking system (Mindbody / ZenPlanner / Gymdesk / PushPress / Calendly)',
+      'API or integration access',
+      'Class types + capacities',
+      'Trainer schedules',
+      'Cancellation / no-show policy'
+    ],
+    agency_steps:[
+      'Audit existing system · what works / what frustrates',
+      'Integrate (do NOT replace) — pull bookings into CRM',
+      'Build reminder flow · 24hr before + 1hr before · SMS or WhatsApp',
+      'Build no-show recovery · auto-rebook offer if missed',
+      'Build cancellation flow · ask reason · log to CRM',
+      'Capacity alerts → social media (post when classes near full)'
+    ],
+    providers:[
+      { id:'existing', name:'Keep existing', cost:'£0', recommended:true, note:'integrate · don\'t migrate · less risk' },
+      { id:'mindbody', name:'Mindbody', cost:'£100+/mo', note:'industry standard · pricey' },
+      { id:'zenplanner', name:'ZenPlanner', cost:'£100+/mo', note:'gym-specific · martial arts strong' },
+      { id:'pushpress', name:'PushPress', cost:'£99+/mo', note:'CrossFit / strength gyms' },
+      { id:'calendly', name:'Calendly', cost:'free → £10/mo', note:'1-on-1 trials only · not classes' }
+    ]
+  },
+
+  // ── PHASE 3 · ADVANCED ──
+  { id:'phone', phase:3, icon:'📞', title:'Phone AI Agent', owner:'ε Receptionist',
+    desc:'AI answers calls when reception is closed. Books trials, takes messages, escalates urgent.',
+    client_needs:[
+      'Current business phone number',
+      'Call forwarding access (to route after-hours → AI)',
+      'OR new dedicated AI number (cleaner setup)',
+      'Voice they want (gender, accent, energy)',
+      'Decision tree (what to do for each call type)',
+      'Escalation: which numbers get rung if urgent (injury, complaint)'
+    ],
+    agency_steps:[
+      '⚠️ Do NOT start here. Get Phase 1 + 2 stable first.',
+      'Pick provider (VAPI / Bland / Retell)',
+      'Set up dedicated number OR call-forwarding rules',
+      'Build voice persona · test 10 phrases',
+      'Build decision tree: enquiry / booking / cancellation / complaint / urgent',
+      'Connect to CRM · log every call · transcript stored',
+      'Test 20 calls internally before live',
+      'Monitor week 1 · tune escalation triggers',
+      'Set max-cost guardrail (£X/mo cap before fallback to voicemail)'
+    ],
+    providers:[
+      { id:'vapi', name:'VAPI', cost:'£0.05-0.15/min', recommended:true, note:'most flexible · dev-friendly' },
+      { id:'bland', name:'Bland AI', cost:'£0.07/min', note:'easier setup · less customisation' },
+      { id:'retell', name:'Retell AI', cost:'£0.06/min + £20/mo', note:'good quality · CRM integrations built-in' },
+      { id:'elevenlabs', name:'ElevenLabs Agents', cost:'£0.10+/min', note:'best voice quality · pricier' }
+    ]
+  },
+  { id:'retention', phase:3, icon:'💪', title:'Retention Automation', owner:'δ Retention Specialist',
+    desc:'Detect at-risk members before they cancel. Re-engage lapsed members. Birthday + milestone outreach.',
+    client_needs:[
+      'Member attendance data (from booking system)',
+      'Membership tiers + prices',
+      'Cancellation reasons (last 6 months — why people left)',
+      'Approval for re-engagement offers (% off / free PT / freeze)',
+      'Brand-safe boundaries (won\'t guilt-trip / won\'t spam)'
+    ],
+    agency_steps:[
+      'Pull last 12 months attendance · find drop-off patterns',
+      'Define "at risk": e.g. 0 visits in 2 weeks after consistent prior pattern',
+      'Build 3 re-engagement sequences: nudge / offer / freeze-not-cancel',
+      'Wire to WhatsApp + email · pick channel by previous engagement',
+      'Quarterly cohort analysis · what saves who',
+      'Birthday + 1yr anniversary auto-messages'
+    ],
+    providers:[
+      { id:'gymos-builtin', name:'GymOS Retention agent', cost:'included', recommended:true, note:'native · pulls from booking + CRM' }
+    ]
+  },
+  { id:'analytics', phase:3, icon:'📊', title:'Performance Analytics', owner:'θ Performance Analyst',
+    desc:'Weekly report: lead sources, conversion, retention, content performance, agent ROI.',
+    client_needs:[
+      'Read access to: CRM, social analytics, email reports, booking system',
+      'KPI priorities (which 5 numbers matter to the owner)',
+      'Reporting cadence (weekly Monday email? monthly meeting?)'
+    ],
+    agency_steps:[
+      'Connect data sources · CRM API + social + email + booking',
+      'Define 5-7 core KPIs · agree with owner',
+      'Build weekly auto-report (Markdown or PDF · emailed Mondays)',
+      'Monthly meeting · review trends · adjust playbook',
+      'Quarterly: revenue attribution by channel'
+    ],
+    providers:[
+      { id:'gymos-builtin', name:'GymOS Analytics agent', cost:'included', recommended:true, note:'pulls from all connected sources' }
+    ]
+  }
+];
+
+let OB_STATE = { phase: 1, cards: {}, client: {} };
+
+function obLoad() {
+  try {
+    const raw = localStorage.getItem('gymos_onboarding_v1');
+    if (raw) OB_STATE = Object.assign(OB_STATE, JSON.parse(raw));
+  } catch (e) {}
+}
+function obPersist() {
+  try { localStorage.setItem('gymos_onboarding_v1', JSON.stringify(OB_STATE)); } catch (e) {}
+}
+function obSave(input) {
+  const key = input.getAttribute('data-ob-key');
+  if (!key) return;
+  const parts = key.split('.');
+  if (parts[0] === 'client') {
+    OB_STATE.client[parts[1]] = input.value;
+  } else if (parts[0] === 'card') {
+    if (!OB_STATE.cards[parts[1]]) OB_STATE.cards[parts[1]] = {};
+    OB_STATE.cards[parts[1]][parts[2]] = input.value;
+  }
+  obPersist();
+}
+function obSwitchPhase(p) {
+  OB_STATE.phase = p;
+  obPersist();
+  document.querySelectorAll('.ob-phase').forEach(b => b.classList.toggle('active', parseInt(b.dataset.phase) === p));
+  obRender();
+}
+function obToggleCard(id) {
+  document.querySelector('.ob-card[data-mod="' + id + '"]').classList.toggle('open');
+}
+function obToggleCheck(modId, listKey, idx, el) {
+  if (!OB_STATE.cards[modId]) OB_STATE.cards[modId] = {};
+  if (!OB_STATE.cards[modId][listKey]) OB_STATE.cards[modId][listKey] = {};
+  OB_STATE.cards[modId][listKey][idx] = el.checked;
+  el.closest('.ob-check').classList.toggle('done', el.checked);
+  obPersist();
+  obRecomputeStatus(modId);
+}
+function obPickProvider(modId, provId) {
+  if (!OB_STATE.cards[modId]) OB_STATE.cards[modId] = {};
+  OB_STATE.cards[modId].provider = provId;
+  obPersist();
+  obRender();
+}
+function obSetStatus(modId, status) {
+  if (!OB_STATE.cards[modId]) OB_STATE.cards[modId] = {};
+  OB_STATE.cards[modId].status = status;
+  obPersist();
+  const el = document.querySelector('.ob-card[data-mod="' + modId + '"] .ob-status');
+  if (el) { el.setAttribute('data-status', status); el.textContent = status.replace('-', ' '); }
+}
+function obRecomputeStatus(modId) {
+  const mod = OB_MODULES.find(m => m.id === modId);
+  if (!mod) return;
+  const s = OB_STATE.cards[modId] || {};
+  const cn = s.client_needs || {};
+  const ag = s.agency_steps || {};
+  const clientDone = mod.client_needs.every((_, i) => cn[i]);
+  const agencyDone = mod.agency_steps.every((_, i) => ag[i]);
+  let status;
+  if (clientDone && agencyDone) status = 'live';
+  else if (clientDone && Object.values(ag).some(Boolean)) status = 'in-progress';
+  else if (!clientDone && Object.values(cn).some(Boolean)) status = 'needs-client';
+  else status = (s.status === 'live' ? 'pending' : (s.status || 'pending'));
+  if (s.status !== status && !s._manualStatus) obSetStatus(modId, status);
+}
+function obRender() {
+  const root = document.getElementById('ob-cards');
+  if (!root) return;
+  // Hydrate client info fields
+  Object.entries(OB_STATE.client || {}).forEach(([k, v]) => {
+    const inp = document.querySelector('[data-ob-key="client.' + k + '"]');
+    if (inp) inp.value = v;
+  });
+  const mods = OB_MODULES.filter(m => m.phase === OB_STATE.phase);
+  if (!mods.length) { root.innerHTML = '<div class="ob-empty">No modules in this phase yet.</div>'; return; }
+  root.innerHTML = mods.map(m => {
+    const s = OB_STATE.cards[m.id] || {};
+    const status = s.status || 'pending';
+    const provSel = s.provider || (m.providers.find(p => p.recommended)?.id || m.providers[0]?.id);
+    return `
+      <div class="ob-card" data-mod="${m.id}">
+        <div class="ob-card-head" onclick="obToggleCard('${m.id}')">
+          <div class="ob-card-icon">${m.icon}</div>
+          <div class="ob-card-meta">
+            <div class="ob-card-title">${esc(m.title)} <span class="ob-card-owner">${esc(m.owner)}</span></div>
+            <div class="ob-card-desc">${esc(m.desc)}</div>
+          </div>
+          <div class="ob-status" data-status="${status}">${status.replace('-',' ')}</div>
+          <div class="ob-card-arrow">▾</div>
+        </div>
+        <div class="ob-card-body">
+          <div class="ob-block">
+            <h4>What we need from the client</h4>
+            <div class="ob-checks">
+              ${m.client_needs.map((n, i) => {
+                const checked = !!(s.client_needs && s.client_needs[i]);
+                return `<label class="ob-check ${checked?'done':''}"><input type="checkbox" ${checked?'checked':''} onchange="obToggleCheck('${m.id}','client_needs',${i},this)"><span>${esc(n)}</span></label>`;
+              }).join('')}
+            </div>
+          </div>
+          <div class="ob-block">
+            <h4>Our steps</h4>
+            <div class="ob-checks">
+              ${m.agency_steps.map((n, i) => {
+                const checked = !!(s.agency_steps && s.agency_steps[i]);
+                return `<label class="ob-check ${checked?'done':''}"><input type="checkbox" ${checked?'checked':''} onchange="obToggleCheck('${m.id}','agency_steps',${i},this)"><span>${esc(n)}</span></label>`;
+              }).join('')}
+            </div>
+          </div>
+          <div class="ob-block">
+            <h4>Provider</h4>
+            <div class="ob-providers">
+              ${m.providers.map(p => `
+                <div class="ob-prov ${provSel===p.id?'selected':''}" onclick="obPickProvider('${m.id}','${p.id}')">
+                  <strong>${esc(p.name)}</strong> · ${esc(p.cost)}
+                  ${p.note ? '<small>' + esc(p.note) + '</small>' : ''}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <div class="ob-block">
+            <h4>Cost tracking</h4>
+            <div class="ob-cost-row">
+              <input type="text" placeholder="Notes / what this covers" data-ob-key="card.${m.id}.cost_note" oninput="obSave(this)" value="${esc(s.cost_note||'')}">
+              <input type="number" step="0.01" placeholder="Amount" data-ob-key="card.${m.id}.cost_amount" oninput="obSave(this)" value="${esc(s.cost_amount||'')}">
+              <select data-ob-key="card.${m.id}.cost_freq" onchange="obSave(this)">
+                <option value="monthly" ${s.cost_freq==='monthly'?'selected':''}>per month</option>
+                <option value="once" ${s.cost_freq==='once'?'selected':''}>one-off</option>
+                <option value="per-msg" ${s.cost_freq==='per-msg'?'selected':''}>per message</option>
+                <option value="per-min" ${s.cost_freq==='per-min'?'selected':''}>per minute</option>
+                <option value="yearly" ${s.cost_freq==='yearly'?'selected':''}>per year</option>
+              </select>
+            </div>
+          </div>
+          <div class="ob-block">
+            <h4>Status override (manual)</h4>
+            <select class="ob-status-select" onchange="OB_STATE.cards['${m.id}']._manualStatus=true; obSetStatus('${m.id}', this.value); obPersist();">
+              <option value="pending"      ${status==='pending'?'selected':''}>pending</option>
+              <option value="needs-client" ${status==='needs-client'?'selected':''}>needs client</option>
+              <option value="in-progress"  ${status==='in-progress'?'selected':''}>in progress</option>
+              <option value="live"         ${status==='live'?'selected':''}>live</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function esc(s) { return String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function obExportRequirements() {
+  const c = OB_STATE.client || {};
+  const lines = [];
+  lines.push('# Client Onboarding Requirements');
+  lines.push('');
+  lines.push('**Gym:** ' + (c.gym_name || '(not set)'));
+  lines.push('**Contact:** ' + (c.contact_name || '(not set)') + ' · ' + (c.business_email || '') + ' · ' + (c.business_phone || ''));
+  lines.push('**Website:** ' + (c.website || '(not set)'));
+  lines.push('**Engagement starts:** ' + (c.start_date || '(not set)'));
+  lines.push('');
+  lines.push('---');
+  lines.push('');
+  lines.push('## Account ownership');
+  lines.push('');
+  lines.push('Every account below is created in the gym\'s name with the gym\'s billing card. We are added as admin/editor. When the engagement ends, the infrastructure stays with the gym.');
+  lines.push('');
+  for (const phase of [1,2,3]) {
+    const mods = OB_MODULES.filter(m => m.phase === phase);
+    lines.push('---');
+    lines.push('');
+    lines.push('## Phase ' + phase + ' — ' + (phase===1?'Launch':phase===2?'Scale':'Advanced'));
+    lines.push('');
+    for (const m of mods) {
+      const s = OB_STATE.cards[m.id] || {};
+      const prov = s.provider ? (m.providers.find(p => p.id === s.provider) || {}).name : (m.providers.find(p => p.recommended) || {}).name;
+      lines.push('### ' + m.icon + ' ' + m.title + ' · ' + m.owner);
+      lines.push('');
+      lines.push(m.desc);
+      lines.push('');
+      lines.push('**Provider:** ' + (prov || '(undecided)'));
+      lines.push('**Status:** ' + (s.status || 'pending'));
+      lines.push('');
+      lines.push('**What we need from you:**');
+      lines.push('');
+      m.client_needs.forEach((n, i) => {
+        const done = s.client_needs && s.client_needs[i];
+        lines.push((done?'- [x] ':'- [ ] ') + n);
+      });
+      lines.push('');
+    }
+  }
+  obDownload((c.gym_name || 'client').toLowerCase().replace(/\s+/g,'-') + '-requirements.md', lines.join('\n'), 'text/markdown');
+}
+
+function obExportCosts() {
+  const rows = [['Module','Phase','Provider','Cost Note','Amount','Frequency','Status','Owner']];
+  for (const m of OB_MODULES) {
+    const s = OB_STATE.cards[m.id] || {};
+    const provName = s.provider ? (m.providers.find(p => p.id === s.provider) || {}).name : (m.providers.find(p => p.recommended) || {}).name;
+    rows.push([m.title, m.phase, provName || '-', s.cost_note || '', s.cost_amount || '', s.cost_freq || 'monthly', s.status || 'pending', m.owner]);
+  }
+  const csv = rows.map(r => r.map(v => '"' + String(v).replace(/"/g,'""') + '"').join(',')).join('\n');
+  const c = OB_STATE.client || {};
+  obDownload((c.gym_name || 'client').toLowerCase().replace(/\s+/g,'-') + '-cost-sheet.csv', csv, 'text/csv');
+}
+
+function obDownload(name, content, type) {
+  const blob = new Blob([content], { type: type || 'application/octet-stream' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// Boot onboarding state on load
+obLoad();
 
 function switchSettings(section) {
   document.querySelectorAll('.settings-menu-item').forEach(m => m.classList.remove('active'));
@@ -3112,5 +3725,198 @@ window.addEventListener('scroll', () => {
   }
 });
 </script>
+<!-- ◊·κ GymOS node identity (overrides shim default) -->
+<script>
+  window.NODE = {
+    id: 'gymos',
+    name: 'GymOS',
+    prime: 23,
+    layers: 7,
+    built: '2026-05-26'
+  };
+</script>
+<!-- ◊·κ FALLMESH SHIM — sovereign mesh wiring (generic, drop-in) -->
+<script>
+(function fallmeshShim(){
+  // Identity — each tool defines these. Defaults safe.
+  var NODE = window.NODE || {
+    id: (document.title || 'node').toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,16) || 'node',
+    name: document.title || 'Node',
+    prime: 23
+  };
+  window.NODE = NODE;
+
+  var meshChannel = null;
+  function meshPost(type, data){
+    if (!meshChannel) return;
+    try {
+      meshChannel.postMessage(Object.assign(
+        { type: type, from: NODE.id, prime: NODE.prime, name: NODE.name, t: Date.now() },
+        data || {}
+      ));
+    } catch(e){}
+  }
+  if (typeof BroadcastChannel === 'undefined') return;
+  try { meshChannel = new BroadcastChannel('fallmesh'); } catch(e){ return; }
+
+  window.fallmesh = {
+    post: meshPost,
+    emit: function(data){ meshPost(NODE.id + ':event', data); },
+    request: function(type, payload){ meshPost('request:' + type, { payload: payload }); },
+    on: function(type, handler){
+      var prev = meshChannel.onmessage;
+      meshChannel.onmessage = function(e){
+        if (prev) try { prev(e); } catch(_){}
+        var m = e.data;
+        if (m && m.type === type && m.from !== NODE.id) handler(m);
+      };
+    }
+  };
+
+  meshChannel.onmessage = function(e){
+    var m = e.data;
+    if (!m || m.from === NODE.id) return;
+    if (m.type === 'mesh:ping') {
+      meshPost('mesh:pong', {
+        url: location.origin + location.pathname,
+        title: NODE.name
+      });
+    }
+  };
+
+  meshPost('node:online', {
+    url: location.origin + location.pathname,
+    layers: 7
+  });
+
+  try { console.log('%c◊·κ=1', 'color:#10b981;font-weight:bold;font-size:13px',
+    NODE.name + ' · prime ' + NODE.prime + ' · mesh online'); } catch(_){}
+})();
+</script>
+<!-- /◊·κ FALLMESH SHIM -->
+<!-- ◊·κ KONOMI LICENCE — Ed25519 (drop-in, no deps) -->
+<script>
+(function konomiShim(){
+  // NODE is defined by host tool's mesh shim. If missing, fail gracefully.
+  if (!window.NODE) return;
+  var KONOMI = window.KONOMI = {
+    pubkey_b64: 'bQWcb/SgeWVIEa0H+YYGhzohMfo9zcDysqZEvzYtXTw=',
+    tier: 'dead',
+    features: [],
+    payload: null,
+    expires_at: null
+  };
+  function b64Bytes(b64){ var bin=atob(b64); var b=new Uint8Array(bin.length); for(var i=0;i<bin.length;i++) b[i]=bin.charCodeAt(i); return b; }
+  function canonJSON(o){
+    if (o===null||typeof o!=='object') return JSON.stringify(o);
+    if (Array.isArray(o)) return '['+o.map(canonJSON).join(',')+']';
+    var k=Object.keys(o).sort();
+    return '{'+k.map(function(x){return JSON.stringify(x)+':'+canonJSON(o[x]);}).join(',')+'}';
+  }
+  async function verifyLicence(env){
+    if (!env) return { ok:false, error:'no envelope' };
+    if (!window.crypto || !window.crypto.subtle) return { ok:false, error:'no WebCrypto' };
+    try {
+      var raw = atob(env);
+      var parsed = JSON.parse(raw);
+      var payload = parsed.payload, sig = parsed.sig;
+      if (payload.tool_id && payload.tool_id !== NODE.id) {
+        return { ok:false, error:'licence for ' + payload.tool_id + ', not ' + NODE.id };
+      }
+      if (payload.expires && new Date(payload.expires) < new Date()) {
+        return { ok:false, error:'expired ' + payload.expires };
+      }
+      var pubRaw = b64Bytes(KONOMI.pubkey_b64);
+      var key = await crypto.subtle.importKey('raw', pubRaw, { name:'Ed25519' }, false, ['verify']);
+      var sigBytes = b64Bytes(sig);
+      var msg = new TextEncoder().encode(canonJSON(payload));
+      var ok = await crypto.subtle.verify({ name:'Ed25519' }, key, sigBytes, msg);
+      if (!ok) return { ok:false, error:'signature invalid' };
+      return { ok:true, payload:payload };
+    } catch (e) { return { ok:false, error:e.message }; }
+  }
+  async function activateLicence(env){
+    var v = await verifyLicence(env);
+    if (!v.ok) {
+      try { localStorage.setItem('konomi_last_error', v.error); } catch(_){}
+      return v;
+    }
+    try { localStorage.setItem('konomi_licence_' + NODE.id, env); } catch(_){}
+    KONOMI.tier = v.payload.tier;
+    KONOMI.features = v.payload.features || [];
+    KONOMI.payload = v.payload;
+    KONOMI.expires_at = v.payload.expires;
+    updateBadge();
+    return v;
+  }
+  function hasFeature(f){ return KONOMI.features.indexOf(f) >= 0; }
+  function isDead(){ return KONOMI.tier === 'dead'; }
+  function updateBadge(){
+    var el = document.getElementById('konomi-badge');
+    if (!el) return;
+    var t = KONOMI.tier;
+    var c = t==='dead'?'#8a8a8a':t==='trial'?'#c2a060':'#3a9a72';
+    el.textContent = '◊ ' + t.toUpperCase();
+    el.style.color = c;
+    el.title = 'Konomi tier: ' + t + (KONOMI.expires_at ? ' · expires ' + KONOMI.expires_at : '');
+  }
+  function injectBadge(){
+    if (document.getElementById('konomi-badge')) return;
+    var el = document.createElement('div');
+    el.id = 'konomi-badge';
+    el.style.cssText = 'position:fixed;bottom:12px;left:12px;background:rgba(0,0,0,.65);color:#8a8a8a;padding:5px 10px;border-radius:6px;font-family:monospace;font-size:11px;cursor:pointer;z-index:9999;letter-spacing:.06em;border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(6px)';
+    el.textContent = '◊ DEAD';
+    el.onclick = function(){ showLicenceDialog(); };
+    document.body.appendChild(el);
+  }
+  function showLicenceDialog(){
+    var current = KONOMI.payload ? JSON.stringify(KONOMI.payload, null, 2) : '(DEAD mode — no licence active)';
+    var modal = document.createElement('div');
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;font-family:system-ui,sans-serif';
+    modal.innerHTML = '<div style="background:#161821;border:1px solid #2a2f3a;border-radius:12px;padding:24px;max-width:560px;width:100%;color:#dbe1ea"><h3 style="margin:0 0 12px;color:#e6e8ee">◊·κ Konomi Licence</h3><p style="margin:0 0 8px;font-size:12px;color:#8a8a8a">Tool: '+(NODE.name||NODE.id)+' · Prime: '+(NODE.prime||'-')+'</p><pre style="background:#0c0e12;padding:10px;border-radius:6px;font-size:11px;color:#a8b0bc;max-height:200px;overflow:auto;margin:8px 0">'+current.replace(/[<>]/g,'')+'</pre><p style="font-size:12px;color:#8a8a8a;margin:12px 0 6px">Paste a signed licence envelope to activate Pro/Business/Enterprise:</p><textarea id="kn-paste" style="width:100%;min-height:80px;background:#0c0e12;color:#dbe1ea;border:1px solid #2a2f3a;border-radius:6px;padding:8px;font-family:monospace;font-size:11px;resize:vertical"></textarea><div style="display:flex;gap:8px;margin-top:12px"><button id="kn-activate" style="background:#5b8def;color:#fff;border:none;padding:8px 14px;border-radius:6px;cursor:pointer;font-weight:600">activate</button><button id="kn-close" style="background:transparent;color:#8a8a8a;border:1px solid #2a2f3a;padding:8px 14px;border-radius:6px;cursor:pointer">close</button><span id="kn-msg" style="margin-left:auto;font-size:11px;color:#c84a4a;align-self:center"></span></div></div>';
+    document.body.appendChild(modal);
+    modal.querySelector('#kn-close').onclick = function(){ modal.remove(); };
+    modal.querySelector('#kn-activate').onclick = async function(){
+      var paste = modal.querySelector('#kn-paste').value.trim();
+      if (!paste) { modal.querySelector('#kn-msg').textContent = 'paste an envelope first'; return; }
+      var v = await activateLicence(paste);
+      if (v.ok) { modal.querySelector('#kn-msg').style.color='#3a9a72'; modal.querySelector('#kn-msg').textContent='✓ '+v.payload.tier+' activated'; setTimeout(function(){ modal.remove(); }, 1200); }
+      else { modal.querySelector('#kn-msg').textContent = 'rejected: ' + v.error; }
+    };
+    modal.onclick = function(e){ if (e.target===modal) modal.remove(); };
+  }
+  window.konomi = {
+    verifyLicence: verifyLicence,
+    activateLicence: activateLicence,
+    hasFeature: hasFeature,
+    isDead: isDead,
+    showDialog: showLicenceDialog
+  };
+  // Boot: try saved licence
+  (async function(){
+    if (document.readyState === 'loading') {
+      await new Promise(function(r){ document.addEventListener('DOMContentLoaded', r, { once:true }); });
+    }
+    injectBadge();
+    var saved = null;
+    try { saved = localStorage.getItem('konomi_licence_' + NODE.id); } catch(_){}
+    if (saved) {
+      var v = await verifyLicence(saved);
+      if (v.ok) {
+        KONOMI.tier = v.payload.tier;
+        KONOMI.features = v.payload.features || [];
+        KONOMI.payload = v.payload;
+        KONOMI.expires_at = v.payload.expires;
+        updateBadge();
+        try { console.log('%c◊·κ', 'color:#c2a060;font-weight:bold', NODE.name + ' · ' + v.payload.tier + ' tier active'); } catch(_){}
+        return;
+      }
+    }
+    try { console.log('%c◊', 'color:#8a8a8a;font-weight:bold', NODE.name + ' · DEAD mode · click badge to activate'); } catch(_){}
+  })();
+})();
+</script>
+<!-- /◊·κ KONOMI LICENCE -->
+
 </body>
 </html>
