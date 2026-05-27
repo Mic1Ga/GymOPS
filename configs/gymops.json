@@ -1,0 +1,37 @@
+{
+  "gym_name": "GymOps",
+  "slug": "gymops",
+  "product_name": "GymOps",
+  "product_subtext": "",
+  "konomi_visible": false,
+  "tagline": "Sovereign AI operations for gyms — your data, your device, your tools.",
+  "gym_logo_text": "GymOps",
+  "contact_name": "Michel",
+  "contact_email": "",
+  "contact_phone": "",
+  "website": "",
+  "start_date": "2026-05-27",
+  "trial_days": 30,
+  "brand": {
+    "primary": "#1a2744",
+    "accent": "#d4351c",
+    "text": "#1a2744"
+  },
+  "socials": {
+    "instagram": "",
+    "facebook": "",
+    "tiktok": "",
+    "youtube": "",
+    "whatsapp_link": "",
+    "maps": ""
+  },
+  "tiktok":    { "handle": "", "scheduler": "Buffer" },
+  "youtube":   { "channel_id": "" },
+  "linkedin":  { "page": "" },
+  "crm":       { "provider": "gohighlevel" },
+  "booking":   { "provider": "PushPress", "public_url": "" },
+  "phone":     { "provider": "vapi", "cap": 100 },
+  "analytics": { "ga4_id": "", "meta_pixel_id": "" },
+  "reviews":   { "google_place_id": "", "trigger": "5th class attended" },
+  "sms":       { "sender_name": "GymOps" }
+}

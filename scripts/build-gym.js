@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // ◊·κ GymOS Per-Gym Builder
 // Usage:
-//   node scripts/build-gym.js configs/rage-mma.json
-//   KONOMI_PRIVATE_KEY=... node scripts/build-gym.js configs/rage-mma.json  (mints signed trial)
+//   node scripts/build-gym.js configs/gymops.json
+//   KONOMI_PRIVATE_KEY=... node scripts/build-gym.js configs/gymops.json  (mints signed trial)
 //
 // Reads a per-gym config, patches the master template, writes clients/<slug>.html
 // Each gym gets a unique prime so the fallmesh sees them as distinct nodes.
