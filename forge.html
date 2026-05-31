@@ -3,41 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GymOS Forge · Build a Per-Gym HTML in 60 seconds</title>
-<meta name="description" content="In-browser builder · fill in your gym's details, click BUILD, download a fully-configured sovereign GymOS HTML.">
+<title>GymOS Forge · Build a per-gym sovereign HTML</title>
+<meta name="description" content="In-browser builder. Fill in the gym's specs, click BUILD, download a fully-configured sovereign GymOS HTML with a signed 14-day trial.">
 <style>
 :root{
   --navy:#1a2744; --navy-light:#243354; --navy-dark:#111b30;
-  --orange:#e8732a; --orange-dark:#c95f1f; --orange-light:#fef4ed;
+  --orange:#e8732a; --orange-dark:#c95f1f; --orange-light:#fef4ed; --orange-glow:rgba(232,115,42,0.15);
   --cream:#faf8f5; --white:#ffffff;
   --border:#e8e4df; --border-light:#f0ece7;
   --text:#1a2744; --text-mid:#4a5568; --text-dim:#718096;
-  --green:#22a558; --red:#e53e3e;
+  --green:#22a558; --green-light:#edf9f2; --red:#e53e3e; --red-light:#fef2f2;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--cream);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;line-height:1.55;min-height:100vh}
-header{background:var(--navy);color:var(--white);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--orange)}
+header{background:var(--navy);color:var(--white);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--orange);flex-wrap:wrap;gap:14px}
 header .logo{font-size:18px;font-weight:800;letter-spacing:1px}
 header .logo .dot{color:var(--orange)}
-header .stat{font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.7);text-transform:uppercase}
+header .signer{font-size:11px;letter-spacing:1px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px}
+header .signer .pulse{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block}
+header .signer .pulse.live{background:var(--green);box-shadow:0 0 6px var(--green)}
 .wrap{max-width:920px;margin:0 auto;padding:32px}
 h1{font-size:28px;margin-bottom:6px;color:var(--navy)}
 .lede{color:var(--text-mid);margin-bottom:22px;font-size:15px}
 .note{background:var(--orange-light);border-left:3px solid var(--orange);padding:14px 18px;margin-bottom:24px;font-size:13px;color:var(--text-mid)}
+.note strong{color:var(--navy)}
 .panel{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:24px;margin-bottom:18px}
 .panel h2{font-size:13px;letter-spacing:2px;color:var(--orange-dark);text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border-light)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:8px}
 label{display:block;font-size:11px;letter-spacing:1px;color:var(--text-mid);text-transform:uppercase;margin-bottom:4px;font-weight:600}
 input[type=text],input[type=email],input[type=url],input[type=tel],input[type=date],input[type=number],input[type=color],select,textarea{
   width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:4px;font-family:inherit;font-size:14px;color:var(--text);background:var(--white)}
-input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-glow,rgba(232,115,42,0.15))}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-glow)}
 input[type=color]{padding:3px;height:38px}
 textarea{min-height:60px;resize:vertical}
 .row-hint{font-size:11px;color:var(--text-dim);margin-top:3px}
-.toggle{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--cream);border:1px solid var(--border);border-radius:4px;cursor:pointer}
-.toggle input{width:auto;margin:0}
-.toggle .lbl{font-size:13px;font-weight:600}
-.toggle .desc{font-size:11px;color:var(--text-dim);margin-top:2px}
+.toggle{display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:var(--cream);border:1px solid var(--border);border-radius:4px;cursor:pointer}
+.toggle input{width:auto;margin:0;margin-top:3px}
+.toggle .lbl{font-size:13px;font-weight:600;color:var(--navy)}
+.toggle .desc{font-size:11px;color:var(--text-dim);margin-top:2px;line-height:1.5}
 .collapsible summary{cursor:pointer;font-weight:600;color:var(--navy);padding:6px 0;font-size:13px;letter-spacing:1px;text-transform:uppercase}
 .collapsible summary:hover{color:var(--orange-dark)}
 .collapsible[open] summary{margin-bottom:12px}
@@ -47,37 +50,50 @@ button.go:hover{background:var(--orange-dark)}
 button.go:disabled{opacity:0.5;cursor:not-allowed}
 button.dim{background:var(--white);color:var(--navy);border:1px solid var(--border);padding:14px 22px;font-family:inherit;font-size:13px;letter-spacing:1px;border-radius:4px;cursor:pointer}
 button.dim:hover{background:var(--cream)}
-.status{margin-top:14px;font-size:13px;color:var(--text-mid);min-height:20px}
+.status{margin-top:14px;font-size:13px;color:var(--text-mid);min-height:20px;line-height:1.6}
 .status.ok{color:var(--green);font-weight:600}
 .status.err{color:var(--red);font-weight:600}
-.summary{margin-top:18px;padding:18px;background:var(--cream);border:1px solid var(--border);border-radius:6px;font-family:'DM Mono',ui-monospace,Consolas,monospace;font-size:12px;line-height:1.7;display:none}
+.status.warn{color:var(--orange-dark);font-weight:600}
+.summary{margin-top:18px;padding:18px;background:var(--cream);border:1px solid var(--border);border-radius:6px;font-family:'DM Mono',ui-monospace,Consolas,monospace;font-size:12px;line-height:1.7;display:none;white-space:pre-wrap}
 .summary.visible{display:block}
 .summary .k{color:var(--orange-dark);font-weight:600}
-.row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.signer-card{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.signer-card .left{font-size:13px;color:var(--text-mid)}
+.signer-card .left strong{color:var(--navy)}
+.signer-card .url{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);margin-top:3px}
+.signer-card button.recheck{background:var(--navy);color:var(--white);border:none;padding:9px 16px;font-size:12px;font-family:inherit;letter-spacing:1px;cursor:pointer;border-radius:4px}
 footer{margin-top:48px;padding:24px;text-align:center;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border-light)}
-@media(max-width:680px){.wrap{padding:18px}.row-2{grid-template-columns:1fr}}
+@media(max-width:680px){.wrap{padding:18px}}
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo">Gym<span class="dot">OS</span> · Forge</div>
-  <div class="stat">◊ build per-gym HTML · 60s · no CLI required</div>
+  <div class="signer">
+    <span id="signerPulse" class="pulse"></span>
+    <span id="signerStatus">signer · checking…</span>
+  </div>
 </header>
 
 <div class="wrap">
 
-<h1>Forge a per-gym build</h1>
-<p class="lede">Fill in the gym's details below. Click <strong>BUILD &amp; DOWNLOAD</strong>. Your browser fetches the master template, patches it with these specs, and downloads a single sovereign HTML file ready to hand to the client.</p>
+<h1>Build a sovereign GymOS for a gym</h1>
+<p class="lede">Fill in the gym's details. Click <strong>BUILD &amp; DOWNLOAD</strong>. Your browser fetches the master, requests a 14-day Konomi-signed trial from your local signer, embeds it, and downloads a single production HTML you hand to the client.</p>
 
-<div class="note">
-<strong>◊ No git · no Node · no CLI.</strong> Everything happens in your browser. The downloaded HTML is fully sovereign — runs from file://, IndexedDB-local, BYOK LLM cascade, no telemetry. Give it to the gym as a USB stick, an email attachment, or upload to your own hosting.
+<div class="signer-card">
+  <div class="left">
+    <strong>Local trial-signer</strong>
+    <div id="signerInfo">checking <span style="font-family:'DM Mono',monospace">127.0.0.1:9991</span> …</div>
+    <div class="url">Start it via: <code>node scripts/trial-sign-server.mjs</code> (your KONOMI_PRIVATE_KEY must be set)</div>
+  </div>
+  <button class="recheck" id="recheckBtn">re-check</button>
 </div>
 
 <form id="forge">
 
 <div class="panel">
-<h2>The gym</h2>
+<h2>The gym · identity &amp; positioning</h2>
 <div class="grid">
   <div>
     <label for="gym_name">Gym name *</label>
@@ -86,13 +102,14 @@ footer{margin-top:48px;padding:24px;text-align:center;color:var(--text-dim);font
   <div>
     <label for="slug">Slug (auto · or override)</label>
     <input type="text" id="slug" placeholder="sky-boxing-folkestone">
-    <div class="row-hint">a-z, 0-9, hyphens only · used as filename</div>
+    <div class="row-hint">a-z, 0-9, hyphens · used as filename and tool_id</div>
   </div>
 </div>
 <div class="grid">
   <div>
     <label for="product_name">Product name shown in UI</label>
-    <input type="text" id="product_name" value="GymOS" placeholder="GymOS or your white-label name">
+    <input type="text" id="product_name" value="GymOps" placeholder="GymOps or a white-label name">
+    <div class="row-hint">"GymOS" replaced wherever it appears in the build</div>
   </div>
   <div>
     <label for="gym_logo_text">Logo text (top nav)</label>
@@ -106,7 +123,7 @@ footer{margin-top:48px;padding:24px;text-align:center;color:var(--text-dim);font
 </div>
 
 <div class="panel">
-<h2>Contact</h2>
+<h2>Contact &amp; trial</h2>
 <div class="grid">
   <div><label>Contact name</label><input type="text" id="contact_name" placeholder="Owner's name"></div>
   <div><label>Email</label><input type="email" id="contact_email" placeholder="owner@gym.com"></div>
@@ -115,7 +132,16 @@ footer{margin-top:48px;padding:24px;text-align:center;color:var(--text-dim);font
 </div>
 <div class="grid">
   <div><label>Start date</label><input type="date" id="start_date"></div>
-  <div><label>Trial days</label><input type="number" id="trial_days" value="30" min="1" max="365"></div>
+  <div>
+    <label>Trial length</label>
+    <select id="trial_days">
+      <option value="14" selected>14 days (standard)</option>
+      <option value="30">30 days (extended)</option>
+      <option value="7">7 days (short)</option>
+      <option value="60">60 days (enterprise pilot)</option>
+    </select>
+    <div class="row-hint">After expiry the gym sees the Konomi licence upgrade path · persistent memory + extended features</div>
+  </div>
 </div>
 </div>
 
@@ -138,18 +164,18 @@ footer{margin-top:48px;padding:24px;text-align:center;color:var(--text-dim);font
 </div>
 
 <div class="panel">
-<h2>Professionalism · Konomi visibility</h2>
-<label class="toggle" style="display:flex;align-items:flex-start">
+<h2>Konomi visibility · professionalism</h2>
+<label class="toggle">
   <input type="checkbox" id="konomi_hide" checked>
   <div>
     <div class="lbl">Hide Konomi / KCC badges on the client's build</div>
-    <div class="desc">Recommended for client-facing deliveries. Badges stay in the code (CSS hidden), so you can re-enable later via config flip + rebuild. The KCC shim still runs silently — ledger accrues in the background should the gym ever opt in.</div>
+    <div class="desc">Recommended for client-facing deliveries. Badges are CSS-hidden so the client sees a clean professional surface. The shim code, ledger, and bloom hooks remain in the file — flip the flag and rebuild later if the gym opts into the Konomi protocol layer.</div>
   </div>
 </label>
 </div>
 
 <details class="panel collapsible">
-<summary>+ Socials (optional — pre-seed connections)</summary>
+<summary>+ Socials (pre-seed connections)</summary>
 <div class="grid">
   <div><label>Instagram URL</label><input type="url" id="social_instagram" placeholder="https://instagram.com/yourgym"></div>
   <div><label>Facebook URL</label><input type="url" id="social_facebook" placeholder="https://facebook.com/yourgym"></div>
@@ -161,12 +187,12 @@ footer{margin-top:48px;padding:24px;text-align:center;color:var(--text-dim);font
 </details>
 
 <details class="panel collapsible">
-<summary>+ Provider integrations (optional)</summary>
+<summary>+ Provider integrations (pre-seed defaults)</summary>
 <div class="grid">
-  <div><label>CRM provider</label>
+  <div><label>CRM</label>
     <select id="crm_provider"><option value="">— none —</option><option value="gohighlevel">GoHighLevel</option><option value="hubspot">HubSpot</option><option value="pipedrive">Pipedrive</option><option value="other">Other</option></select>
   </div>
-  <div><label>Booking provider</label>
+  <div><label>Booking</label>
     <select id="booking_provider"><option value="">— none —</option><option value="PushPress">PushPress</option><option value="Mindbody">Mindbody</option><option value="Glofox">Glofox</option><option value="Calendly">Calendly</option><option value="other">Other</option></select>
   </div>
   <div><label>Phone AI</label>
@@ -183,34 +209,60 @@ footer{margin-top:48px;padding:24px;text-align:center;color:var(--text-dim);font
 <button type="button" class="dim" id="previewBtn">PREVIEW SPECS</button>
 <button type="button" class="dim" id="resetBtn">RESET</button>
 </div>
-<div class="status" id="status"></div>
+<div class="status" id="status">Awaiting specs · trial-signer status above ↑</div>
 <pre class="summary" id="summary"></pre>
 
 </form>
 
 <footer>
 ◊·κ=1 · GymOS · Sovereign AI Office for Gyms · MIT · prime 23 + per-gym extension prime<br>
-master · <a href="./" style="color:var(--orange-dark)">/index.html</a> &nbsp; · &nbsp; built · <a href="https://github.com/sjgant80-hub/gymos" style="color:var(--orange-dark)">sjgant80-hub/gymos</a> &nbsp; · &nbsp; <a href="https://www.ai-nativesolutions.com" style="color:var(--orange-dark)">AI Native Solutions</a>
+master · <a href="./" style="color:var(--orange-dark)">/index.html</a> &nbsp; · &nbsp; <a href="https://github.com/sjgant80-hub/gymos" style="color:var(--orange-dark)">sjgant80-hub/gymos</a> &nbsp; · &nbsp; <a href="https://www.ai-nativesolutions.com" style="color:var(--orange-dark)">AI Native Solutions</a>
 </footer>
 
 </div>
 
 <script>
 // ═══════════════════════════════════════════════════════════════════
-// In-browser GymOS forge · mirrors scripts/build-gym.js
-// Fetches master index.html, patches it, downloads as <slug>.html
+// In-browser GymOS forge · production build path
+// Fetches master · requests Konomi-signed trial from localhost:9991 · patches · downloads
 // ═══════════════════════════════════════════════════════════════════
 
 const $ = s => document.querySelector(s);
-
-// PRIME_POOL — same as build-gym.js · we pick deterministically from slug
+const SIGNER_URL = 'http://127.0.0.1:9991';
 const PRIME_POOL = [29,41,43,53,59,61,67,71,73,79,83,89,97,101,103,113,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229];
 
 function hashSlug(s) { let h = 0; for (const c of s) { h = (h*31 + c.charCodeAt(0)) >>> 0; } return h; }
 function pickPrime(slug) { return PRIME_POOL[hashSlug(slug) % PRIME_POOL.length]; }
-
 function slugify(s) { return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0,32); }
 function esc(s) { return String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+
+// signer health
+let signerReady = false;
+async function checkSigner() {
+  try {
+    const r = await fetch(SIGNER_URL + '/health', { signal: AbortSignal.timeout(2000) });
+    const j = await r.json();
+    if (j.ok && j.ready) {
+      signerReady = true;
+      $('#signerPulse').classList.add('live');
+      $('#signerStatus').textContent = 'signer · ready';
+      $('#signerInfo').innerHTML = '<span style="color:var(--green);font-weight:600">✓ signer ready · 14-day trials will be Konomi-signed before download</span>';
+      $('#status').className = 'status ok';
+      $('#status').textContent = '◊ signer ready · fill specs above · BUILD when ready';
+      return true;
+    }
+  } catch (_) {}
+  signerReady = false;
+  $('#signerPulse').classList.remove('live');
+  $('#signerStatus').textContent = 'signer · offline';
+  $('#signerInfo').innerHTML = '<span style="color:var(--red);font-weight:600">✗ signer not reachable at 127.0.0.1:9991</span><br>Start it on your laptop: <code>$env:KONOMI_PRIVATE_KEY = "&lt;seed&gt;"; node scripts/trial-sign-server.mjs</code>';
+  $('#status').className = 'status warn';
+  $('#status').textContent = '⚠ build will be REJECTED until signer is reachable · this is a production-grade trial path';
+  return false;
+}
+$('#recheckBtn').onclick = checkSigner;
+checkSigner();
+setInterval(checkSigner, 8000);
 
 // auto-fill slug from gym name
 $('#gym_name').addEventListener('input', e => {
@@ -235,7 +287,7 @@ function collectConfig() {
     contact_phone:   $('#contact_phone').value.trim(),
     website:         $('#website').value.trim(),
     start_date:      $('#start_date').value,
-    trial_days:      parseInt($('#trial_days').value, 10) || 30,
+    trial_days:      parseInt($('#trial_days').value, 10) || 14,
     brand: {
       primary: $('#brand_primary').value,
       accent:  $('#brand_accent').value,
@@ -258,14 +310,26 @@ function collectConfig() {
   return cfg;
 }
 
-function patchHtml(html, cfg) {
-  const slug  = cfg.slug;
-  const prime = pickPrime(slug);
+async function signTrial(cfg, slug, prime) {
+  const r = await fetch(SIGNER_URL + '/sign-trial', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      tool_id: slug,
+      tool_prime: prime,
+      gym_name: cfg.gym_name,
+      days: cfg.trial_days,
+    }),
+  });
+  if (!r.ok) throw new Error('signer rejected · HTTP ' + r.status);
+  const j = await r.json();
+  if (!j.ok) throw new Error(j.error || 'signing failed');
+  return j;
+}
 
-  // 1) title
+function patchHtml(html, cfg, slug, prime, trialEnvelope, trialMeta) {
+  // 1) title + meta
   html = html.replace(/<title>[^<]*<\/title>/i, `<title>${esc(cfg.gym_name)} · ${esc(cfg.product_name)}</title>`);
-
-  // 1a) meta description
   if (cfg.tagline) {
     if (/<meta name="description"[^>]*>/i.test(html)) {
       html = html.replace(/<meta name="description"[^>]*>/i, `<meta name="description" content="${esc(cfg.tagline)}">`);
@@ -311,13 +375,13 @@ function patchHtml(html, cfg) {
     html = html.replace(/\bGymOS\b/g, esc(cfg.product_name));
   }
 
-  // 4c) Konomi hide (badges only · shims still run)
+  // 4c) Konomi hide
   if (cfg.konomi_visible === false) {
     html = html.replace('</style>',
-      `\n/* gym build: hide Konomi/KCC badges (shims still run for future re-enable) */\n#kcc-badge,#konomi-badge{display:none !important;}\n</style>`);
+      `\n/* per-gym build: Konomi/KCC badges hidden · shim code preserved */\n#kcc-badge,#konomi-badge{display:none !important;}\n</style>`);
   }
 
-  // 4b) landing hero + nav
+  // 4b) landing hero
   if (cfg.gym_name) {
     html = html.replace(
       /<h1>Your Gym Gets<br>a <span class="highlight">Full AI Team<\/span><\/h1>/,
@@ -336,7 +400,7 @@ function patchHtml(html, cfg) {
     );
   }
 
-  // 5) Pre-seed onboarding console
+  // 5) onboarding pre-seed
   const seed = `
 <script>
 (function gymSeed(){
@@ -361,7 +425,7 @@ function patchHtml(html, cfg) {
 <\/script>`;
   html = html.replace('</body>', seed + '\n</body>');
 
-  // 5b) Pre-seed connections
+  // 5b) connections pre-seed
   const preConn = {};
   function pre(k,v){ if (v!==undefined && v!==null && v!=='') preConn[k] = v; }
   pre('social_instagram',     cfg.socials.instagram);
@@ -396,46 +460,79 @@ function patchHtml(html, cfg) {
     html = html.replace('</body>', connSeed + '\n</body>');
   }
 
+  // 6) signed Konomi trial pre-activate
+  const licenceSeed = `
+<script>
+(function preActivate(){
+  function ap(){
+    try {
+      var k = 'konomi_licence_' + ${JSON.stringify(slug)};
+      if (localStorage.getItem(k)) return;
+      localStorage.setItem(k, ${JSON.stringify(trialEnvelope)});
+    } catch(_){}
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ap, { once:true });
+  else ap();
+})();
+<\/script>`;
+  html = html.replace('</body>', licenceSeed + '\n</body>');
+
   // 7) Manifest comment
   const manifest = `<!--
-  ◊·κ=1 · per-gym branded build · forged in-browser
+  ◊·κ=1 · per-gym sovereign build · forged in-browser · production
   gym_name:    ${cfg.gym_name}
   slug:        ${slug}
   prime:       ${prime}
   master:      sjgant80-hub/gymos (prime 23)
   built:       ${new Date().toISOString()}
-  konomi_visible: ${cfg.konomi_visible ? 'true' : 'false (badges hidden · shims run)'}
-  trial:       unsigned · use CLI build-gym.js with KONOMI_PRIVATE_KEY for signed trial
+  konomi:      ${cfg.konomi_visible ? 'badges visible' : 'badges hidden (shim code preserved)'}
+  trial:       ${trialMeta.days} days · Konomi-signed Ed25519 · expires ${trialMeta.expires}
+  upgrade:     persistent Konomi licence available after trial · contact AI Native Solutions
 -->\n`;
   html = manifest + html;
 
-  return { html, slug, prime };
+  return html;
 }
 
 async function build(){
   const cfg = collectConfig();
-  if (!cfg.gym_name) {
-    setStatus('Enter a gym name first.', 'err');
-    return;
+  if (!cfg.gym_name) { setStatus('Enter a gym name first.', 'err'); return; }
+
+  if (!signerReady) {
+    const ok = await checkSigner();
+    if (!ok) {
+      setStatus('✗ signer offline. Build aborted — every production HTML must carry a Konomi-signed trial. Start the signer first.', 'err');
+      return;
+    }
   }
-  setStatus('Fetching master template…', '');
+
   $('#buildBtn').disabled = true;
+  const slug = cfg.slug;
+  const prime = pickPrime(slug);
+
   try {
+    setStatus('Requesting ' + cfg.trial_days + '-day Konomi-signed trial from signer…', '');
+    const trial = await signTrial(cfg, slug, prime);
+
+    setStatus('Fetching master template…', '');
     const masterUrl = new URL('./index.html', location.href).href;
     const r = await fetch(masterUrl, { cache: 'no-store' });
-    if (!r.ok) throw new Error('Could not fetch master at ' + masterUrl + ' · HTTP ' + r.status);
+    if (!r.ok) throw new Error('could not fetch master at ' + masterUrl + ' · HTTP ' + r.status);
     let html = await r.text();
-    setStatus('Patching template (' + Math.round(html.length/1024) + ' KB) …', '');
-    const built = patchHtml(html, cfg);
+
+    setStatus('Patching template (' + Math.round(html.length/1024) + ' KB) · injecting signed trial · pre-seeding onboarding + connections…', '');
+    html = patchHtml(html, cfg, slug, prime, trial.envelope, trial);
+
     setStatus('Triggering download…', '');
-    const blob = new Blob([built.html], { type: 'text/html;charset=utf-8' });
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = built.slug + '.html';
+    a.href = url; a.download = slug + '.html';
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 2000);
-    setStatus('✓ Built ' + built.slug + '.html · prime ' + built.prime + ' · ' + Math.round(built.html.length/1024) + ' KB · downloading now', 'ok');
-    renderSummary(cfg, built);
+
+    setStatus('✓ Production build delivered · ' + slug + '.html · prime ' + prime + ' · ' + Math.round(html.length/1024) + ' KB · trial signed (' + trial.days + 'd, expires ' + trial.expires.slice(0,10) + ')', 'ok');
+    renderSummary(cfg, slug, prime, trial, html.length);
   } catch (e) {
     setStatus('✗ ' + e.message, 'err');
   } finally {
@@ -449,31 +546,45 @@ function setStatus(msg, cls){
   el.className = 'status ' + (cls || '');
 }
 
-function renderSummary(cfg, built){
+function renderSummary(cfg, slug, prime, trial, sizeBytes){
   const s = $('#summary');
   s.classList.add('visible');
   s.innerHTML = [
-    '<span class="k">FILE:</span>      ' + built.slug + '.html',
-    '<span class="k">PRIME:</span>     ' + built.prime + ' (extension of master 23)',
-    '<span class="k">GYM:</span>       ' + cfg.gym_name,
+    '<span class="k">FILE:</span>      ' + slug + '.html · ' + Math.round(sizeBytes/1024) + ' KB',
+    '<span class="k">PRIME:</span>     ' + prime + ' (extension of master 23 via slug-hash)',
+    '<span class="k">GYM:</span>       ' + cfg.gym_name + (cfg.gym_logo_text !== cfg.gym_name ? ' (logo: ' + cfg.gym_logo_text + ')' : ''),
     '<span class="k">PRODUCT:</span>   ' + cfg.product_name,
-    '<span class="k">KONOMI:</span>    ' + (cfg.konomi_visible ? 'visible' : 'hidden (shims preserved for future re-enable)'),
+    '<span class="k">KONOMI:</span>    ' + (cfg.konomi_visible ? 'badges visible' : 'badges hidden · shim code preserved · re-enable via rebuild'),
     '<span class="k">BRAND:</span>     primary ' + cfg.brand.primary + '  accent ' + cfg.brand.accent + '  text ' + cfg.brand.text,
     '<span class="k">CONTACT:</span>   ' + [cfg.contact_name, cfg.contact_email, cfg.contact_phone].filter(Boolean).join(' · '),
-    '<span class="k">TRIAL:</span>     ' + cfg.trial_days + ' days · unsigned (use CLI for signed)',
+    '<span class="k">TRIAL:</span>     ' + trial.days + ' days · Konomi Ed25519-signed · expires ' + trial.expires,
     '',
     '<span class="k">DELIVERY:</span>',
     '   1. Hand the downloaded HTML to the gym (USB / email / SharePoint / their drive).',
     '   2. They double-click to open in any modern browser. Works from file://. No install.',
-    '   3. Their onboarding console pre-fills with the contact details above.',
-    '   4. Settings → integrations · their credentials connect the providers picked.',
-    '   5. Sovereign. IndexedDB-local. No telemetry. They own it forever.',
+    '   3. Trial auto-activates on first load · onboarding console pre-fills with their contact.',
+    '   4. Settings → integrations · their credentials connect the providers picked above.',
+    '   5. ' + trial.days + ' days later: in-app upgrade path to persistent Konomi licence.',
+    '   6. Sovereign · IndexedDB-local · BYOK LLM cascade · no telemetry. They own it forever.',
   ].join('\n');
 }
 
 $('#buildBtn').onclick = build;
-$('#previewBtn').onclick = () => { renderSummary(collectConfig(), { slug: slugify($('#gym_name').value), prime: pickPrime(slugify($('#gym_name').value)) }); setStatus('Preview only · click BUILD when ready.', ''); };
-$('#resetBtn').onclick = () => { document.getElementById('forge').reset(); $('#start_date').value = new Date().toISOString().slice(0,10); $('#summary').classList.remove('visible'); setStatus('', ''); };
+$('#previewBtn').onclick = () => {
+  const cfg = collectConfig();
+  const slug = slugify(cfg.gym_name);
+  const fakeTrial = { days: cfg.trial_days, expires: new Date(Date.now() + cfg.trial_days*86400000).toISOString() };
+  renderSummary(cfg, slug, pickPrime(slug), fakeTrial, 287000);
+  setStatus('Preview only · click BUILD to mint the signed trial and download.', '');
+};
+$('#resetBtn').onclick = () => {
+  document.getElementById('forge').reset();
+  $('#start_date').value = new Date().toISOString().slice(0,10);
+  $('#summary').classList.remove('visible');
+  $('#konomi_hide').checked = true;
+  setStatus('Reset.', '');
+  checkSigner();
+};
 </script>
 
 </body>
