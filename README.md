@@ -1,4 +1,4 @@
-# GymOS · Your Gym's AI Team
+# GymOps · Your Gym's AI Team
 
 8 AI employees that handle your gym's marketing, sales, and admin. One HTML file. No server. No subscription.
 
@@ -23,7 +23,7 @@
 
 ## Integrations
 
-| Platform | API | What GymOS Does |
+| Platform | API | What GymOps Does |
 |---|---|---|
 | **Facebook** | Meta Graph API | Post to your Page, manage engagement |
 | **Instagram** | Meta Graph API | Publish content, manage business account |
