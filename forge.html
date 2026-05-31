@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GymOS Forge · Build a Per-Gym HTML in 60 seconds</title>
+<meta name="description" content="In-browser builder · fill in your gym's details, click BUILD, download a fully-configured sovereign GymOS HTML.">
+<style>
+:root{
+  --navy:#1a2744; --navy-light:#243354; --navy-dark:#111b30;
+  --orange:#e8732a; --orange-dark:#c95f1f; --orange-light:#fef4ed;
+  --cream:#faf8f5; --white:#ffffff;
+  --border:#e8e4df; --border-light:#f0ece7;
+  --text:#1a2744; --text-mid:#4a5568; --text-dim:#718096;
+  --green:#22a558; --red:#e53e3e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;line-height:1.55;min-height:100vh}
+header{background:var(--navy);color:var(--white);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--orange)}
+header .logo{font-size:18px;font-weight:800;letter-spacing:1px}
+header .logo .dot{color:var(--orange)}
+header .stat{font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.7);text-transform:uppercase}
+.wrap{max-width:920px;margin:0 auto;padding:32px}
+h1{font-size:28px;margin-bottom:6px;color:var(--navy)}
+.lede{color:var(--text-mid);margin-bottom:22px;font-size:15px}
+.note{background:var(--orange-light);border-left:3px solid var(--orange);padding:14px 18px;margin-bottom:24px;font-size:13px;color:var(--text-mid)}
+.panel{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:24px;margin-bottom:18px}
+.panel h2{font-size:13px;letter-spacing:2px;color:var(--orange-dark);text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border-light)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:8px}
+label{display:block;font-size:11px;letter-spacing:1px;color:var(--text-mid);text-transform:uppercase;margin-bottom:4px;font-weight:600}
+input[type=text],input[type=email],input[type=url],input[type=tel],input[type=date],input[type=number],input[type=color],select,textarea{
+  width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:4px;font-family:inherit;font-size:14px;color:var(--text);background:var(--white)}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-glow,rgba(232,115,42,0.15))}
+input[type=color]{padding:3px;height:38px}
+textarea{min-height:60px;resize:vertical}
+.row-hint{font-size:11px;color:var(--text-dim);margin-top:3px}
+.toggle{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--cream);border:1px solid var(--border);border-radius:4px;cursor:pointer}
+.toggle input{width:auto;margin:0}
+.toggle .lbl{font-size:13px;font-weight:600}
+.toggle .desc{font-size:11px;color:var(--text-dim);margin-top:2px}
+.collapsible summary{cursor:pointer;font-weight:600;color:var(--navy);padding:6px 0;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.collapsible summary:hover{color:var(--orange-dark)}
+.collapsible[open] summary{margin-bottom:12px}
+.cta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:18px}
+button.go{background:var(--orange);color:var(--white);border:none;padding:14px 28px;font-family:inherit;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:4px;cursor:pointer;box-shadow:0 2px 8px rgba(232,115,42,0.3)}
+button.go:hover{background:var(--orange-dark)}
+button.go:disabled{opacity:0.5;cursor:not-allowed}
+button.dim{background:var(--white);color:var(--navy);border:1px solid var(--border);padding:14px 22px;font-family:inherit;font-size:13px;letter-spacing:1px;border-radius:4px;cursor:pointer}
+button.dim:hover{background:var(--cream)}
+.status{margin-top:14px;font-size:13px;color:var(--text-mid);min-height:20px}
+.status.ok{color:var(--green);font-weight:600}
+.status.err{color:var(--red);font-weight:600}
+.summary{margin-top:18px;padding:18px;background:var(--cream);border:1px solid var(--border);border-radius:6px;font-family:'DM Mono',ui-monospace,Consolas,monospace;font-size:12px;line-height:1.7;display:none}
+.summary.visible{display:block}
+.summary .k{color:var(--orange-dark);font-weight:600}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+footer{margin-top:48px;padding:24px;text-align:center;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border-light)}
+@media(max-width:680px){.wrap{padding:18px}.row-2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Gym<span class="dot">OS</span> · Forge</div>
+  <div class="stat">◊ build per-gym HTML · 60s · no CLI required</div>
+</header>
+
+<div class="wrap">
+
+<h1>Forge a per-gym build</h1>
+<p class="lede">Fill in the gym's details below. Click <strong>BUILD &amp; DOWNLOAD</strong>. Your browser fetches the master template, patches it with these specs, and downloads a single sovereign HTML file ready to hand to the client.</p>
+
+<div class="note">
+<strong>◊ No git · no Node · no CLI.</strong> Everything happens in your browser. The downloaded HTML is fully sovereign — runs from file://, IndexedDB-local, BYOK LLM cascade, no telemetry. Give it to the gym as a USB stick, an email attachment, or upload to your own hosting.
+</div>
+
+<form id="forge">
+
+<div class="panel">
+<h2>The gym</h2>
+<div class="grid">
+  <div>
+    <label for="gym_name">Gym name *</label>
+    <input type="text" id="gym_name" placeholder="Sky Boxing Folkestone" required>
+  </div>
+  <div>
+    <label for="slug">Slug (auto · or override)</label>
+    <input type="text" id="slug" placeholder="sky-boxing-folkestone">
+    <div class="row-hint">a-z, 0-9, hyphens only · used as filename</div>
+  </div>
+</div>
+<div class="grid">
+  <div>
+    <label for="product_name">Product name shown in UI</label>
+    <input type="text" id="product_name" value="GymOS" placeholder="GymOS or your white-label name">
+  </div>
+  <div>
+    <label for="gym_logo_text">Logo text (top nav)</label>
+    <input type="text" id="gym_logo_text" placeholder="Sky Boxing">
+  </div>
+</div>
+<div>
+  <label for="tagline">Tagline (meta description)</label>
+  <input type="text" id="tagline" placeholder="Sovereign AI for your gym · your data, your device.">
+</div>
+</div>
+
+<div class="panel">
+<h2>Contact</h2>
+<div class="grid">
+  <div><label>Contact name</label><input type="text" id="contact_name" placeholder="Owner's name"></div>
+  <div><label>Email</label><input type="email" id="contact_email" placeholder="owner@gym.com"></div>
+  <div><label>Phone</label><input type="tel" id="contact_phone" placeholder="+44 7xxx xxx xxx"></div>
+  <div><label>Website</label><input type="url" id="website" placeholder="https://gym.com"></div>
+</div>
+<div class="grid">
+  <div><label>Start date</label><input type="date" id="start_date"></div>
+  <div><label>Trial days</label><input type="number" id="trial_days" value="30" min="1" max="365"></div>
+</div>
+</div>
+
+<div class="panel">
+<h2>Brand colours</h2>
+<div class="grid">
+  <div>
+    <label>Primary (buttons / accents)</label>
+    <input type="color" id="brand_primary" value="#1a2744">
+  </div>
+  <div>
+    <label>Accent (highlights)</label>
+    <input type="color" id="brand_accent" value="#e8732a">
+  </div>
+  <div>
+    <label>Text (headings)</label>
+    <input type="color" id="brand_text" value="#1a2744">
+  </div>
+</div>
+</div>
+
+<div class="panel">
+<h2>Professionalism · Konomi visibility</h2>
+<label class="toggle" style="display:flex;align-items:flex-start">
+  <input type="checkbox" id="konomi_hide" checked>
+  <div>
+    <div class="lbl">Hide Konomi / KCC badges on the client's build</div>
+    <div class="desc">Recommended for client-facing deliveries. Badges stay in the code (CSS hidden), so you can re-enable later via config flip + rebuild. The KCC shim still runs silently — ledger accrues in the background should the gym ever opt in.</div>
+  </div>
+</label>
+</div>
+
+<details class="panel collapsible">
+<summary>+ Socials (optional — pre-seed connections)</summary>
+<div class="grid">
+  <div><label>Instagram URL</label><input type="url" id="social_instagram" placeholder="https://instagram.com/yourgym"></div>
+  <div><label>Facebook URL</label><input type="url" id="social_facebook" placeholder="https://facebook.com/yourgym"></div>
+  <div><label>TikTok URL</label><input type="url" id="social_tiktok" placeholder="https://tiktok.com/@yourgym"></div>
+  <div><label>YouTube URL</label><input type="url" id="social_youtube" placeholder="https://youtube.com/@yourgym"></div>
+  <div><label>WhatsApp link</label><input type="url" id="social_whatsapp" placeholder="https://wa.me/447xxx"></div>
+  <div><label>Google Maps link</label><input type="url" id="social_maps" placeholder="https://maps.google.com/?q=..."></div>
+</div>
+</details>
+
+<details class="panel collapsible">
+<summary>+ Provider integrations (optional)</summary>
+<div class="grid">
+  <div><label>CRM provider</label>
+    <select id="crm_provider"><option value="">— none —</option><option value="gohighlevel">GoHighLevel</option><option value="hubspot">HubSpot</option><option value="pipedrive">Pipedrive</option><option value="other">Other</option></select>
+  </div>
+  <div><label>Booking provider</label>
+    <select id="booking_provider"><option value="">— none —</option><option value="PushPress">PushPress</option><option value="Mindbody">Mindbody</option><option value="Glofox">Glofox</option><option value="Calendly">Calendly</option><option value="other">Other</option></select>
+  </div>
+  <div><label>Phone AI</label>
+    <select id="phone_provider"><option value="">— none —</option><option value="vapi">Vapi</option><option value="retell">Retell</option><option value="bland">Bland</option><option value="other">Other</option></select>
+  </div>
+  <div><label>SMS sender name</label><input type="text" id="sms_sender" placeholder="GymOps"></div>
+  <div><label>GA4 ID</label><input type="text" id="ga4_id" placeholder="G-XXXXXXXX"></div>
+  <div><label>Meta Pixel ID</label><input type="text" id="meta_pixel_id" placeholder="XXXXXXXX"></div>
+</div>
+</details>
+
+<div class="cta">
+<button type="button" class="go" id="buildBtn">◊ BUILD &amp; DOWNLOAD</button>
+<button type="button" class="dim" id="previewBtn">PREVIEW SPECS</button>
+<button type="button" class="dim" id="resetBtn">RESET</button>
+</div>
+<div class="status" id="status"></div>
+<pre class="summary" id="summary"></pre>
+
+</form>
+
+<footer>
+◊·κ=1 · GymOS · Sovereign AI Office for Gyms · MIT · prime 23 + per-gym extension prime<br>
+master · <a href="./" style="color:var(--orange-dark)">/index.html</a> &nbsp; · &nbsp; built · <a href="https://github.com/sjgant80-hub/gymos" style="color:var(--orange-dark)">sjgant80-hub/gymos</a> &nbsp; · &nbsp; <a href="https://www.ai-nativesolutions.com" style="color:var(--orange-dark)">AI Native Solutions</a>
+</footer>
+
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════
+// In-browser GymOS forge · mirrors scripts/build-gym.js
+// Fetches master index.html, patches it, downloads as <slug>.html
+// ═══════════════════════════════════════════════════════════════════
+
+const $ = s => document.querySelector(s);
+
+// PRIME_POOL — same as build-gym.js · we pick deterministically from slug
+const PRIME_POOL = [29,41,43,53,59,61,67,71,73,79,83,89,97,101,103,113,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229];
+
+function hashSlug(s) { let h = 0; for (const c of s) { h = (h*31 + c.charCodeAt(0)) >>> 0; } return h; }
+function pickPrime(slug) { return PRIME_POOL[hashSlug(slug) % PRIME_POOL.length]; }
+
+function slugify(s) { return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0,32); }
+function esc(s) { return String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+
+// auto-fill slug from gym name
+$('#gym_name').addEventListener('input', e => {
+  if (!$('#slug').dataset.touched) $('#slug').value = slugify(e.target.value);
+});
+$('#slug').addEventListener('input', () => $('#slug').dataset.touched = '1');
+
+// default date today
+$('#start_date').value = new Date().toISOString().slice(0,10);
+
+function collectConfig() {
+  const cfg = {
+    gym_name:        $('#gym_name').value.trim(),
+    slug:            $('#slug').value.trim() || slugify($('#gym_name').value),
+    product_name:    $('#product_name').value.trim() || 'GymOS',
+    product_subtext: $('#konomi_hide').checked ? '' : 'gym-os',
+    konomi_visible:  !$('#konomi_hide').checked,
+    tagline:         $('#tagline').value.trim(),
+    gym_logo_text:   $('#gym_logo_text').value.trim() || $('#gym_name').value.trim(),
+    contact_name:    $('#contact_name').value.trim(),
+    contact_email:   $('#contact_email').value.trim(),
+    contact_phone:   $('#contact_phone').value.trim(),
+    website:         $('#website').value.trim(),
+    start_date:      $('#start_date').value,
+    trial_days:      parseInt($('#trial_days').value, 10) || 30,
+    brand: {
+      primary: $('#brand_primary').value,
+      accent:  $('#brand_accent').value,
+      text:    $('#brand_text').value,
+    },
+    socials: {
+      instagram:     $('#social_instagram').value.trim(),
+      facebook:      $('#social_facebook').value.trim(),
+      tiktok:        $('#social_tiktok').value.trim(),
+      youtube:       $('#social_youtube').value.trim(),
+      whatsapp_link: $('#social_whatsapp').value.trim(),
+      maps:          $('#social_maps').value.trim(),
+    },
+    crm:       { provider: $('#crm_provider').value },
+    booking:   { provider: $('#booking_provider').value },
+    phone:     { provider: $('#phone_provider').value },
+    sms:       { sender_name: $('#sms_sender').value.trim() },
+    analytics: { ga4_id: $('#ga4_id').value.trim(), meta_pixel_id: $('#meta_pixel_id').value.trim() },
+  };
+  return cfg;
+}
+
+function patchHtml(html, cfg) {
+  const slug  = cfg.slug;
+  const prime = pickPrime(slug);
+
+  // 1) title
+  html = html.replace(/<title>[^<]*<\/title>/i, `<title>${esc(cfg.gym_name)} · ${esc(cfg.product_name)}</title>`);
+
+  // 1a) meta description
+  if (cfg.tagline) {
+    if (/<meta name="description"[^>]*>/i.test(html)) {
+      html = html.replace(/<meta name="description"[^>]*>/i, `<meta name="description" content="${esc(cfg.tagline)}">`);
+    } else {
+      html = html.replace('</head>', `<meta name="description" content="${esc(cfg.tagline)}">\n</head>`);
+    }
+  }
+
+  // 2) window.NODE override
+  const nodeBlock = `
+  window.NODE = {
+    id: '${slug}',
+    name: ${JSON.stringify(cfg.gym_name)},
+    prime: ${prime},
+    layers: 7,
+    built: '${new Date().toISOString().slice(0,10)}',
+    branded_by: 'gymos-forge',
+    master_prime: 23
+  };`;
+  if (/window\.NODE = \{[\s\S]*?\};/.test(html)) {
+    html = html.replace(/window\.NODE = \{[\s\S]*?\};/, nodeBlock);
+  } else {
+    html = html.replace('</head>', '<script>' + nodeBlock + '<\/script>\n</head>');
+  }
+
+  // 3) brand overrides
+  const tokens = [];
+  if (cfg.brand.primary) tokens.push(`--gym-primary: ${cfg.brand.primary};`);
+  if (cfg.brand.accent)  tokens.push(`--gym-accent: ${cfg.brand.accent};`);
+  if (cfg.brand.text)    tokens.push(`--gym-text: ${cfg.brand.text};`);
+  if (tokens.length) {
+    html = html.replace('</style>', `\n/* per-gym brand override · ${esc(cfg.gym_name)} */\n:root { ${tokens.join(' ')} }\n</style>`);
+  }
+
+  // 4) logo + product name
+  if (cfg.gym_logo_text) {
+    const sub = cfg.product_subtext || '';
+    const subHtml = sub ? `<span class="dot"> · ${esc(sub)}</span>` : '';
+    html = html.replace(/<div class="app-nav-logo">Gym<span class="dot">OS<\/span><\/div>/,
+      `<div class="app-nav-logo">${esc(cfg.gym_logo_text)}${subHtml}</div>`);
+  }
+  if (cfg.product_name && cfg.product_name !== 'GymOS') {
+    html = html.replace(/\bGymOS\b/g, esc(cfg.product_name));
+  }
+
+  // 4c) Konomi hide (badges only · shims still run)
+  if (cfg.konomi_visible === false) {
+    html = html.replace('</style>',
+      `\n/* gym build: hide Konomi/KCC badges (shims still run for future re-enable) */\n#kcc-badge,#konomi-badge{display:none !important;}\n</style>`);
+  }
+
+  // 4b) landing hero + nav
+  if (cfg.gym_name) {
+    html = html.replace(
+      /<h1>Your Gym Gets<br>a <span class="highlight">Full AI Team<\/span><\/h1>/,
+      `<h1>${esc(cfg.gym_name)} Gets<br>a <span class="highlight">Full AI Team</span></h1>`
+    );
+    html = html.replace(
+      /<div class="hero-badge">◊ Now in Pilot Programme<\/div>/,
+      `<div class="hero-badge">◊ ${esc(cfg.gym_name)} · Sovereign Build · Prime ${prime}</div>`
+    );
+    const navText = cfg.gym_logo_text || cfg.gym_name;
+    const navSub = cfg.product_subtext !== '' ? cfg.product_subtext : '';
+    const navSubHtml = navSub ? `<span class="dot">${esc(navSub)}</span>` : '';
+    html = html.replace(
+      /<div class="nav-logo">Gym<span class="dot">OS<\/span><\/div>/,
+      `<div class="nav-logo">${esc(navText)}${navSubHtml}</div>`
+    );
+  }
+
+  // 5) Pre-seed onboarding console
+  const seed = `
+<script>
+(function gymSeed(){
+  function tryPrefill(){
+    try {
+      var existing = localStorage.getItem('gymos_onboarding_v1');
+      if (existing) { var p = JSON.parse(existing); if (p.client && p.client.gym_name) return; }
+      var preset = { phase:1, cards:{}, client:{
+        gym_name: ${JSON.stringify(cfg.gym_name)},
+        contact_name: ${JSON.stringify(cfg.contact_name)},
+        business_email: ${JSON.stringify(cfg.contact_email)},
+        business_phone: ${JSON.stringify(cfg.contact_phone)},
+        website: ${JSON.stringify(cfg.website)},
+        start_date: ${JSON.stringify(cfg.start_date)}
+      }};
+      localStorage.setItem('gymos_onboarding_v1', JSON.stringify(preset));
+    } catch(_){}
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tryPrefill, { once:true });
+  else tryPrefill();
+})();
+<\/script>`;
+  html = html.replace('</body>', seed + '\n</body>');
+
+  // 5b) Pre-seed connections
+  const preConn = {};
+  function pre(k,v){ if (v!==undefined && v!==null && v!=='') preConn[k] = v; }
+  pre('social_instagram',     cfg.socials.instagram);
+  pre('social_facebook',      cfg.socials.facebook);
+  pre('social_tiktok',        cfg.socials.tiktok);
+  pre('social_youtube',       cfg.socials.youtube);
+  pre('social_whatsapp_link', cfg.socials.whatsapp_link);
+  pre('social_maps',          cfg.socials.maps);
+  pre('crm_provider',         cfg.crm.provider);
+  pre('booking_provider',     cfg.booking.provider);
+  pre('phone_provider',       cfg.phone.provider);
+  pre('twilio_sender_name',   cfg.sms.sender_name);
+  pre('ga4_id',               cfg.analytics.ga4_id);
+  pre('meta_pixel_id',        cfg.analytics.meta_pixel_id);
+
+  if (Object.keys(preConn).length > 0) {
+    const connSeed = `
+<script>
+(function connSeed(){
+  function tryPrefill(){
+    try {
+      var existing = JSON.parse(localStorage.getItem('gymos_connections_v1') || '{}');
+      var preset = ${JSON.stringify(preConn)};
+      var merged = Object.assign(preset, existing);
+      localStorage.setItem('gymos_connections_v1', JSON.stringify(merged));
+    } catch(_){}
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tryPrefill, { once:true });
+  else tryPrefill();
+})();
+<\/script>`;
+    html = html.replace('</body>', connSeed + '\n</body>');
+  }
+
+  // 7) Manifest comment
+  const manifest = `<!--
+  ◊·κ=1 · per-gym branded build · forged in-browser
+  gym_name:    ${cfg.gym_name}
+  slug:        ${slug}
+  prime:       ${prime}
+  master:      sjgant80-hub/gymos (prime 23)
+  built:       ${new Date().toISOString()}
+  konomi_visible: ${cfg.konomi_visible ? 'true' : 'false (badges hidden · shims run)'}
+  trial:       unsigned · use CLI build-gym.js with KONOMI_PRIVATE_KEY for signed trial
+-->\n`;
+  html = manifest + html;
+
+  return { html, slug, prime };
+}
+
+async function build(){
+  const cfg = collectConfig();
+  if (!cfg.gym_name) {
+    setStatus('Enter a gym name first.', 'err');
+    return;
+  }
+  setStatus('Fetching master template…', '');
+  $('#buildBtn').disabled = true;
+  try {
+    const masterUrl = new URL('./index.html', location.href).href;
+    const r = await fetch(masterUrl, { cache: 'no-store' });
+    if (!r.ok) throw new Error('Could not fetch master at ' + masterUrl + ' · HTTP ' + r.status);
+    let html = await r.text();
+    setStatus('Patching template (' + Math.round(html.length/1024) + ' KB) …', '');
+    const built = patchHtml(html, cfg);
+    setStatus('Triggering download…', '');
+    const blob = new Blob([built.html], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = built.slug + '.html';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    setStatus('✓ Built ' + built.slug + '.html · prime ' + built.prime + ' · ' + Math.round(built.html.length/1024) + ' KB · downloading now', 'ok');
+    renderSummary(cfg, built);
+  } catch (e) {
+    setStatus('✗ ' + e.message, 'err');
+  } finally {
+    $('#buildBtn').disabled = false;
+  }
+}
+
+function setStatus(msg, cls){
+  const el = $('#status');
+  el.textContent = msg;
+  el.className = 'status ' + (cls || '');
+}
+
+function renderSummary(cfg, built){
+  const s = $('#summary');
+  s.classList.add('visible');
+  s.innerHTML = [
+    '<span class="k">FILE:</span>      ' + built.slug + '.html',
+    '<span class="k">PRIME:</span>     ' + built.prime + ' (extension of master 23)',
+    '<span class="k">GYM:</span>       ' + cfg.gym_name,
+    '<span class="k">PRODUCT:</span>   ' + cfg.product_name,
+    '<span class="k">KONOMI:</span>    ' + (cfg.konomi_visible ? 'visible' : 'hidden (shims preserved for future re-enable)'),
+    '<span class="k">BRAND:</span>     primary ' + cfg.brand.primary + '  accent ' + cfg.brand.accent + '  text ' + cfg.brand.text,
+    '<span class="k">CONTACT:</span>   ' + [cfg.contact_name, cfg.contact_email, cfg.contact_phone].filter(Boolean).join(' · '),
+    '<span class="k">TRIAL:</span>     ' + cfg.trial_days + ' days · unsigned (use CLI for signed)',
+    '',
+    '<span class="k">DELIVERY:</span>',
+    '   1. Hand the downloaded HTML to the gym (USB / email / SharePoint / their drive).',
+    '   2. They double-click to open in any modern browser. Works from file://. No install.',
+    '   3. Their onboarding console pre-fills with the contact details above.',
+    '   4. Settings → integrations · their credentials connect the providers picked.',
+    '   5. Sovereign. IndexedDB-local. No telemetry. They own it forever.',
+  ].join('\n');
+}
+
+$('#buildBtn').onclick = build;
+$('#previewBtn').onclick = () => { renderSummary(collectConfig(), { slug: slugify($('#gym_name').value), prime: pickPrime(slugify($('#gym_name').value)) }); setStatus('Preview only · click BUILD when ready.', ''); };
+$('#resetBtn').onclick = () => { document.getElementById('forge').reset(); $('#start_date').value = new Date().toISOString().slice(0,10); $('#summary').classList.remove('visible'); setStatus('', ''); };
+</script>
+
+</body>
+</html>
