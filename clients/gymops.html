@@ -2809,13 +2809,13 @@ function calcROI() {
 function showApp() {
   document.getElementById('landingWrapper').classList.add('hidden');
   document.getElementById('appWrapper').classList.add('active');
-  window.scrollTo(0, 0);
+  window.scroll(0, 0); // scrollTo helper shadowed · scroll() unshadowed alias
 }
 
 function exitApp() {
   document.getElementById('landingWrapper').classList.remove('hidden');
   document.getElementById('appWrapper').classList.remove('active');
-  window.scrollTo(0, 0);
+  window.scroll(0, 0); // scrollTo helper shadowed · scroll() unshadowed alias
 }
 
 function switchAppTab(tab) {
