@@ -1252,32 +1252,44 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
 
       <!-- Step 1: Gym Type -->
       <div class="config-panel active" id="cPanel0">
-        <h3>What type of gym do you run?</h3>
-        <p>This helps us tailor your AI team's focus.</p>
+        <h3>What does your gym offer?</h3>
+        <p>Tap all that apply · most gyms run multiple programmes.</p>
         <div class="config-options">
-          <div class="config-option" onclick="selectConfig(0, this, 'pt_studio')">
+          <div class="config-option" onclick="toggleConfigType(0, this, 'pt_studio')">
             <h4>💪 PT / Personal Training Studio</h4>
             <p>One-to-one and small group sessions</p>
           </div>
-          <div class="config-option" onclick="selectConfig(0, this, 'crossfit')">
+          <div class="config-option" onclick="toggleConfigType(0, this, 'crossfit')">
             <h4>🏋️ CrossFit / Functional Fitness</h4>
             <p>Class-based, community-focused</p>
           </div>
-          <div class="config-option" onclick="selectConfig(0, this, 'maa')">
+          <div class="config-option" onclick="toggleConfigType(0, this, 'maa')">
             <h4>🥋 Martial Arts Academy</h4>
             <p>Discipline-based training and grading</p>
           </div>
-          <div class="config-option" onclick="selectConfig(0, this, 'commercial')">
+          <div class="config-option" onclick="toggleConfigType(0, this, 'commercial')">
             <h4>🏢 Commercial Gym</h4>
             <p>Large facility, high volume membership</p>
           </div>
-          <div class="config-option" onclick="selectConfig(0, this, 'yoga')">
+          <div class="config-option" onclick="toggleConfigType(0, this, 'yoga')">
             <h4>🧘 Yoga / Pilates / Wellness</h4>
             <p>Mindful movement and wellbeing</p>
           </div>
-          <div class="config-option" onclick="selectConfig(0, this, 'bootcamp')">
+          <div class="config-option" onclick="toggleConfigType(0, this, 'bootcamp')">
             <h4>🏃 Bootcamp / Outdoor Fitness</h4>
             <p>Group outdoor and circuit training</p>
+          </div>
+          <div class="config-option" onclick="toggleConfigType(0, this, 'classes')">
+            <h4>🎯 Group Classes / Studio Sessions</h4>
+            <p>HIIT · Spin · Pilates · Barre · Zumba</p>
+          </div>
+          <div class="config-option" onclick="toggleConfigType(0, this, 'swimming')">
+            <h4>🏊 Swimming / Aquatics</h4>
+            <p>Lane swim · lessons · aqua fitness</p>
+          </div>
+          <div class="config-option" onclick="toggleConfigType(0, this, 'recovery')">
+            <h4>♨️ Recovery / Wellness Add-ons</h4>
+            <p>Sauna · cryo · massage · ice baths</p>
           </div>
         </div>
         <div class="config-nav">
@@ -2636,7 +2648,7 @@ const state = {
   gymProfile: recall('gym_profile', { name: '', desc: '', icp: '', voice: 'friendly' }),
   apiKeys: recall('api_keys', {}),
   configStep: 0,
-  configChoices: [null, null, null],
+  configChoices: [[], null, null],  // step 0 is multi-select (array) · steps 1-2 single-select
   leads: recall('leads', []),
   posts: recall('posts', [])
 };
@@ -2673,15 +2685,29 @@ function toggleFaq(el) {
 
 // ═══════════ CONFIGURATOR ═══════════
 function selectConfig(step, el, value) {
+  // single-select (steps 1 + 2)
   state.configChoices[step] = value;
   el.parentElement.querySelectorAll('.config-option').forEach(o => o.classList.remove('selected'));
   el.classList.add('selected');
 }
 
+function toggleConfigType(step, el, value) {
+  // multi-select (step 0 only · most gyms run multiple programmes)
+  if (!Array.isArray(state.configChoices[step])) state.configChoices[step] = [];
+  const arr = state.configChoices[step];
+  const idx = arr.indexOf(value);
+  if (idx === -1) { arr.push(value); el.classList.add('selected'); }
+  else { arr.splice(idx, 1); el.classList.remove('selected'); }
+}
+
 function configNext() {
   if (state.configStep < 3) {
-    if (state.configStep < 3 && !state.configChoices[state.configStep]) {
-      toast('Please select an option', 'error');
+    const choice = state.configChoices[state.configStep];
+    const empty = (state.configStep === 0)
+      ? (!Array.isArray(choice) || choice.length === 0)
+      : !choice;
+    if (empty) {
+      toast(state.configStep === 0 ? 'Please tap one or more programmes' : 'Please select an option', 'error');
       return;
     }
     state.configStep++;
@@ -2708,10 +2734,17 @@ function updateConfigUI() {
 }
 
 function buildConfigResult() {
-  const [gymType, size, problem] = state.configChoices;
-  const typeNames = { pt_studio:'PT / Personal Training Studio', crossfit:'CrossFit Box', maa:'Martial Arts Academy', commercial:'Commercial Gym', yoga:'Yoga / Pilates Studio', bootcamp:'Bootcamp / Outdoor Fitness' };
+  const [gymTypeRaw, size, problem] = state.configChoices;
+  const typeNames = { pt_studio:'PT / Personal Training Studio', crossfit:'CrossFit Box', maa:'Martial Arts Academy', commercial:'Commercial Gym', yoga:'Yoga / Pilates Studio', bootcamp:'Bootcamp / Outdoor Fitness', classes:'Group Classes / Studio', swimming:'Swimming / Aquatics', recovery:'Recovery / Wellness Add-ons' };
   const sizeNames = { solo:'Solo Operator', small:'Small Team (2-5)', medium:'Medium (6-15)', large:'Large (15+)' };
   const problemNames = { leads:'Lead Generation', followup:'Lead Conversion', retention:'Member Retention', content:'Content & Social Media', admin:'Admin Automation', all:'Full Team' };
+
+  // gymType is now an array (multi-select) · render as a labelled list · keep backward-compat with string saves
+  const gymTypes = Array.isArray(gymTypeRaw) ? gymTypeRaw : (gymTypeRaw ? [gymTypeRaw] : []);
+  const gymTypeLabel = gymTypes.length === 0 ? '—'
+                     : gymTypes.length === 1 ? (typeNames[gymTypes[0]] || gymTypes[0])
+                     : gymTypes.map(t => typeNames[t] || t).join(' + ');
+  const gymType = gymTypes[0] || ''; // primary type for downstream legacy lookups
 
   const priorityTeam = {
     leads: ['Omega (routing)', 'Front Desk', 'Marketing Coordinator', 'Content Manager'],
@@ -2735,8 +2768,8 @@ function buildConfigResult() {
   document.getElementById('configResult').innerHTML = `
     <h4>Your Custom GymOps Setup</h4>
     <div class="config-result-row">
-      <span class="config-result-label">Gym Type</span>
-      <span class="config-result-value">${typeNames[gymType] || gymType}</span>
+      <span class="config-result-label">${gymTypes.length > 1 ? 'Programmes' : 'Gym Type'}</span>
+      <span class="config-result-value">${gymTypeLabel}</span>
     </div>
     <div class="config-result-row">
       <span class="config-result-label">Team Size</span>
@@ -2761,7 +2794,7 @@ function buildConfigResult() {
     <div style="margin-top:20px;padding:16px;background:rgba(34,165,88,0.1);border-radius:8px;border:1px solid rgba(34,165,88,0.2);">
       <div style="font-weight:700;color:#22a558;margin-bottom:4px;">Recommendation</div>
       <div style="font-size:0.88rem;color:rgba(255,255,255,0.8);">
-        Based on your ${typeNames[gymType] || 'gym'} with ${sizeNames[size] || 'your team'} focusing on ${(problemNames[problem] || 'growth').toLowerCase()},
+        Based on your ${gymTypeLabel === '—' ? 'gym' : gymTypeLabel.toLowerCase()} setup with ${sizeNames[size] || 'your team'} focusing on ${(problemNames[problem] || 'growth').toLowerCase()},
         we recommend starting with the ${size === 'solo' ? 'Lite' : size === 'large' ? 'Enterprise' : 'Pro'} package.
         Try the demo below to see your AI team in action.
       </div>
