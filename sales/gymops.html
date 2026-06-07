@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="description" content="GymOps · sovereign AI ops for independent gyms · $49/month or $890 once · runs in your browser · MIT open source">
+<title>GymOps · sovereign AI ops for gyms · share this with a gym owner</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0a0a'/%3E%3Ctext x='32' y='44' font-family='Inter, sans-serif' font-size='38' font-weight='800' text-anchor='middle' fill='%23d4351c'%3E◊%3C/text%3E%3C/svg%3E">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --void: #0a0a0a;
+  --void-2: #14141a;
+  --void-3: #1f1f28;
+  --void-4: #2a2a35;
+  --cream: #f0f0eb;
+  --cream-2: #c8c8c2;
+  --cream-dim: #8a8a84;
+  --cream-faint: #5a5a55;
+  --brand: #d4351c;     /* gymops oxblood-orange */
+  --brand-2: #b32a14;
+  --brand-glow: rgba(212, 53, 28, 0.12);
+  --navy: #1a2744;
+  --success: #10b981;
+  --warn: #f59e0b;
+  --font: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, Roboto, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --tap: 56px;
+  --gutter: 18px;
+  --radius: 12px;
+  --max-w: 880px;
+}
+html { scroll-behavior: smooth; }
+html, body {
+  background: var(--void);
+  color: var(--cream);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background-image:
+    radial-gradient(circle at 0% 0%, var(--brand-glow), transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(26, 39, 68, 0.08), transparent 60%);
+  background-attachment: fixed;
+}
+
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ═══════════ TOP NAV ═══════════ */
+.top {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--void-3);
+}
+.top-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 0; min-height: var(--tap);
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 17px;
+  color: var(--cream); text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.brand .mark {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px;
+  background: var(--brand); color: #fff; font-weight: 800;
+}
+.brand .sub { font-weight: 500; color: var(--cream-dim); font-size: 13px; margin-left: 6px; }
+.top-spacer { flex: 1; }
+.top-cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 8px 16px; min-height: 40px;
+  background: var(--brand); color: #fff;
+  font-weight: 600; font-size: 14px;
+  border-radius: 8px; text-decoration: none;
+  border: 1px solid var(--brand);
+  transition: background 0.15s;
+}
+.top-cta:hover { background: var(--brand-2); }
+
+/* ═══════════ HERO ═══════════ */
+.hero {
+  padding: 56px 0 36px;
+  text-align: center;
+}
+.hero .badge {
+  display: inline-block;
+  font-size: 12px; font-weight: 600;
+  padding: 4px 12px;
+  background: var(--brand-glow); color: var(--brand);
+  border-radius: 999px;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  margin-bottom: 18px;
+  border: 1px solid var(--brand);
+}
+.hero h1 {
+  font-size: 36px; font-weight: 800; letter-spacing: -0.035em;
+  line-height: 1.1; color: var(--cream);
+  margin-bottom: 14px;
+}
+.hero h1 .hl { color: var(--brand); }
+.hero .lead {
+  font-size: 18px; color: var(--cream-2);
+  max-width: 540px; margin: 0 auto 24px;
+  line-height: 1.5;
+}
+.hero .cta-row {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  margin-top: 18px;
+}
+@media (min-width: 720px) {
+  .hero { padding: 88px 0 60px; }
+  .hero h1 { font-size: 56px; }
+  .hero .lead { font-size: 19px; }
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px;
+  padding: 12px 22px; min-height: 48px;
+  font-size: 15px; font-weight: 600;
+  border-radius: 8px; border: 1px solid transparent;
+  cursor: pointer; text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, transform 0.05s;
+}
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: var(--brand); color: #fff; border-color: var(--brand); }
+.btn-primary:hover { background: var(--brand-2); }
+.btn-ghost { background: var(--void-2); color: var(--cream); border-color: var(--void-3); }
+.btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
+
+/* ═══════════ SECTIONS ═══════════ */
+section.block {
+  padding: 56px 0;
+  border-top: 1px solid var(--void-3);
+}
+section.block:first-of-type { border-top: 0; }
+.section-tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 600;
+  color: var(--brand); letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+section.block h2 {
+  font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+  line-height: 1.2; margin-bottom: 14px; color: var(--cream);
+}
+section.block p { color: var(--cream-2); font-size: 16px; max-width: 640px; }
+section.block p + p { margin-top: 12px; }
+@media (min-width: 720px) {
+  section.block { padding: 80px 0; }
+  section.block h2 { font-size: 36px; }
+}
+
+/* ═══════════ PROBLEM grid ═══════════ */
+.problem-grid {
+  display: grid; grid-template-columns: 1fr; gap: 8px;
+  margin: 24px 0; max-width: 580px;
+}
+.problem-grid .item {
+  display: flex; justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--void-2); border: 1px solid var(--void-3);
+  border-radius: 8px;
+  font-size: 15px;
+}
+.problem-grid .item .name { color: var(--cream-2); }
+.problem-grid .item .cost { color: var(--warn); font-weight: 600; font-family: var(--font-mono); }
+.problem-grid .total {
+  margin-top: 8px; padding: 14px 16px;
+  background: var(--brand-glow); border: 1px solid var(--brand);
+  border-radius: 8px;
+  display: flex; justify-content: space-between;
+  font-weight: 700;
+}
+.problem-grid .total .cost { color: var(--brand); font-family: var(--font-mono); font-size: 17px; }
+
+/* ═══════════ PRICING ═══════════ */
+.plans {
+  display: grid; grid-template-columns: 1fr; gap: 14px;
+  margin: 28px 0;
+}
+@media (min-width: 720px) { .plans { grid-template-columns: 1fr 1fr 1fr; } }
+.plan {
+  background: var(--void-2); border: 1px solid var(--void-3);
+  border-radius: 14px; padding: 24px 20px;
+  position: relative;
+  transition: border-color 0.15s, transform 0.05s;
+}
+.plan.featured {
+  border-color: var(--brand);
+  background: linear-gradient(180deg, var(--brand-glow), var(--void-2) 50%);
+}
+.plan.featured::before {
+  content: 'most popular';
+  position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  background: var(--brand); color: #fff;
+  padding: 3px 12px; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border-radius: 999px;
+}
+.plan h3 {
+  font-size: 12px; color: var(--cream-dim);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  font-weight: 600; margin-bottom: 8px;
+}
+.plan .price {
+  font-family: var(--font-mono); font-size: 32px;
+  font-weight: 700; color: var(--cream);
+  line-height: 1; letter-spacing: -0.02em;
+}
+.plan .price .per { font-size: 13px; color: var(--cream-dim); margin-left: 4px; font-weight: 400; }
+.plan .save { font-size: 12px; color: var(--success); margin-top: 4px; }
+.plan ul {
+  list-style: none; margin: 18px 0 24px; padding: 0;
+}
+.plan ul li {
+  padding: 6px 0 6px 22px;
+  position: relative;
+  font-size: 14px; color: var(--cream-2);
+}
+.plan ul li::before {
+  content: '✓'; color: var(--brand); position: absolute; left: 0;
+  font-weight: 700;
+}
+.plan .btn { width: 100%; }
+
+/* ═══════════ COMPARE ═══════════ */
+.compare {
+  margin: 24px 0;
+  background: var(--void-2); border: 1px solid var(--void-3);
+  border-radius: 12px; overflow: hidden;
+}
+.compare table { width: 100%; border-collapse: collapse; }
+.compare th, .compare td {
+  padding: 12px 16px; text-align: left;
+  border-bottom: 1px solid var(--void-3);
+  font-size: 14px;
+}
+.compare th {
+  background: var(--void-3);
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--cream-dim); font-weight: 600;
+}
+.compare td:nth-child(2) { color: var(--warn); font-family: var(--font-mono); font-weight: 600; text-align: right; }
+.compare td:last-child { color: var(--success); font-family: var(--font-mono); font-weight: 600; text-align: right; }
+.compare tr:last-child td { border-bottom: 0; }
+.compare tr.total {
+  background: var(--void-3);
+  font-weight: 700;
+}
+.compare tr.total td:nth-child(2) { color: var(--warn); font-size: 16px; }
+.compare tr.total td:last-child { color: var(--brand); font-size: 16px; }
+
+/* ═══════════ TEAM (the 8+1) ═══════════ */
+.team-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  margin: 24px 0;
+}
+@media (min-width: 540px) { .team-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 720px) { .team-grid { grid-template-columns: repeat(4, 1fr); } }
+.team-card {
+  background: var(--void-2); border: 1px solid var(--void-3);
+  border-radius: 10px; padding: 14px;
+  text-align: center;
+}
+.team-card .ico { font-size: 24px; margin-bottom: 6px; }
+.team-card h4 { font-size: 13px; color: var(--cream); font-weight: 600; margin-bottom: 2px; }
+.team-card p { font-size: 11px; color: var(--cream-dim); line-height: 1.4; }
+
+/* ═══════════ DIFFERENTIATORS ═══════════ */
+.diffs {
+  display: grid; grid-template-columns: 1fr; gap: 14px;
+  margin: 24px 0;
+}
+@media (min-width: 720px) { .diffs { grid-template-columns: 1fr 1fr; } }
+.diff {
+  background: var(--void-2); border: 1px solid var(--void-3);
+  border-radius: 12px; padding: 22px;
+  border-left: 3px solid var(--brand);
+}
+.diff h4 {
+  font-size: 16px; color: var(--cream);
+  font-weight: 700; margin-bottom: 8px;
+}
+.diff p { font-size: 14px; color: var(--cream-2); line-height: 1.55; }
+
+/* ═══════════ FAQ ═══════════ */
+.faq { margin: 20px 0; }
+.faq details {
+  background: var(--void-2); border: 1px solid var(--void-3);
+  border-radius: 8px; padding: 14px 18px; margin-bottom: 8px;
+  cursor: pointer;
+}
+.faq details[open] { border-color: var(--brand); }
+.faq summary { font-weight: 600; color: var(--cream); list-style: none; outline: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; float: right; font-size: 20px; color: var(--cream-dim); }
+.faq details[open] summary::after { content: '×'; }
+.faq details > p { margin-top: 12px; color: var(--cream-2); font-size: 14px; line-height: 1.6; }
+
+/* ═══════════ CTA BLOCK ═══════════ */
+.cta-block {
+  background: linear-gradient(135deg, var(--brand-glow), transparent);
+  border: 1px solid var(--brand);
+  border-radius: 16px;
+  padding: 36px 24px;
+  text-align: center;
+  margin: 32px 0;
+}
+.cta-block h3 {
+  font-size: 24px; font-weight: 700; color: var(--cream);
+  margin-bottom: 8px; letter-spacing: -0.02em;
+}
+.cta-block p { color: var(--cream-2); max-width: 480px; margin: 0 auto 18px; }
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  padding: 36px 0;
+  border-top: 1px solid var(--void-3);
+  font-size: 13px; color: var(--cream-faint);
+  text-align: center;
+}
+footer .brand-mini { color: var(--brand); font-weight: 700; }
+footer a { color: var(--cream-dim); text-decoration: none; border-bottom: 1px dotted var(--cream-faint); }
+footer a:hover { color: var(--brand); border-color: var(--brand); }
+
+/* ═══════════ TOAST ═══════════ */
+.toast {
+  position: fixed; bottom: 24px; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--void-3); border: 1px solid var(--brand);
+  color: var(--cream); padding: 10px 18px;
+  border-radius: 999px; font-size: 14px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 200;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+
+/* ═══════════ PRINT ═══════════ */
+@media print {
+  body { background: white; color: black; }
+  .top, .top-cta, .btn, .toast { display: none !important; }
+  .hero { padding: 24px 0; }
+  .hero h1, h2, h3, h4 { color: black; }
+  section.block { padding: 24px 0; page-break-inside: avoid; }
+  .plan, .diff, .team-card, .compare, .problem-grid .item { background: white; border-color: #888; color: black; }
+  .plan.featured { background: white; border-color: #d4351c; }
+  .cta-block { background: white; border-color: #888; }
+  footer { color: #666; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ TOP NAV ═══════════ -->
+<header class="top">
+  <div class="wrap top-row">
+    <a href="#" class="brand">
+      <span class="mark">G</span>
+      <span>GymOps<span class="sub">sovereign AI ops</span></span>
+    </a>
+    <div class="top-spacer"></div>
+    <a href="#trial" class="top-cta">Start free trial</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero">
+    <div class="badge">independent gyms · 50-500 members</div>
+    <h1>Your gym gets a <span class="hl">full AI team</span><br>without renting it from a SaaS company.</h1>
+    <p class="lead">One URL · runs in your browser · your data on your laptop · 24/7 lead capture · member retention · content engine · all the AI ops the chains have. <strong>$49/month or $890 once.</strong></p>
+    <div class="cta-row">
+      <a href="#trial" class="btn btn-primary">Try free for 30 days · no card</a>
+      <a href="https://sjgant80-hub.github.io/gymos/clients/gymops.html" class="btn btn-ghost" target="_blank">Open the live demo</a>
+    </div>
+  </section>
+
+  <!-- ═══════════ PROBLEM ═══════════ -->
+  <section class="block" id="problem">
+    <div class="section-tag">the problem</div>
+    <h2>You're paying for a stack you barely use.</h2>
+    <p>Most independent gym owners we talk to are paying for 3-6 tools every month. Marketing, CRM, content, scheduling, analytics, AI. The bills compound. The tools talk to nothing. Members still drift. Leads still go cold at 9pm.</p>
+
+    <div class="problem-grid">
+      <div class="item"><span class="name">MindBody Starter</span><span class="cost">$99-159/mo</span></div>
+      <div class="item"><span class="name">Separate CRM</span><span class="cost">$30-100/mo</span></div>
+      <div class="item"><span class="name">Canva Pro</span><span class="cost">$15/mo</span></div>
+      <div class="item"><span class="name">Content writer</span><span class="cost">$300+/mo</span></div>
+      <div class="item"><span class="name">ChatGPT Plus</span><span class="cost">$20/mo</span></div>
+      <div class="total"><span>Typical stack</span><span class="cost">$464-594/mo</span></div>
+    </div>
+
+    <p>You use 20% of what you pay for. The rest is friction. The chains can afford this because they have 100 locations. You can't.</p>
+  </section>
+
+  <!-- ═══════════ WHAT IT IS ═══════════ -->
+  <section class="block" id="what">
+    <div class="section-tag">what GymOps is</div>
+    <h2>One URL. Eight AI specialists. One director.</h2>
+    <p>GymOps is a single web page that lives in your browser tab. Inside it: a CRM, an invoicing tool, a content engine, a member retention specialist, a marketing coordinator, a website builder, and a live analytics dashboard. They all talk to each other. They all read from one config. They're all included.</p>
+
+    <div class="team-grid">
+      <div class="team-card"><div class="ico">🎯</div><h4>Director</h4><p>Runs the whole AI team</p></div>
+      <div class="team-card"><div class="ico">🖥️</div><h4>Front Desk</h4><p>Lead capture · 24/7 reply</p></div>
+      <div class="team-card"><div class="ico">🤝</div><h4>Sales Assistant</h4><p>Follow-up · close</p></div>
+      <div class="team-card"><div class="ico">✍️</div><h4>Content Manager</h4><p>Posts that sound like you</p></div>
+      <div class="team-card"><div class="ico">💪</div><h4>Retention</h4><p>Catches drifting members</p></div>
+      <div class="team-card"><div class="ico">📞</div><h4>Receptionist</h4><p>WhatsApp · email · FAQ</p></div>
+      <div class="team-card"><div class="ico">📱</div><h4>Marketing</h4><p>Social schedule + post</p></div>
+      <div class="team-card"><div class="ico">📋</div><h4>Admin</h4><p>Scheduling · no-shows</p></div>
+      <div class="team-card"><div class="ico">📊</div><h4>Analyst</h4><p>What's working · what's not</p></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ DIFFERENTIATORS ═══════════ -->
+  <section class="block" id="why">
+    <div class="section-tag">what makes it different</div>
+    <h2>Sovereign by design. Yours forever.</h2>
+
+    <div class="diffs">
+      <div class="diff">
+        <h4>Your data stays on your laptop</h4>
+        <p>Your members' details, leads, content history — all live in your browser. Not in San Francisco. Not in Sydney. Yours. If you close the laptop, it's still there. If you switch laptops, you export a single file.</p>
+      </div>
+      <div class="diff">
+        <h4>Buy it once OR pay monthly</h4>
+        <p>$49/month if you want flexibility. $890 once if you want it for life. No 12-month contract lock-in. No auto-renewal trap. No per-member surprises.</p>
+      </div>
+      <div class="diff">
+        <h4>Speaks your language</h4>
+        <p>English, Thai, Bahasa, Tagalog, Vietnamese as natively as it speaks English. The AI learns your tone of voice from your existing posts in 5 minutes.</p>
+      </div>
+      <div class="diff">
+        <h4>Open source · MIT licensed</h4>
+        <p>The code is on GitHub. Fork it. Self-host it. If we vanish tomorrow, your tool keeps running. There's no central kill-switch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PRICING ═══════════ -->
+  <section class="block" id="trial">
+    <div class="section-tag">pricing · USD · no surprises</div>
+    <h2>Three plans · clean choice.</h2>
+
+    <div class="plans">
+      <div class="plan">
+        <h3>Trial</h3>
+        <div class="price">$0<span class="per">/ 30 days</span></div>
+        <ul>
+          <li>No card required</li>
+          <li>Full features unlocked</li>
+          <li>Live onboarding call</li>
+          <li>30-day timer · then auto-stop</li>
+        </ul>
+        <a href="mailto:hello@gymops.app?subject=GymOps%20trial%20activation" class="btn btn-ghost">Start trial</a>
+      </div>
+
+      <div class="plan featured">
+        <h3>Standard</h3>
+        <div class="price">$49<span class="per">/ month</span></div>
+        <div class="save">or $470/year · save 20%</div>
+        <ul>
+          <li>Cancel anytime · no contract</li>
+          <li>All updates included</li>
+          <li>Onboarding included</li>
+          <li>Email support · 4-hour SLA</li>
+        </ul>
+        <a href="mailto:hello@gymops.app?subject=GymOps%20Standard%20plan" class="btn btn-primary">Get Standard</a>
+      </div>
+
+      <div class="plan">
+        <h3>Owner</h3>
+        <div class="price">$890<span class="per">once</span></div>
+        <div class="save">~18 months break-even vs Standard</div>
+        <ul>
+          <li>Lifetime licence · no renewals</li>
+          <li>All updates · forever</li>
+          <li>Onboarding included</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="mailto:hello@gymops.app?subject=GymOps%20Owner%20licence" class="btn btn-ghost">Get Owner</a>
+      </div>
+    </div>
+
+    <p style="font-size: 13px; color: var(--cream-dim); text-align: center; margin-top: 16px;">Multi-location · +$25/month per additional site or +$390 once. White-label or reseller licences · email for terms.</p>
+  </section>
+
+  <!-- ═══════════ COMPARE ═══════════ -->
+  <section class="block" id="compare">
+    <div class="section-tag">the math</div>
+    <h2>$49 vs the stack you have today.</h2>
+
+    <div class="compare">
+      <table>
+        <thead>
+          <tr><th>What you're paying for now</th><th>USD / month</th><th>GymOps</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>MindBody (Starter · 1 location · real-world)</td><td>$139–$159</td><td>included</td></tr>
+          <tr><td>HighLevel for gyms</td><td>$97–$297</td><td>included</td></tr>
+          <tr><td>Mailchimp + Hootsuite + Canva Pro</td><td>$40–$90</td><td>included</td></tr>
+          <tr><td>Content writer (if outsourced)</td><td>$200–$500</td><td>included</td></tr>
+          <tr><td>Retention coach (if outsourced)</td><td>$300–$800</td><td>included</td></tr>
+          <tr><td>ChatGPT Plus (for content drafting)</td><td>$20</td><td>BYOK · pay only the API call</td></tr>
+          <tr class="total"><td>Total stack</td><td>$300–$1,500+</td><td>$49 / month</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size: 13px; color: var(--cream-dim); margin-top: 14px;">MindBody floor reference: <a href="https://www.mindbodyonline.com/business/pricing" target="_blank" style="color: var(--brand);">mindbodyonline.com/business/pricing</a> — Starter $99/loc published, $139-159 real-world per third-party reviews.</p>
+  </section>
+
+  <!-- ═══════════ HOW IT WORKS ═══════════ -->
+  <section class="block" id="how">
+    <div class="section-tag">how onboarding works</div>
+    <h2>From sign-up to running · 14 days.</h2>
+    <ol style="list-style: decimal; margin-left: 20px; color: var(--cream-2);">
+      <li style="padding: 8px 0;"><strong>Day 0 (within 24 hours)</strong> · 30-min activation call · your URL is live · API key pasted · first AI engine connected.</li>
+      <li style="padding: 8px 0;"><strong>Day 3</strong> · 15-min check-in · Phase 1 of in-app onboarding done · first social post drafted.</li>
+      <li style="padding: 8px 0;"><strong>Day 7</strong> · 20-min review · social platforms connected · first lead captured · first content posted.</li>
+      <li style="padding: 8px 0;"><strong>Day 14</strong> · 30-min review · pipeline value calculated · retention messages flowing · renewal conversation.</li>
+    </ol>
+    <p style="margin-top: 16px;">By Day 14: you can tell us this tool has saved you 8+ hours a week. If not, you walk · we delete the licence. No retention games.</p>
+  </section>
+
+  <!-- ═══════════ FAQ ═══════════ -->
+  <section class="block" id="faq">
+    <div class="section-tag">questions</div>
+    <h2>The honest FAQ.</h2>
+    <div class="faq">
+      <details>
+        <summary>Where does my member data live?</summary>
+        <p>In your browser's IndexedDB on the device you use. There's no cloud database we own. No backup is automatic — we'll show you how to export to a JSON file on Day 3 so you have your own backup. If your laptop dies, you restore from that file on the new one.</p>
+      </details>
+      <details>
+        <summary>What happens if I stop paying you?</summary>
+        <p>The AI features stop generating new content. Everything else — your members, leads, content history, retention messages — keeps working. The URL doesn't expire. You own the data. We just stop signing the AI envelope.</p>
+      </details>
+      <details>
+        <summary>What if GymOps goes out of business?</summary>
+        <p>The source code is open on GitHub under MIT licence. The tool keeps running. The AI cascade falls back to whatever provider you've connected directly. The code is forkable. There's no central kill-switch.</p>
+      </details>
+      <details>
+        <summary>Do you replace MindBody or run alongside?</summary>
+        <p>Most owners keep MindBody (or Glofox) for class booking and billing — those are sticky. We replace the marketing, content, retention, and CRM layer that most enterprise tools do badly. You'd run both for a while.</p>
+      </details>
+      <details>
+        <summary>How is this $49 when MindBody charges $99-159?</summary>
+        <p>We don't have your stack's cost structure. There's no backend cloud bill (your data is on your laptop). No per-member fees (we don't count members). No enterprise account team. It's lean by design.</p>
+      </details>
+      <details>
+        <summary>Is the AI any good?</summary>
+        <p>It uses whichever model you BYOK to — Claude, OpenAI, Gemini. You pay the model provider directly for inference (typically pennies per post). The AI learns your gym's tone of voice from your past posts in about 5 minutes. The first content is good. The 100th is indistinguishable from yours.</p>
+      </details>
+      <details>
+        <summary>What about GDPR / PDPA / Australian Privacy Act?</summary>
+        <p>Sovereign architecture makes most of this easier, not harder. Your members never leave your device. Cross-border concerns drop out. We ship a Data Processing Addendum template before you sign · adapt it to your jurisdiction with your privacy lawyer.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ═══════════ CTA BLOCK ═══════════ -->
+  <div class="cta-block">
+    <h3>Try it free for 30 days.</h3>
+    <p>No card. No auto-renewal. If by day 14 you can tell me this thing has saved you time, you pay. If not, you walk.</p>
+    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+      <a href="mailto:hello@gymops.app?subject=GymOps%20trial%20activation" class="btn btn-primary">Email me for trial activation</a>
+      <a href="https://sjgant80-hub.github.io/gymos/clients/gymops.html" target="_blank" class="btn btn-ghost">Open the live demo</a>
+    </div>
+  </div>
+
+  <!-- ═══════════ MICHEL FOOTER ═══════════ -->
+  <section class="block" style="text-align: center; padding: 36px 0 60px;">
+    <div class="section-tag">who you'll be talking to</div>
+    <h2>Independent. Direct. Honest.</h2>
+    <p style="margin: 0 auto;">GymOps is sold and supported by an independent operator who has worked inside gyms. No call centre. No tiered support queue. You talk to a human who knows what a 6am HIIT session feels like.</p>
+    <p style="margin-top: 14px; font-size: 13px; color: var(--cream-dim);">For a 15-minute demo personalised to your gym, email <a href="mailto:hello@gymops.app" style="color: var(--brand);">hello@gymops.app</a> — typical reply inside 4 hours.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><span class="brand-mini">◊ GymOps</span> · sovereign AI ops for independent gyms · MIT open source</div>
+    <div style="margin-top: 8px;">Built on <a href="https://github.com/sjgant80-hub/gymos" target="_blank">github.com/sjgant80-hub/gymos</a> · sister estate at <a href="https://ai-nativesolutions.com" target="_blank">ai-nativesolutions.com</a></div>
+    <div style="margin-top: 8px;">Share this page · <button onclick="navigator.clipboard.writeText(location.href); toast('link copied');" style="background:none;border:0;color:var(--cream-dim);cursor:pointer;font-size:13px;text-decoration:underline;">copy URL</button> · <button onclick="window.print()" style="background:none;border:0;color:var(--cream-dim);cursor:pointer;font-size:13px;text-decoration:underline;">print as PDF</button></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/audit-shim.js" data-tool="gymops-sales" data-tier="minimal" defer></script>
+<script>
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+// mesh ping
+try {
+  new BroadcastChannel('fall-signal').postMessage({ source: 'gymops-sales', kind: 'tool:ready', payload: { surface: 'marketing landing' } });
+} catch (_) {}
+console.log('%c◊ GymOps · sales landing · loaded', 'color:#d4351c;font-weight:bold');
+</script>
+
+</body>
+</html>
