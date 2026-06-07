@@ -852,6 +852,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
 /* GymOps · Konomi/KCC badges hidden by default · shim code preserved · re-enable via CSS removal */
 #kcc-badge,#konomi-badge{display:none !important;}
 </style>
+  <script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/audit-shim.js" data-tool="gymos" data-tier="minimal" defer></script>
 </head>
 <body>
 <!-- ═══════════════════════════════════════════════════════════════
@@ -887,7 +888,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       and keep members coming back. All for less than one part-time hire.
     </p>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="scrollTo('#configurator')">Build Your Gym Setup →</button>
+      <button class="btn-primary" onclick="goToSection('#configurator')">Build Your Gym Setup →</button>
       <button class="btn-secondary" onclick="showApp()">See It Working</button>
     </div>
     <div class="hero-proof">
@@ -1301,21 +1302,21 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       <!-- Step 2: Size -->
       <div class="config-panel" id="cPanel1">
         <h3>How big is your operation?</h3>
-        <p>We'll size the AI team recommendations to match.</p>
+        <p>Tap all that apply · most gyms span more than one size profile across sites and seasons.</p>
         <div class="config-options">
-          <div class="config-option" onclick="selectConfig(1, this, 'solo')">
+          <div class="config-option" onclick="toggleConfigType(1, this, 'solo')">
             <h4>🧑 Just Me</h4>
             <p>Solo operator, every hat is my hat</p>
           </div>
-          <div class="config-option" onclick="selectConfig(1, this, 'small')">
+          <div class="config-option" onclick="toggleConfigType(1, this, 'small')">
             <h4>👥 Small Team (2-5 staff)</h4>
             <p>A few trainers or instructors</p>
           </div>
-          <div class="config-option" onclick="selectConfig(1, this, 'medium')">
+          <div class="config-option" onclick="toggleConfigType(1, this, 'medium')">
             <h4>🏠 Medium (6-15 staff)</h4>
             <p>Established gym with growing team</p>
           </div>
-          <div class="config-option" onclick="selectConfig(1, this, 'large')">
+          <div class="config-option" onclick="toggleConfigType(1, this, 'large')">
             <h4>🏢 Large (15+ staff)</h4>
             <p>Multi-site or large facility</p>
           </div>
@@ -1329,29 +1330,29 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       <!-- Step 3: Biggest Problem -->
       <div class="config-panel" id="cPanel2">
         <h3>What's your biggest headache right now?</h3>
-        <p>Pick one. We'll prioritise your AI team around it.</p>
+        <p>Tap all that apply. We'll prioritise your AI team around them.</p>
         <div class="config-options">
-          <div class="config-option" onclick="selectConfig(2, this, 'leads')">
+          <div class="config-option" onclick="toggleConfigType(2, this, 'leads')">
             <h4>📥 Getting New Leads</h4>
             <p>I need more people through the door</p>
           </div>
-          <div class="config-option" onclick="selectConfig(2, this, 'followup')">
+          <div class="config-option" onclick="toggleConfigType(2, this, 'followup')">
             <h4>📞 Following Up Leads</h4>
             <p>I get enquiries but don't convert enough</p>
           </div>
-          <div class="config-option" onclick="selectConfig(2, this, 'retention')">
+          <div class="config-option" onclick="toggleConfigType(2, this, 'retention')">
             <h4>🚪 Keeping Members</h4>
             <p>Too many people cancel after a few months</p>
           </div>
-          <div class="config-option" onclick="selectConfig(2, this, 'content')">
+          <div class="config-option" onclick="toggleConfigType(2, this, 'content')">
             <h4>📱 Content &amp; Social Media</h4>
             <p>I never have time to post consistently</p>
           </div>
-          <div class="config-option" onclick="selectConfig(2, this, 'admin')">
+          <div class="config-option" onclick="toggleConfigType(2, this, 'admin')">
             <h4>📋 Admin Overload</h4>
             <p>I spend more time on admin than training</p>
           </div>
-          <div class="config-option" onclick="selectConfig(2, this, 'all')">
+          <div class="config-option" onclick="toggleConfigType(2, this, 'all')">
             <h4>🔥 All of the Above</h4>
             <p>Honestly, everything needs help</p>
           </div>
@@ -1440,7 +1441,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
           <li>12 months of updates</li>
           <li>Community support</li>
         </ul>
-        <button class="pricing-btn pricing-btn-outline" onclick="scrollTo('#pilot')">Start Pilot →</button>
+        <button class="pricing-btn pricing-btn-outline" onclick="goToSection('#pilot')">Start Pilot →</button>
       </div>
 
       <!-- PRO -->
@@ -1459,7 +1460,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
           <li>Priority email support (24hr)</li>
           <li>Quarterly strategy review</li>
         </ul>
-        <button class="pricing-btn pricing-btn-primary" onclick="scrollTo('#pilot')">Start Pilot →</button>
+        <button class="pricing-btn pricing-btn-primary" onclick="goToSection('#pilot')">Start Pilot →</button>
       </div>
 
       <!-- ENTERPRISE -->
@@ -1477,7 +1478,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
           <li>SLA with 4-hour response</li>
           <li>On-site or video training</li>
         </ul>
-        <button class="pricing-btn pricing-btn-outline" onclick="scrollTo('#pilot')">Talk to Us →</button>
+        <button class="pricing-btn pricing-btn-outline" onclick="goToSection('#pilot')">Talk to Us →</button>
       </div>
 
       <!-- MANAGED -->
@@ -1508,7 +1509,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
           <li>Dedicated success manager</li>
           <li>Weekly performance reports</li>
         </ul>
-        <button class="pricing-btn pricing-btn-primary" onclick="scrollTo('#pilot')">Start Pilot →</button>
+        <button class="pricing-btn pricing-btn-primary" onclick="goToSection('#pilot')">Start Pilot →</button>
       </div>
 
     </div>
@@ -1651,12 +1652,12 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
 <nav class="app-nav">
   <div class="app-nav-logo">Gym<span class="dot">Ops</span></div>
   <div class="app-tabs">
-    <div class="app-tab active" onclick="switchAppTab('dashboard')"><span class="app-tab-icon">📊</span> Dashboard</div>
-    <div class="app-tab" onclick="switchAppTab('content')"><span class="app-tab-icon">✍️</span> Content</div>
-    <div class="app-tab" onclick="switchAppTab('leads')"><span class="app-tab-icon">📥</span> Leads</div>
-    <div class="app-tab" onclick="switchAppTab('schedule')"><span class="app-tab-icon">📅</span> Schedule</div>
-    <div class="app-tab" onclick="switchAppTab('onboarding')"><span class="app-tab-icon">🚀</span> Onboarding</div>
-    <div class="app-tab" onclick="switchAppTab('settings')"><span class="app-tab-icon">⚙️</span> Settings</div>
+    <div class="app-tab active" onclick="switchAppTab('dashboard', this)"><span class="app-tab-icon">📊</span> Dashboard</div>
+    <div class="app-tab" onclick="switchAppTab('content', this)"><span class="app-tab-icon">✍️</span> Content</div>
+    <div class="app-tab" onclick="switchAppTab('leads', this)"><span class="app-tab-icon">📥</span> Leads</div>
+    <div class="app-tab" onclick="switchAppTab('schedule', this)"><span class="app-tab-icon">📅</span> Schedule</div>
+    <div class="app-tab" onclick="switchAppTab('onboarding', this)"><span class="app-tab-icon">🚀</span> Onboarding</div>
+    <div class="app-tab" onclick="switchAppTab('settings', this)"><span class="app-tab-icon">⚙️</span> Settings</div>
   </div>
   <button class="app-exit" onclick="exitApp()">← Back to Site</button>
 </nav>
@@ -1997,23 +1998,23 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
     <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:20px;">Settings</h2>
     <div class="settings-grid">
       <div class="settings-menu">
-        <div class="settings-menu-item active" onclick="switchSettings('gym')">🏋️ Gym Profile</div>
-        <div class="settings-menu-item" onclick="switchSettings('socials')">🔗 Social Links</div>
-        <div class="settings-menu-item" onclick="switchSettings('ai')">🤖 AI Engine</div>
-        <div class="settings-menu-item" onclick="switchSettings('meta')">📱 Facebook &amp; Instagram</div>
-        <div class="settings-menu-item" onclick="switchSettings('tiktok')">🎵 TikTok</div>
-        <div class="settings-menu-item" onclick="switchSettings('youtube')">▶️ YouTube</div>
-        <div class="settings-menu-item" onclick="switchSettings('linkedin')">💼 LinkedIn</div>
-        <div class="settings-menu-item" onclick="switchSettings('google')">🔍 Google My Business</div>
-        <div class="settings-menu-item" onclick="switchSettings('whatsapp')">💬 WhatsApp</div>
-        <div class="settings-menu-item" onclick="switchSettings('sms')">📲 SMS / Twilio</div>
-        <div class="settings-menu-item" onclick="switchSettings('email')">📧 Email Provider</div>
-        <div class="settings-menu-item" onclick="switchSettings('crm')">📋 CRM</div>
-        <div class="settings-menu-item" onclick="switchSettings('booking')">📅 Booking System</div>
-        <div class="settings-menu-item" onclick="switchSettings('phone')">📞 Phone AI</div>
-        <div class="settings-menu-item" onclick="switchSettings('analytics')">📊 Analytics &amp; Pixel</div>
-        <div class="settings-menu-item" onclick="switchSettings('reviews')">⭐ Reviews</div>
-        <div class="settings-menu-item" onclick="switchSettings('webhooks')">🪝 Webhooks</div>
+        <div class="settings-menu-item active" onclick="switchSettings('gym', this)">🏋️ Gym Profile</div>
+        <div class="settings-menu-item" onclick="switchSettings('socials', this)">🔗 Social Links</div>
+        <div class="settings-menu-item" onclick="switchSettings('ai', this)">🤖 AI Engine</div>
+        <div class="settings-menu-item" onclick="switchSettings('meta', this)">📱 Facebook &amp; Instagram</div>
+        <div class="settings-menu-item" onclick="switchSettings('tiktok', this)">🎵 TikTok</div>
+        <div class="settings-menu-item" onclick="switchSettings('youtube', this)">▶️ YouTube</div>
+        <div class="settings-menu-item" onclick="switchSettings('linkedin', this)">💼 LinkedIn</div>
+        <div class="settings-menu-item" onclick="switchSettings('google', this)">🔍 Google My Business</div>
+        <div class="settings-menu-item" onclick="switchSettings('whatsapp', this)">💬 WhatsApp</div>
+        <div class="settings-menu-item" onclick="switchSettings('sms', this)">📲 SMS / Twilio</div>
+        <div class="settings-menu-item" onclick="switchSettings('email', this)">📧 Email Provider</div>
+        <div class="settings-menu-item" onclick="switchSettings('crm', this)">📋 CRM</div>
+        <div class="settings-menu-item" onclick="switchSettings('booking', this)">📅 Booking System</div>
+        <div class="settings-menu-item" onclick="switchSettings('phone', this)">📞 Phone AI</div>
+        <div class="settings-menu-item" onclick="switchSettings('analytics', this)">📊 Analytics &amp; Pixel</div>
+        <div class="settings-menu-item" onclick="switchSettings('reviews', this)">⭐ Reviews</div>
+        <div class="settings-menu-item" onclick="switchSettings('webhooks', this)">🪝 Webhooks</div>
       </div>
       <div class="settings-content">
 
@@ -2053,7 +2054,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
           <h3>AI Engine</h3>
           <p>Connect an AI provider to power your team. You need at least one API key.</p>
 
-          <div class="api-card" onclick="toggleApiCard(this)">
+          <div class="api-card" onclick="toggleApiCard(this, event)">
             <div class="api-card-header">
               <div class="api-card-left">
                 <div class="api-card-icon ai">◊</div>
@@ -2086,7 +2087,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
             </div>
           </div>
 
-          <div class="api-card" onclick="toggleApiCard(this)">
+          <div class="api-card" onclick="toggleApiCard(this, event)">
             <div class="api-card-header">
               <div class="api-card-left">
                 <div class="api-card-icon ai" style="background:#e8f5e9;">🟢</div>
@@ -2648,16 +2649,22 @@ const state = {
   gymProfile: recall('gym_profile', { name: '', desc: '', icp: '', voice: 'friendly' }),
   apiKeys: recall('api_keys', {}),
   configStep: 0,
-  configChoices: [[], null, null],  // step 0 is multi-select (array) · steps 1-2 single-select
+  // FIX-LOCK · all 3 client-selection steps are multi-select arrays
+  // step 0 = programmes · step 1 = size profiles · step 2 = headaches
+  // gym owners pick all that apply on every step (was: only step 0 multi)
+  configChoices: [[], [], []],
   leads: recall('leads', []),
   posts: recall('posts', [])
 };
 
 // ═══════════ NAV ═══════════
-function scrollTo(selector) {
+// note: rename from scrollTo() to avoid Element.prototype.scrollTo shadowing in inline onclick handlers
+function goToSection(selector) {
   const el = document.querySelector(selector);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+// keep old name as alias for any external callers
+window.scrollToSection = goToSection;
 
 function toggleMobileNav() {
   const links = document.querySelector('.nav-links');
@@ -2701,13 +2708,15 @@ function toggleConfigType(step, el, value) {
 }
 
 function configNext() {
+  // FIX-LOCK · all 3 steps are arrays · validate non-empty before advancing
   if (state.configStep < 3) {
     const choice = state.configChoices[state.configStep];
-    const empty = (state.configStep === 0)
-      ? (!Array.isArray(choice) || choice.length === 0)
-      : !choice;
+    const empty = !Array.isArray(choice) || choice.length === 0;
     if (empty) {
-      toast(state.configStep === 0 ? 'Please tap one or more programmes' : 'Please select an option', 'error');
+      const msg = state.configStep === 0 ? 'Tap one or more programmes'
+                : state.configStep === 1 ? 'Tap one or more size profiles'
+                : 'Tap one or more headaches';
+      toast(msg, 'error');
       return;
     }
     state.configStep++;
@@ -2734,36 +2743,55 @@ function updateConfigUI() {
 }
 
 function buildConfigResult() {
-  const [gymTypeRaw, size, problem] = state.configChoices;
+  // FIX-LOCK · all 3 steps are arrays · render as multi · merge teams · widen ROI band
+  const [gymTypeRaw, sizeRaw, problemRaw] = state.configChoices;
   const typeNames = { pt_studio:'PT / Personal Training Studio', crossfit:'CrossFit Box', maa:'Martial Arts Academy', commercial:'Commercial Gym', yoga:'Yoga / Pilates Studio', bootcamp:'Bootcamp / Outdoor Fitness', classes:'Group Classes / Studio', swimming:'Swimming / Aquatics', recovery:'Recovery / Wellness Add-ons' };
   const sizeNames = { solo:'Solo Operator', small:'Small Team (2-5)', medium:'Medium (6-15)', large:'Large (15+)' };
   const problemNames = { leads:'Lead Generation', followup:'Lead Conversion', retention:'Member Retention', content:'Content & Social Media', admin:'Admin Automation', all:'Full Team' };
 
-  // gymType is now an array (multi-select) · render as a labelled list · keep backward-compat with string saves
-  const gymTypes = Array.isArray(gymTypeRaw) ? gymTypeRaw : (gymTypeRaw ? [gymTypeRaw] : []);
-  const gymTypeLabel = gymTypes.length === 0 ? '—'
-                     : gymTypes.length === 1 ? (typeNames[gymTypes[0]] || gymTypes[0])
-                     : gymTypes.map(t => typeNames[t] || t).join(' + ');
-  const gymType = gymTypes[0] || ''; // primary type for downstream legacy lookups
+  // every step is now an array (multi-select) · backward-compat with old single-value saves
+  const toArr = v => Array.isArray(v) ? v : (v ? [v] : []);
+  const gymTypes = toArr(gymTypeRaw);
+  const sizes    = toArr(sizeRaw);
+  const problems = toArr(problemRaw);
+
+  const labelList = (arr, names, joiner) => arr.length === 0 ? '—'
+                  : arr.length === 1 ? (names[arr[0]] || arr[0])
+                  : arr.map(x => names[x] || x).join(joiner);
+
+  const gymTypeLabel = labelList(gymTypes, typeNames, ' + ');
+  const sizeLabel    = labelList(sizes,    sizeNames, ' + ');
+  const problemLabel = labelList(problems, problemNames, ' + ');
 
   const priorityTeam = {
-    leads: ['Omega (routing)', 'Front Desk', 'Marketing Coordinator', 'Content Manager'],
-    followup: ['Omega (routing)', 'Sales Assistant', 'Front Desk', 'Receptionist'],
+    leads:     ['Omega (routing)', 'Front Desk', 'Marketing Coordinator', 'Content Manager'],
+    followup:  ['Omega (routing)', 'Sales Assistant', 'Front Desk', 'Receptionist'],
     retention: ['Omega (routing)', 'Retention Specialist', 'Admin Assistant', 'Receptionist'],
-    content: ['Omega (routing)', 'Content Manager', 'Marketing Coordinator', 'Performance Analyst'],
-    admin: ['Omega (routing)', 'Admin Assistant', 'Receptionist', 'Performance Analyst'],
-    all: ['Omega + All 8 Specialists']
+    content:   ['Omega (routing)', 'Content Manager', 'Marketing Coordinator', 'Performance Analyst'],
+    admin:     ['Omega (routing)', 'Admin Assistant', 'Receptionist', 'Performance Analyst'],
+    all:       ['Omega + All 8 Specialists']
   };
 
   const roiEstimates = {
-    solo: { min: 500, max: 1500 },
-    small: { min: 800, max: 2000 },
+    solo:   { min: 500,  max: 1500 },
+    small:  { min: 800,  max: 2000 },
     medium: { min: 1500, max: 3000 },
-    large: { min: 2000, max: 5000 }
+    large:  { min: 2000, max: 5000 }
   };
 
-  const roi = roiEstimates[size] || roiEstimates.solo;
-  const team = priorityTeam[problem] || priorityTeam.all;
+  // multi-problem: union team members, dedupe, keep Omega first
+  const teamSet = new Set();
+  (problems.length ? problems : ['all']).forEach(p => (priorityTeam[p] || []).forEach(m => teamSet.add(m)));
+  const team = [...teamSet];
+
+  // multi-size: widest band — min of all mins, max of all maxes (covers seasonal / multi-site spread)
+  const roiList = (sizes.length ? sizes : ['solo']).map(s => roiEstimates[s] || roiEstimates.solo);
+  const roi = { min: Math.min(...roiList.map(r => r.min)), max: Math.max(...roiList.map(r => r.max)) };
+
+  // package recommendation: largest size selected wins
+  const sizeOrder = ['solo','small','medium','large'];
+  const largestSize = sizes.length ? sizes.reduce((a,b) => sizeOrder.indexOf(a) > sizeOrder.indexOf(b) ? a : b) : 'solo';
+  const pkg = largestSize === 'solo' ? 'Lite' : largestSize === 'large' ? 'Enterprise' : 'Pro';
 
   document.getElementById('configResult').innerHTML = `
     <h4>Your Custom GymOps Setup</h4>
@@ -2772,12 +2800,12 @@ function buildConfigResult() {
       <span class="config-result-value">${gymTypeLabel}</span>
     </div>
     <div class="config-result-row">
-      <span class="config-result-label">Team Size</span>
-      <span class="config-result-value">${sizeNames[size] || size}</span>
+      <span class="config-result-label">${sizes.length > 1 ? 'Size Profile' : 'Team Size'}</span>
+      <span class="config-result-value">${sizeLabel}</span>
     </div>
     <div class="config-result-row">
-      <span class="config-result-label">Priority Focus</span>
-      <span class="config-result-value">${problemNames[problem] || problem}</span>
+      <span class="config-result-label">${problems.length > 1 ? 'Priority Areas' : 'Priority Focus'}</span>
+      <span class="config-result-value">${problemLabel}</span>
     </div>
     <div class="config-result-row">
       <span class="config-result-label">Key Team Members</span>
@@ -2794,8 +2822,8 @@ function buildConfigResult() {
     <div style="margin-top:20px;padding:16px;background:rgba(34,165,88,0.1);border-radius:8px;border:1px solid rgba(34,165,88,0.2);">
       <div style="font-weight:700;color:#22a558;margin-bottom:4px;">Recommendation</div>
       <div style="font-size:0.88rem;color:rgba(255,255,255,0.8);">
-        Based on your ${gymTypeLabel === '—' ? 'gym' : gymTypeLabel.toLowerCase()} setup with ${sizeNames[size] || 'your team'} focusing on ${(problemNames[problem] || 'growth').toLowerCase()},
-        we recommend starting with the ${size === 'solo' ? 'Lite' : size === 'large' ? 'Enterprise' : 'Pro'} package.
+        Based on your ${gymTypeLabel === '—' ? 'gym' : gymTypeLabel.toLowerCase()} setup at ${sizeLabel === '—' ? 'your scale' : sizeLabel.toLowerCase()} focusing on ${problemLabel === '—' ? 'growth' : problemLabel.toLowerCase()},
+        we recommend starting with the ${pkg} package.
         Try the demo below to see your AI team in action.
       </div>
     </div>
@@ -2830,20 +2858,25 @@ function calcROI() {
 function showApp() {
   document.getElementById('landingWrapper').classList.add('hidden');
   document.getElementById('appWrapper').classList.add('active');
-  window.scroll(0, 0); // scrollTo helper shadowed at line 2642 · scroll() unshadowed alias
+  window.scroll(0, 0); // use scroll() · helper goToSection() exists but window.scrollTo is safer here
 }
 
 function exitApp() {
   document.getElementById('landingWrapper').classList.remove('hidden');
   document.getElementById('appWrapper').classList.remove('active');
-  window.scroll(0, 0); // scrollTo helper shadowed at line 2642 · scroll() unshadowed alias
+  window.scroll(0, 0); // use scroll() · helper goToSection() exists but window.scrollTo is safer here
 }
 
-function switchAppTab(tab) {
+function switchAppTab(tab, el) {
   document.querySelectorAll('.app-tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.app-panel').forEach(p => p.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-  document.getElementById('panel-' + tab).classList.add('active');
+  // resolve target · prefer explicit el · fall back to event.currentTarget (live click) · then query
+  const target = el
+    || (typeof event !== 'undefined' && event && event.currentTarget)
+    || document.querySelector(`.app-tab[onclick*="switchAppTab('${tab}'"]`);
+  if (target && target.classList) target.classList.add('active');
+  const panel = document.getElementById('panel-' + tab);
+  if (panel) panel.classList.add('active');
   if (tab === 'onboarding') obRender();
 }
 
@@ -2896,10 +2929,10 @@ const OB_MODULES = [
       'Hand over admin login to client'
     ],
     providers:[
-      { id:'brevo', name:'Brevo', cost:'free → £12/mo', recommended:true, note:'cheap · 300/day free · best starter' },
-      { id:'mailchimp', name:'Mailchimp', cost:'£11+ /mo (scales hard)', note:'expensive at volume' },
-      { id:'convertkit', name:'Kit / ConvertKit', cost:'free → £25/mo', note:'creator-focused' },
-      { id:'activecampaign', name:'ActiveCampaign', cost:'£15+/mo', note:'automation-heavy' }
+      { id:'brevo', name:'Brevo', cost:'free → $15/mo', recommended:true, note:'cheap · 300/day free · best starter' },
+      { id:'mailchimp', name:'Mailchimp', cost:'$14+ /mo (scales hard)', note:'expensive at volume' },
+      { id:'convertkit', name:'Kit / ConvertKit', cost:'free → $31/mo', note:'creator-focused' },
+      { id:'activecampaign', name:'ActiveCampaign', cost:'$19+/mo', note:'automation-heavy' }
     ]
   },
   { id:'social', phase:1, icon:'📱', title:'Social Media Automation', owner:'ζ Marketing Coordinator',
@@ -2923,9 +2956,9 @@ const OB_MODULES = [
       'Weekly review meeting · adjust based on what worked'
     ],
     providers:[
-      { id:'buffer', name:'Buffer', cost:'free → £6/mo', recommended:true, note:'simplest scheduling' },
-      { id:'later', name:'Later', cost:'£17+/mo', note:'visual calendar · Instagram-first' },
-      { id:'hootsuite', name:'Hootsuite', cost:'£89+/mo', note:'overkill for one gym' },
+      { id:'buffer', name:'Buffer', cost:'free → $7.5/mo', recommended:true, note:'simplest scheduling' },
+      { id:'later', name:'Later', cost:'$21+/mo', note:'visual calendar · Instagram-first' },
+      { id:'hootsuite', name:'Hootsuite', cost:'$111+/mo', note:'overkill for one gym' },
       { id:'gymos-builtin', name:'GymOps Content tab', cost:'included', note:'caption + image gen · still needs scheduler' }
     ]
   },
@@ -2949,7 +2982,7 @@ const OB_MODULES = [
     ],
     providers:[
       { id:'gymos-builtin', name:'GymOps Content tab', cost:'included', recommended:true, note:'already built · uses your API key' },
-      { id:'claude-api', name:'Direct Anthropic key', cost:'~£0.01-0.10/post', note:'cheapest at volume · gym pays' }
+      { id:'claude-api', name:'Direct Anthropic key', cost:'~$0.013-0.10/post', note:'cheapest at volume · gym pays' }
     ]
   },
 
@@ -2977,10 +3010,10 @@ const OB_MODULES = [
       'Monitor first week · tune responses'
     ],
     providers:[
-      { id:'twilio', name:'Twilio', cost:'£0.04-0.10/msg + £20/mo platform', recommended:true, note:'most reliable · per-conversation fees' },
+      { id:'twilio', name:'Twilio', cost:'$0.05-0.10/msg + $25/mo platform', recommended:true, note:'most reliable · per-conversation fees' },
       { id:'360dialog', name:'360Dialog', cost:'€49+/mo + Meta fees', note:'official Meta partner · simpler pricing' },
-      { id:'wati', name:'WATI', cost:'£35+/mo', note:'no-code UI · good for non-devs' },
-      { id:'gupshup', name:'Gupshup', cost:'£0.005-0.05/msg', note:'cheap at scale' }
+      { id:'wati', name:'WATI', cost:'$44+/mo', note:'no-code UI · good for non-devs' },
+      { id:'gupshup', name:'Gupshup', cost:'$0.006-0.05/msg', note:'cheap at scale' }
     ]
   },
   { id:'crm', phase:2, icon:'📋', title:'CRM / Lead Management', owner:'η Admin Assistant',
@@ -3004,10 +3037,10 @@ const OB_MODULES = [
       'Hand over admin access'
     ],
     providers:[
-      { id:'gohighlevel', name:'GoHighLevel', cost:'£82+/mo (SaaS mode)', recommended:true, note:'all-in-one · CRM + SMS + email + funnels' },
-      { id:'hubspot', name:'HubSpot', cost:'free → £41+/mo', note:'free tier works for small gyms' },
-      { id:'airtable', name:'Airtable', cost:'£8+/mo', note:'spreadsheet-feel · cheaper · less automation' },
-      { id:'pipedrive', name:'Pipedrive', cost:'£12+/mo', note:'sales-pipeline focused' }
+      { id:'gohighlevel', name:'GoHighLevel', cost:'$102+/mo (SaaS mode)', recommended:true, note:'all-in-one · CRM + SMS + email + funnels' },
+      { id:'hubspot', name:'HubSpot', cost:'free → $51+/mo', note:'free tier works for small gyms' },
+      { id:'airtable', name:'Airtable', cost:'$10+/mo', note:'spreadsheet-feel · cheaper · less automation' },
+      { id:'pipedrive', name:'Pipedrive', cost:'$15+/mo', note:'sales-pipeline focused' }
     ]
   },
   { id:'booking', phase:2, icon:'📅', title:'Class Booking / Scheduling', owner:'η Admin Assistant',
@@ -3028,11 +3061,11 @@ const OB_MODULES = [
       'Capacity alerts → social media (post when classes near full)'
     ],
     providers:[
-      { id:'existing', name:'Keep existing', cost:'£0', recommended:true, note:'integrate · don\'t migrate · less risk' },
-      { id:'mindbody', name:'Mindbody', cost:'£100+/mo', note:'industry standard · pricey' },
-      { id:'zenplanner', name:'ZenPlanner', cost:'£100+/mo', note:'gym-specific · martial arts strong' },
-      { id:'pushpress', name:'PushPress', cost:'£99+/mo', note:'CrossFit / strength gyms' },
-      { id:'calendly', name:'Calendly', cost:'free → £10/mo', note:'1-on-1 trials only · not classes' }
+      { id:'existing', name:'Keep existing', cost:'$0', recommended:true, note:'integrate · don\'t migrate · less risk' },
+      { id:'mindbody', name:'Mindbody', cost:'$125+/mo', note:'industry standard · pricey' },
+      { id:'zenplanner', name:'ZenPlanner', cost:'$125+/mo', note:'gym-specific · martial arts strong' },
+      { id:'pushpress', name:'PushPress', cost:'$124+/mo', note:'CrossFit / strength gyms' },
+      { id:'calendly', name:'Calendly', cost:'free → $12/mo', note:'1-on-1 trials only · not classes' }
     ]
   },
 
@@ -3059,10 +3092,10 @@ const OB_MODULES = [
       'Set max-cost guardrail (£X/mo cap before fallback to voicemail)'
     ],
     providers:[
-      { id:'vapi', name:'VAPI', cost:'£0.05-0.15/min', recommended:true, note:'most flexible · dev-friendly' },
-      { id:'bland', name:'Bland AI', cost:'£0.07/min', note:'easier setup · less customisation' },
-      { id:'retell', name:'Retell AI', cost:'£0.06/min + £20/mo', note:'good quality · CRM integrations built-in' },
-      { id:'elevenlabs', name:'ElevenLabs Agents', cost:'£0.10+/min', note:'best voice quality · pricier' }
+      { id:'vapi', name:'VAPI', cost:'$0.062-0.15/min', recommended:true, note:'most flexible · dev-friendly' },
+      { id:'bland', name:'Bland AI', cost:'$0.088/min', note:'easier setup · less customisation' },
+      { id:'retell', name:'Retell AI', cost:'$0.075/min + $25/mo', note:'good quality · CRM integrations built-in' },
+      { id:'elevenlabs', name:'ElevenLabs Agents', cost:'$0.125+/min', note:'best voice quality · pricier' }
     ]
   },
   { id:'retention', phase:3, icon:'💪', title:'Retention Automation', owner:'δ Retention Specialist',
@@ -3344,11 +3377,15 @@ function obDownload(name, content, type) {
 // Boot onboarding state on load
 obLoad();
 
-function switchSettings(section) {
+function switchSettings(section, el) {
   document.querySelectorAll('.settings-menu-item').forEach(m => m.classList.remove('active'));
   document.querySelectorAll('.settings-section').forEach(s => s.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-  document.getElementById('settings-' + section).classList.add('active');
+  const target = el
+    || (typeof event !== 'undefined' && event && event.currentTarget)
+    || document.querySelector(`.settings-menu-item[onclick*="switchSettings('${section}'"]`);
+  if (target && target.classList) target.classList.add('active');
+  const sect = document.getElementById('settings-' + section);
+  if (sect) sect.classList.add('active');
   hydrateConnectionFields();
 }
 
@@ -3419,14 +3456,15 @@ function updateConnectionBadges() {
 document.addEventListener('DOMContentLoaded', () => setTimeout(() => { hydrateConnectionFields(); }, 100));
 
 // ═══════════ API CARDS ═══════════
-function toggleApiCard(card) {
-  if (event.target.closest('.api-form') || event.target.closest('.api-btn')) return;
+function toggleApiCard(card, evt) {
+  const e = evt || (typeof event !== 'undefined' && event) || null;
+  if (e && e.target && (e.target.closest('.api-form') || e.target.closest('.api-btn'))) return;
   card.classList.toggle('expanded');
 }
 
 // ═══════════ API KEY MANAGEMENT ═══════════
 function saveApiKey(provider) {
-  event.stopPropagation();
+  if (typeof event !== 'undefined' && event && event.stopPropagation) event.stopPropagation();
   const keys = state.apiKeys;
 
   switch (provider) {
@@ -3485,7 +3523,7 @@ function setStatus(id, connected) {
 
 // ═══════════ API TEST FUNCTIONS ═══════════
 async function testApiKey(provider) {
-  event.stopPropagation();
+  if (typeof event !== 'undefined' && event && event.stopPropagation) event.stopPropagation();
   const keys = state.apiKeys;
   toast('Testing connection...', 'success');
 
@@ -3540,7 +3578,7 @@ async function testApiKey(provider) {
 }
 
 async function testMetaConnection() {
-  event.stopPropagation();
+  if (typeof event !== 'undefined' && event && event.stopPropagation) event.stopPropagation();
   const k = state.apiKeys;
   if (!k.metaToken || !k.metaPageId) { toast('Enter token and Page ID first', 'error'); return; }
   toast('Testing Meta connection...', 'success');
@@ -3559,7 +3597,7 @@ async function testMetaConnection() {
 }
 
 async function testGoogleConnection() {
-  event.stopPropagation();
+  if (typeof event !== 'undefined' && event && event.stopPropagation) event.stopPropagation();
   const k = state.apiKeys;
   if (!k.googleClientId || !k.googleRefresh) { toast('Enter OAuth credentials first', 'error'); return; }
   // Exchange refresh token for access token
@@ -3583,7 +3621,7 @@ async function testGoogleConnection() {
 }
 
 async function testWhatsAppConnection() {
-  event.stopPropagation();
+  if (typeof event !== 'undefined' && event && event.stopPropagation) event.stopPropagation();
   const k = state.apiKeys;
   if (!k.whatsappToken || !k.whatsappPhoneId) { toast('Enter token and Phone ID first', 'error'); return; }
   toast('Testing WhatsApp connection...', 'success');
@@ -3602,7 +3640,7 @@ async function testWhatsAppConnection() {
 }
 
 async function testEmailConnection() {
-  event.stopPropagation();
+  if (typeof event !== 'undefined' && event && event.stopPropagation) event.stopPropagation();
   const k = state.apiKeys;
   if (!k.emailApi) { toast('Enter SendGrid API key first', 'error'); return; }
   toast('Testing email connection...', 'success');
@@ -3743,7 +3781,23 @@ function adaptContent(platform) {
 function copyContent() {
   const content = document.getElementById('contentOutput').value;
   if (!content) { toast('Nothing to copy', 'error'); return; }
-  navigator.clipboard.writeText(content).then(() => toast('Copied to clipboard', 'success'));
+  const ok = () => toast('Copied to clipboard', 'success');
+  const fallback = () => {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = content; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta);
+      ok();
+    } catch (_) {
+      toast('Copy failed · select text manually', 'error');
+    }
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(content).then(ok).catch(fallback);
+  } else {
+    fallback();
+  }
 }
 
 function scheduleContent() {
@@ -3791,7 +3845,11 @@ async function postContent() {
     }
   } else {
     toast('Connect Facebook in Settings to post directly. Content copied to clipboard.', 'error');
-    navigator.clipboard.writeText(content);
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(content).catch(() => {});
+      }
+    } catch (_) {}
   }
 }
 

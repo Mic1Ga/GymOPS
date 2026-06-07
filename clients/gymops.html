@@ -4,8 +4,8 @@
   slug:        gymops
   prime:       29
   master:      sjgant80-hub/gymos (prime 23)
-  built:       2026-05-27T01:18:04.172Z
-  trial:       signed (30 days)
+  built:       2026-06-07T08:38:46.909Z
+  trial:       unsigned · set KONOMI_PRIVATE_KEY to mint
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -14,11 +14,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GymOps · GymOps</title>
 <meta name="description" content="Sovereign AI operations for gyms — your data, your device, your tools.">
-<!-- v17 seed · L6 SKIN · GymOps · ◊·κ=1 -->
+<!-- per-gym build
 <style>
 /* ═══════════════════════════════════════════════════════════════════
    GymOps v3 · Sovereign AI Office for Gyms
-   ◊ seed v17 · L6 SKIN layer
+   per-gym build
    PHI=1.618033988749895 · KAPPA=0.618033988749895
    SPINE=[2,3,5,7,11,13,17] · FOLD=510510
    ═══════════════════════════════════════════════════════════════════ */
@@ -858,24 +858,28 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
   .pilot { padding: 40px 24px; }
 }
 
+/* GymOps · Konomi/KCC badges hidden by default · shim code preserved · re-enable via CSS removal */
+#kcc-badge,#konomi-badge{display:none !important;}
+
 /* per-gym brand override · GymOps */
 :root { --gym-primary: #1a2744; --gym-accent: #d4351c; --gym-text: #1a2744; }
 
 /* gym build: hide Konomi/KCC badges (shims still run for future re-enable) */
 #kcc-badge,#konomi-badge{display:none !important;}
 </style>
+  <script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/audit-shim.js" data-tool="gymops" data-tier="minimal" defer></script>
 </head>
 <body>
 <!-- ═══════════════════════════════════════════════════════════════
      LANDING PAGE — Sales
-     v17 seed · L1 FACE · tag=landing · template=sales
+     per-gym build
      ═══════════════════════════════════════════════════════════════ -->
 <div class="landing-wrapper" id="landingWrapper">
 
 <!-- NAV -->
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
-    <div class="nav-logo">GymOps</div>
+    <div class="nav-logo">Gym<span class="dot">Ops</span></div>
     <div class="nav-links">
       <a href="#problems">The Problem</a>
       <a href="#team">Your Team</a>
@@ -891,15 +895,15 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-badge">◊ GymOps · Sovereign Build · Prime 29</div>
+    <div class="hero-badge">◊ GymOps · Branded Build · Prime 29</div>
     <h1>GymOps Gets<br>a <span class="highlight">Full AI Team</span></h1>
     <p class="hero-sub">
-      Eight specialists and one orchestrator that never call in sick.
+      Eight specialists and one director that never call in sick.
       They answer every enquiry, post your social media, chase every lead,
       and keep members coming back. All for less than one part-time hire.
     </p>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="scrollTo('#configurator')">Build Your Gym Setup →</button>
+      <button class="btn-primary" onclick="goToSection('#configurator')">Build Your Gym Setup →</button>
       <button class="btn-secondary" onclick="showApp()">See It Working</button>
     </div>
     <div class="hero-proof">
@@ -980,79 +984,79 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
     <div class="section-label">The Solution</div>
     <h2 class="section-title">Meet Your AI Team</h2>
     <p class="section-sub">
-      Eight specialists and one orchestrator that runs the show.
+      Eight specialists and one director that runs the show.
       Click any team member to see exactly what they do.
     </p>
     <div class="team-grid">
-      <!-- Ω — Orchestrator — the +1 -->
+      <!-- Director -->
       <div class="team-omega-row">
         <div class="team-card omega active" onclick="showTeamMember(0)">
           <div class="team-avatar">◊</div>
-          <h3>Omega</h3>
-          <div class="team-role">Orchestrator · The Boss</div>
+          <h3>Director</h3>
+          <div class="team-role">Runs the whole AI team</div>
           <p>Routes every request to the right team member. Coordinates the whole operation.</p>
         </div>
       </div>
       <div class="omega-connector">┃ routes to ┃</div>
-      <!-- α–θ Specialists -->
+      <!-- specialist -->
       <div class="team-card" onclick="showTeamMember(1)">
         <div class="team-avatar">🖥️</div>
         <h3>Front Desk</h3>
-        <div class="team-role">α · Lead Capture</div>
+        <div class="team-role">Lead Capture</div>
         <p>Answers every enquiry instantly. Day or night.</p>
       </div>
       <div class="team-card" onclick="showTeamMember(2)">
         <div class="team-avatar">🤝</div>
         <h3>Sales Assistant</h3>
-        <div class="team-role">β · Follow-Up &amp; Close</div>
+        <div class="team-role">Follow-Up &amp; Close</div>
         <p>Chases warm leads so they don't go cold.</p>
       </div>
       <div class="team-card" onclick="showTeamMember(3)">
         <div class="team-avatar">✍️</div>
         <h3>Content Manager</h3>
-        <div class="team-role">γ · Posts &amp; Articles</div>
+        <div class="team-role">Posts &amp; Articles</div>
         <p>Creates gym content that sounds like you.</p>
       </div>
       <div class="team-card" onclick="showTeamMember(4)">
         <div class="team-avatar">💪</div>
         <h3>Retention Specialist</h3>
-        <div class="team-role">δ · Keep Members</div>
+        <div class="team-role">Keep Members</div>
         <p>Spots who's drifting and brings them back.</p>
       </div>
       <div class="team-card" onclick="showTeamMember(5)">
         <div class="team-avatar">📞</div>
         <h3>Receptionist</h3>
-        <div class="team-role">ε · Messages &amp; Replies</div>
+        <div class="team-role">Messages &amp; Replies</div>
         <p>Handles WhatsApp, email, and FAQ replies.</p>
       </div>
       <div class="team-card" onclick="showTeamMember(6)">
         <div class="team-avatar">📱</div>
         <h3>Marketing Coordinator</h3>
-        <div class="team-role">ζ · Social &amp; Campaigns</div>
+        <div class="team-role">Social &amp; Campaigns</div>
         <p>Schedules and posts across all platforms.</p>
       </div>
       <div class="team-card" onclick="showTeamMember(7)">
         <div class="team-avatar">📋</div>
         <h3>Admin Assistant</h3>
-        <div class="team-role">η · Scheduling &amp; Data</div>
+        <div class="team-role">Scheduling &amp; Data</div>
         <p>Handles the boring stuff so you don't have to.</p>
       </div>
       <div class="team-card" onclick="showTeamMember(8)">
         <div class="team-avatar">📊</div>
         <h3>Performance Analyst</h3>
-        <div class="team-role">θ · Insights &amp; Reports</div>
+        <div class="team-role">Insights &amp; Reports</div>
         <p>Tells you what's working and what's not.</p>
       </div>
     </div>
 
     <!-- Team Details -->
-    <!-- Ω Orchestrator -->
+    <!-- Director -->
     <div class="team-detail omega-detail active" id="teamDetail0">
       <div class="team-detail-header">
         <div class="team-detail-avatar">◊</div>
         <div>
-          <h3>Omega · Ω · The Orchestrator</h3>
-          <div class="team-detail-role">Routes, decides, governs — the brain of your AI team</div>
+          <h3>The Director</h3>
+          <div class="team-detail-role">Runs the team · routes work · keeps things moving</div>
         </div>
       </div>
       <ul class="team-tasks">
@@ -1063,15 +1067,15 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
         <li>Maintains context across all conversations and interactions</li>
         <li>Escalates to you only when human judgement is genuinely needed</li>
         <li>Tracks team performance and adjusts routing based on results</li>
-        <li>Always present, always watching — the orchestrator never sleeps</li>
+        <li>Always present, always watching — the director never sleeps</li>
       </ul>
     </div>
-    <!-- α Front Desk -->
+    <!-- specialist -->
     <div class="team-detail" id="teamDetail1">
       <div class="team-detail-header">
         <div class="team-detail-avatar">🖥️</div>
         <div>
-          <h3>Front Desk · α</h3>
+          <h3>Front Desk</h3>
           <div class="team-detail-role">Catches every lead, day or night</div>
         </div>
       </div>
@@ -1090,7 +1094,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       <div class="team-detail-header">
         <div class="team-detail-avatar">🤝</div>
         <div>
-          <h3>Sales Assistant · β</h3>
+          <h3>Sales Assistant</h3>
           <div class="team-detail-role">Turns interest into membership</div>
         </div>
       </div>
@@ -1109,7 +1113,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       <div class="team-detail-header">
         <div class="team-detail-avatar">✍️</div>
         <div>
-          <h3>Content Manager · γ</h3>
+          <h3>Content Manager</h3>
           <div class="team-detail-role">Your gym always has something to say</div>
         </div>
       </div>
@@ -1128,7 +1132,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       <div class="team-detail-header">
         <div class="team-detail-avatar">💪</div>
         <div>
-          <h3>Retention Specialist · δ</h3>
+          <h3>Retention Specialist</h3>
           <div class="team-detail-role">Members stay longer, revenue grows</div>
         </div>
       </div>
@@ -1147,7 +1151,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       <div class="team-detail-header">
         <div class="team-detail-avatar">📞</div>
         <div>
-          <h3>Receptionist · ε</h3>
+          <h3>Receptionist</h3>
           <div class="team-detail-role">Every message gets a fast, helpful reply</div>
         </div>
       </div>
@@ -1166,7 +1170,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       <div class="team-detail-header">
         <div class="team-detail-avatar">📱</div>
         <div>
-          <h3>Marketing Coordinator · ζ</h3>
+          <h3>Marketing Coordinator</h3>
           <div class="team-detail-role">Your social media runs itself</div>
         </div>
       </div>
@@ -1185,7 +1189,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       <div class="team-detail-header">
         <div class="team-detail-avatar">📋</div>
         <div>
-          <h3>Admin Assistant · η</h3>
+          <h3>Admin Assistant</h3>
           <div class="team-detail-role">The boring stuff, handled</div>
         </div>
       </div>
@@ -1204,7 +1208,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       <div class="team-detail-header">
         <div class="team-detail-avatar">📊</div>
         <div>
-          <h3>Performance Analyst · θ</h3>
+          <h3>Performance Analyst</h3>
           <div class="team-detail-role">Decisions based on facts, not feelings</div>
         </div>
       </div>
@@ -1313,21 +1317,21 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       <!-- Step 2: Size -->
       <div class="config-panel" id="cPanel1">
         <h3>How big is your operation?</h3>
-        <p>We'll size the AI team recommendations to match.</p>
+        <p>Tap all that apply · most gyms span more than one size profile across sites and seasons.</p>
         <div class="config-options">
-          <div class="config-option" onclick="selectConfig(1, this, 'solo')">
+          <div class="config-option" onclick="toggleConfigType(1, this, 'solo')">
             <h4>🧑 Just Me</h4>
             <p>Solo operator, every hat is my hat</p>
           </div>
-          <div class="config-option" onclick="selectConfig(1, this, 'small')">
+          <div class="config-option" onclick="toggleConfigType(1, this, 'small')">
             <h4>👥 Small Team (2-5 staff)</h4>
             <p>A few trainers or instructors</p>
           </div>
-          <div class="config-option" onclick="selectConfig(1, this, 'medium')">
+          <div class="config-option" onclick="toggleConfigType(1, this, 'medium')">
             <h4>🏠 Medium (6-15 staff)</h4>
             <p>Established gym with growing team</p>
           </div>
-          <div class="config-option" onclick="selectConfig(1, this, 'large')">
+          <div class="config-option" onclick="toggleConfigType(1, this, 'large')">
             <h4>🏢 Large (15+ staff)</h4>
             <p>Multi-site or large facility</p>
           </div>
@@ -1341,29 +1345,29 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
       <!-- Step 3: Biggest Problem -->
       <div class="config-panel" id="cPanel2">
         <h3>What's your biggest headache right now?</h3>
-        <p>Pick one. We'll prioritise your AI team around it.</p>
+        <p>Tap all that apply. We'll prioritise your AI team around them.</p>
         <div class="config-options">
-          <div class="config-option" onclick="selectConfig(2, this, 'leads')">
+          <div class="config-option" onclick="toggleConfigType(2, this, 'leads')">
             <h4>📥 Getting New Leads</h4>
             <p>I need more people through the door</p>
           </div>
-          <div class="config-option" onclick="selectConfig(2, this, 'followup')">
+          <div class="config-option" onclick="toggleConfigType(2, this, 'followup')">
             <h4>📞 Following Up Leads</h4>
             <p>I get enquiries but don't convert enough</p>
           </div>
-          <div class="config-option" onclick="selectConfig(2, this, 'retention')">
+          <div class="config-option" onclick="toggleConfigType(2, this, 'retention')">
             <h4>🚪 Keeping Members</h4>
             <p>Too many people cancel after a few months</p>
           </div>
-          <div class="config-option" onclick="selectConfig(2, this, 'content')">
+          <div class="config-option" onclick="toggleConfigType(2, this, 'content')">
             <h4>📱 Content &amp; Social Media</h4>
             <p>I never have time to post consistently</p>
           </div>
-          <div class="config-option" onclick="selectConfig(2, this, 'admin')">
+          <div class="config-option" onclick="toggleConfigType(2, this, 'admin')">
             <h4>📋 Admin Overload</h4>
             <p>I spend more time on admin than training</p>
           </div>
-          <div class="config-option" onclick="selectConfig(2, this, 'all')">
+          <div class="config-option" onclick="toggleConfigType(2, this, 'all')">
             <h4>🔥 All of the Above</h4>
             <p>Honestly, everything needs help</p>
           </div>
@@ -1452,7 +1456,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
           <li>12 months of updates</li>
           <li>Community support</li>
         </ul>
-        <button class="pricing-btn pricing-btn-outline" onclick="scrollTo('#pilot')">Start Pilot →</button>
+        <button class="pricing-btn pricing-btn-outline" onclick="goToSection('#pilot')">Start Pilot →</button>
       </div>
 
       <!-- PRO -->
@@ -1471,7 +1475,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
           <li>Priority email support (24hr)</li>
           <li>Quarterly strategy review</li>
         </ul>
-        <button class="pricing-btn pricing-btn-primary" onclick="scrollTo('#pilot')">Start Pilot →</button>
+        <button class="pricing-btn pricing-btn-primary" onclick="goToSection('#pilot')">Start Pilot →</button>
       </div>
 
       <!-- ENTERPRISE -->
@@ -1489,7 +1493,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
           <li>SLA with 4-hour response</li>
           <li>On-site or video training</li>
         </ul>
-        <button class="pricing-btn pricing-btn-outline" onclick="scrollTo('#pilot')">Talk to Us →</button>
+        <button class="pricing-btn pricing-btn-outline" onclick="goToSection('#pilot')">Talk to Us →</button>
       </div>
 
       <!-- MANAGED -->
@@ -1520,7 +1524,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
           <li>Dedicated success manager</li>
           <li>Weekly performance reports</li>
         </ul>
-        <button class="pricing-btn pricing-btn-primary" onclick="scrollTo('#pilot')">Start Pilot →</button>
+        <button class="pricing-btn pricing-btn-primary" onclick="goToSection('#pilot')">Start Pilot →</button>
       </div>
 
     </div>
@@ -1644,7 +1648,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
     <a href="mailto:hello@ai-nativesolutions.com">Contact</a>
   </div>
   <div class="footer-copy">GymOps by AI Native Solutions · ai-nativesolutions.com</div>
-  <div class="footer-seed">◊·κ=1 · 8+1 MACCubeFACE · Ω⊃{α,β,γ,δ,ε,ζ,η,θ} · Ψ=0.59 · seed v17 · sovereign</div>
+  <div class="footer-seed">© 2026 GymOps · all rights reserved</div>
 </footer>
 
 </div><!-- /landing-wrapper -->
@@ -1652,23 +1656,23 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
 
 <!-- ═══════════════════════════════════════════════════════════════
      APP — Working Demo + Real Tool
-     v17 seed · L1 FACE · tag=app · template=dashboard
-     L2 SWARM · 8+1 MACCubeFACE
-     L3 CASCADE · T0 Echo → T3 API (Claude→ChatGPT→Gemini→DeepSeek)
-     L5 PERSIST · localStorage namespace: fall_gymos_
+     per-gym build
+     AI team · team coordination
+     T0 Echo → T3 API (Claude→ChatGPT→Gemini→DeepSeek)
+     localStorage namespace: fall_gymos_
      ═══════════════════════════════════════════════════════════════ -->
 <div class="app-wrapper" id="appWrapper">
 
 <!-- APP NAV -->
 <nav class="app-nav">
-  <div class="app-nav-logo">GymOps</div>
+  <div class="app-nav-logo">Gym<span class="dot">Ops</span></div>
   <div class="app-tabs">
-    <div class="app-tab active" onclick="switchAppTab('dashboard')"><span class="app-tab-icon">📊</span> Dashboard</div>
-    <div class="app-tab" onclick="switchAppTab('content')"><span class="app-tab-icon">✍️</span> Content</div>
-    <div class="app-tab" onclick="switchAppTab('leads')"><span class="app-tab-icon">📥</span> Leads</div>
-    <div class="app-tab" onclick="switchAppTab('schedule')"><span class="app-tab-icon">📅</span> Schedule</div>
-    <div class="app-tab" onclick="switchAppTab('onboarding')"><span class="app-tab-icon">🚀</span> Onboarding</div>
-    <div class="app-tab" onclick="switchAppTab('settings')"><span class="app-tab-icon">⚙️</span> Settings</div>
+    <div class="app-tab active" onclick="switchAppTab('dashboard', this)"><span class="app-tab-icon">📊</span> Dashboard</div>
+    <div class="app-tab" onclick="switchAppTab('content', this)"><span class="app-tab-icon">✍️</span> Content</div>
+    <div class="app-tab" onclick="switchAppTab('leads', this)"><span class="app-tab-icon">📥</span> Leads</div>
+    <div class="app-tab" onclick="switchAppTab('schedule', this)"><span class="app-tab-icon">📅</span> Schedule</div>
+    <div class="app-tab" onclick="switchAppTab('onboarding', this)"><span class="app-tab-icon">🚀</span> Onboarding</div>
+    <div class="app-tab" onclick="switchAppTab('settings', this)"><span class="app-tab-icon">⚙️</span> Settings</div>
   </div>
   <button class="app-exit" onclick="exitApp()">← Back to Site</button>
 </nav>
@@ -2009,23 +2013,23 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
     <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:20px;">Settings</h2>
     <div class="settings-grid">
       <div class="settings-menu">
-        <div class="settings-menu-item active" onclick="switchSettings('gym')">🏋️ Gym Profile</div>
-        <div class="settings-menu-item" onclick="switchSettings('socials')">🔗 Social Links</div>
-        <div class="settings-menu-item" onclick="switchSettings('ai')">🤖 AI Engine</div>
-        <div class="settings-menu-item" onclick="switchSettings('meta')">📱 Facebook &amp; Instagram</div>
-        <div class="settings-menu-item" onclick="switchSettings('tiktok')">🎵 TikTok</div>
-        <div class="settings-menu-item" onclick="switchSettings('youtube')">▶️ YouTube</div>
-        <div class="settings-menu-item" onclick="switchSettings('linkedin')">💼 LinkedIn</div>
-        <div class="settings-menu-item" onclick="switchSettings('google')">🔍 Google My Business</div>
-        <div class="settings-menu-item" onclick="switchSettings('whatsapp')">💬 WhatsApp</div>
-        <div class="settings-menu-item" onclick="switchSettings('sms')">📲 SMS / Twilio</div>
-        <div class="settings-menu-item" onclick="switchSettings('email')">📧 Email Provider</div>
-        <div class="settings-menu-item" onclick="switchSettings('crm')">📋 CRM</div>
-        <div class="settings-menu-item" onclick="switchSettings('booking')">📅 Booking System</div>
-        <div class="settings-menu-item" onclick="switchSettings('phone')">📞 Phone AI</div>
-        <div class="settings-menu-item" onclick="switchSettings('analytics')">📊 Analytics &amp; Pixel</div>
-        <div class="settings-menu-item" onclick="switchSettings('reviews')">⭐ Reviews</div>
-        <div class="settings-menu-item" onclick="switchSettings('webhooks')">🪝 Webhooks</div>
+        <div class="settings-menu-item active" onclick="switchSettings('gym', this)">🏋️ Gym Profile</div>
+        <div class="settings-menu-item" onclick="switchSettings('socials', this)">🔗 Social Links</div>
+        <div class="settings-menu-item" onclick="switchSettings('ai', this)">🤖 AI Engine</div>
+        <div class="settings-menu-item" onclick="switchSettings('meta', this)">📱 Facebook &amp; Instagram</div>
+        <div class="settings-menu-item" onclick="switchSettings('tiktok', this)">🎵 TikTok</div>
+        <div class="settings-menu-item" onclick="switchSettings('youtube', this)">▶️ YouTube</div>
+        <div class="settings-menu-item" onclick="switchSettings('linkedin', this)">💼 LinkedIn</div>
+        <div class="settings-menu-item" onclick="switchSettings('google', this)">🔍 Google My Business</div>
+        <div class="settings-menu-item" onclick="switchSettings('whatsapp', this)">💬 WhatsApp</div>
+        <div class="settings-menu-item" onclick="switchSettings('sms', this)">📲 SMS / Twilio</div>
+        <div class="settings-menu-item" onclick="switchSettings('email', this)">📧 Email Provider</div>
+        <div class="settings-menu-item" onclick="switchSettings('crm', this)">📋 CRM</div>
+        <div class="settings-menu-item" onclick="switchSettings('booking', this)">📅 Booking System</div>
+        <div class="settings-menu-item" onclick="switchSettings('phone', this)">📞 Phone AI</div>
+        <div class="settings-menu-item" onclick="switchSettings('analytics', this)">📊 Analytics &amp; Pixel</div>
+        <div class="settings-menu-item" onclick="switchSettings('reviews', this)">⭐ Reviews</div>
+        <div class="settings-menu-item" onclick="switchSettings('webhooks', this)">🪝 Webhooks</div>
       </div>
       <div class="settings-content">
 
@@ -2065,7 +2069,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
           <h3>AI Engine</h3>
           <p>Connect an AI provider to power your team. You need at least one API key.</p>
 
-          <div class="api-card" onclick="toggleApiCard(this)">
+          <div class="api-card" onclick="toggleApiCard(this, event)">
             <div class="api-card-header">
               <div class="api-card-left">
                 <div class="api-card-icon ai">◊</div>
@@ -2098,7 +2102,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
             </div>
           </div>
 
-          <div class="api-card" onclick="toggleApiCard(this)">
+          <div class="api-card" onclick="toggleApiCard(this, event)">
             <div class="api-card-header">
               <div class="api-card-left">
                 <div class="api-card-icon ai" style="background:#e8f5e9;">🟢</div>
@@ -2565,24 +2569,24 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 800; }
 
 <!-- ═══════════════════════════════════════════════════════════════
      JAVASCRIPT
-     v17 seed · L2 SWARM · L3 CASCADE · L4 BLOOM · L5 PERSIST · L7 ASS
+     per-gym build
      ═══════════════════════════════════════════════════════════════ -->
 <script>
 /* ═══════════════════════════════════════════════════════════════════
    GymOps v3 · Sovereign AI Office for Gyms & Academies
    ═══════════════════════════════════════════════════════════════════
-   ARCHITECTURE (v17 seed — code comments only, never shown to users)
+   ARCHITECTURE (per-gym build
 
-   L1 FACE   — Landing page (sales), App dashboard (tool)
-   L2 SWARM  — 8+1 MACCubeFACE agents · Ω⊃{α,β,γ,δ,ε,ζ,η,θ}:
+    — Landing page (sales), App dashboard (tool)
+   AI team  — team coordination agents · director + 8 specialists:
                 Ω Orchestrator (routes, decides, governs — NOT OPTIONAL — visible as team lead)
                 α Front Desk    · β Sales Assistant   · γ Content Manager  · δ Retention Specialist
                 ε Receptionist  · ζ Marketing Coord   · η Admin Assistant  · θ Performance Analyst
-   L3 CASCADE — T0 Echo (offline demo) → T3 API (Claude → ChatGPT → Gemini → DeepSeek)
-   L4 BLOOM  — B(Q)=[r0..r6] decomposition for query routing
-   L5 PERSIST — localStorage namespace: fall_gymos_
-   L6 SKIN   — Inter font, navy/orange palette, warm/professional
-   L7 ASS    — Lifecycle: ●→〜→┃→♡→△→◐→◯
+   — T0 Echo (offline demo) → T3 API (Claude → ChatGPT → Gemini → DeepSeek)
+   — B(Q)=[r0..r6] decomposition for query routing
+   — localStorage namespace: fall_gymos_
+    — Inter font, navy/orange palette, warm/professional
+     — Lifecycle: ●→〜→┃→♡→△→◐→◯
 
    Konomi constants:
    PHI   = 1.618033988749895
@@ -2599,9 +2603,9 @@ const SPINE = [2, 3, 5, 7, 11, 13, 17];
 const FOLD  = 510510;
 const ARCHETYPE = { o1:'Ω', s1:'α', s2:'β', s3:'γ', s4:'δ', m1:'ε', m2:'ζ', m3:'η', m4:'θ' };
 
-// ═══════════ L2 SWARM — 8+1 MACCubeFACE ═══════════
+// ═══════════ AI team — team coordination ═══════════
 const AGENTS = {
-  omega: { id:'Ω', name:'Omega',                icon:'◊',  role:'orchestrator', archetype:'Ω' },
+  omega: { id:'Ω', name:'Omega',                icon:'◊',  role:'director', archetype:'Ω' },
   alpha: { id:'α', name:'Front Desk',           icon:'🖥️', role:'detect',       archetype:'α' },
   beta:  { id:'β', name:'Sales Assistant',       icon:'🤝', role:'compose',      archetype:'β' },
   gamma: { id:'γ', name:'Content Manager',       icon:'✍️', role:'sequence',     archetype:'γ' },
@@ -2612,7 +2616,7 @@ const AGENTS = {
   theta: { id:'θ', name:'Performance Analyst',   icon:'📊', role:'target',       archetype:'θ' }
 };
 
-// ═══════════ L4 BLOOM — B(Q)=[r0..r6] ═══════════
+// ═══════════ — B(Q)=[r0..r6] ═══════════
 // R0=ground R1=signal R2=gate R3=heart R4=voice R5=mirror R6=watcher
 function bloomDecompose(query) {
   const q = (query || '').toLowerCase();
@@ -2642,7 +2646,7 @@ function bloomRoute(rings) {
     0: 'alpha',   // R0 ground → α Front Desk (research/detect)
     1: 'alpha',   // R1 signal → α Front Desk
     2: 'delta',   // R2 gate → δ Retention (analyse/score)
-    3: 'omega',   // R3 heart → Ω (orchestrator handles brand/values)
+    3: 'omega',   // R3 heart → Ω (director handles brand/values)
     4: 'gamma',   // R4 voice → γ Content Manager (compose)
     5: 'eta',     // R5 mirror → η Admin (optimise)
     6: 'theta'    // R6 watcher → θ Performance Analyst
@@ -2660,16 +2664,22 @@ const state = {
   gymProfile: recall('gym_profile', { name: '', desc: '', icp: '', voice: 'friendly' }),
   apiKeys: recall('api_keys', {}),
   configStep: 0,
-  configChoices: [[], null, null],  // step 0 is multi-select (array) · steps 1-2 single-select
+  // FIX-LOCK · all 3 client-selection steps are multi-select arrays
+  // step 0 = programmes · step 1 = size profiles · step 2 = headaches
+  // gym owners pick all that apply on every step (was: only step 0 multi)
+  configChoices: [[], [], []],
   leads: recall('leads', []),
   posts: recall('posts', [])
 };
 
 // ═══════════ NAV ═══════════
-function scrollTo(selector) {
+// note: rename from scrollTo() to avoid Element.prototype.scrollTo shadowing in inline onclick handlers
+function goToSection(selector) {
   const el = document.querySelector(selector);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+// keep old name as alias for any external callers
+window.scrollToSection = goToSection;
 
 function toggleMobileNav() {
   const links = document.querySelector('.nav-links');
@@ -2713,13 +2723,15 @@ function toggleConfigType(step, el, value) {
 }
 
 function configNext() {
+  // FIX-LOCK · all 3 steps are arrays · validate non-empty before advancing
   if (state.configStep < 3) {
     const choice = state.configChoices[state.configStep];
-    const empty = (state.configStep === 0)
-      ? (!Array.isArray(choice) || choice.length === 0)
-      : !choice;
+    const empty = !Array.isArray(choice) || choice.length === 0;
     if (empty) {
-      toast(state.configStep === 0 ? 'Please tap one or more programmes' : 'Please select an option', 'error');
+      const msg = state.configStep === 0 ? 'Tap one or more programmes'
+                : state.configStep === 1 ? 'Tap one or more size profiles'
+                : 'Tap one or more headaches';
+      toast(msg, 'error');
       return;
     }
     state.configStep++;
@@ -2746,36 +2758,55 @@ function updateConfigUI() {
 }
 
 function buildConfigResult() {
-  const [gymTypeRaw, size, problem] = state.configChoices;
+  // FIX-LOCK · all 3 steps are arrays · render as multi · merge teams · widen ROI band
+  const [gymTypeRaw, sizeRaw, problemRaw] = state.configChoices;
   const typeNames = { pt_studio:'PT / Personal Training Studio', crossfit:'CrossFit Box', maa:'Martial Arts Academy', commercial:'Commercial Gym', yoga:'Yoga / Pilates Studio', bootcamp:'Bootcamp / Outdoor Fitness', classes:'Group Classes / Studio', swimming:'Swimming / Aquatics', recovery:'Recovery / Wellness Add-ons' };
   const sizeNames = { solo:'Solo Operator', small:'Small Team (2-5)', medium:'Medium (6-15)', large:'Large (15+)' };
   const problemNames = { leads:'Lead Generation', followup:'Lead Conversion', retention:'Member Retention', content:'Content & Social Media', admin:'Admin Automation', all:'Full Team' };
 
-  // gymType is now an array (multi-select) · render as a labelled list · keep backward-compat with string saves
-  const gymTypes = Array.isArray(gymTypeRaw) ? gymTypeRaw : (gymTypeRaw ? [gymTypeRaw] : []);
-  const gymTypeLabel = gymTypes.length === 0 ? '—'
-                     : gymTypes.length === 1 ? (typeNames[gymTypes[0]] || gymTypes[0])
-                     : gymTypes.map(t => typeNames[t] || t).join(' + ');
-  const gymType = gymTypes[0] || ''; // primary type for downstream legacy lookups
+  // every step is now an array (multi-select) · backward-compat with old single-value saves
+  const toArr = v => Array.isArray(v) ? v : (v ? [v] : []);
+  const gymTypes = toArr(gymTypeRaw);
+  const sizes    = toArr(sizeRaw);
+  const problems = toArr(problemRaw);
+
+  const labelList = (arr, names, joiner) => arr.length === 0 ? '—'
+                  : arr.length === 1 ? (names[arr[0]] || arr[0])
+                  : arr.map(x => names[x] || x).join(joiner);
+
+  const gymTypeLabel = labelList(gymTypes, typeNames, ' + ');
+  const sizeLabel    = labelList(sizes,    sizeNames, ' + ');
+  const problemLabel = labelList(problems, problemNames, ' + ');
 
   const priorityTeam = {
-    leads: ['Omega (routing)', 'Front Desk', 'Marketing Coordinator', 'Content Manager'],
-    followup: ['Omega (routing)', 'Sales Assistant', 'Front Desk', 'Receptionist'],
+    leads:     ['Omega (routing)', 'Front Desk', 'Marketing Coordinator', 'Content Manager'],
+    followup:  ['Omega (routing)', 'Sales Assistant', 'Front Desk', 'Receptionist'],
     retention: ['Omega (routing)', 'Retention Specialist', 'Admin Assistant', 'Receptionist'],
-    content: ['Omega (routing)', 'Content Manager', 'Marketing Coordinator', 'Performance Analyst'],
-    admin: ['Omega (routing)', 'Admin Assistant', 'Receptionist', 'Performance Analyst'],
-    all: ['Omega + All 8 Specialists']
+    content:   ['Omega (routing)', 'Content Manager', 'Marketing Coordinator', 'Performance Analyst'],
+    admin:     ['Omega (routing)', 'Admin Assistant', 'Receptionist', 'Performance Analyst'],
+    all:       ['Omega + All 8 Specialists']
   };
 
   const roiEstimates = {
-    solo: { min: 500, max: 1500 },
-    small: { min: 800, max: 2000 },
+    solo:   { min: 500,  max: 1500 },
+    small:  { min: 800,  max: 2000 },
     medium: { min: 1500, max: 3000 },
-    large: { min: 2000, max: 5000 }
+    large:  { min: 2000, max: 5000 }
   };
 
-  const roi = roiEstimates[size] || roiEstimates.solo;
-  const team = priorityTeam[problem] || priorityTeam.all;
+  // multi-problem: union team members, dedupe, keep Omega first
+  const teamSet = new Set();
+  (problems.length ? problems : ['all']).forEach(p => (priorityTeam[p] || []).forEach(m => teamSet.add(m)));
+  const team = [...teamSet];
+
+  // multi-size: widest band — min of all mins, max of all maxes (covers seasonal / multi-site spread)
+  const roiList = (sizes.length ? sizes : ['solo']).map(s => roiEstimates[s] || roiEstimates.solo);
+  const roi = { min: Math.min(...roiList.map(r => r.min)), max: Math.max(...roiList.map(r => r.max)) };
+
+  // package recommendation: largest size selected wins
+  const sizeOrder = ['solo','small','medium','large'];
+  const largestSize = sizes.length ? sizes.reduce((a,b) => sizeOrder.indexOf(a) > sizeOrder.indexOf(b) ? a : b) : 'solo';
+  const pkg = largestSize === 'solo' ? 'Lite' : largestSize === 'large' ? 'Enterprise' : 'Pro';
 
   document.getElementById('configResult').innerHTML = `
     <h4>Your Custom GymOps Setup</h4>
@@ -2784,12 +2815,12 @@ function buildConfigResult() {
       <span class="config-result-value">${gymTypeLabel}</span>
     </div>
     <div class="config-result-row">
-      <span class="config-result-label">Team Size</span>
-      <span class="config-result-value">${sizeNames[size] || size}</span>
+      <span class="config-result-label">${sizes.length > 1 ? 'Size Profile' : 'Team Size'}</span>
+      <span class="config-result-value">${sizeLabel}</span>
     </div>
     <div class="config-result-row">
-      <span class="config-result-label">Priority Focus</span>
-      <span class="config-result-value">${problemNames[problem] || problem}</span>
+      <span class="config-result-label">${problems.length > 1 ? 'Priority Areas' : 'Priority Focus'}</span>
+      <span class="config-result-value">${problemLabel}</span>
     </div>
     <div class="config-result-row">
       <span class="config-result-label">Key Team Members</span>
@@ -2806,8 +2837,8 @@ function buildConfigResult() {
     <div style="margin-top:20px;padding:16px;background:rgba(34,165,88,0.1);border-radius:8px;border:1px solid rgba(34,165,88,0.2);">
       <div style="font-weight:700;color:#22a558;margin-bottom:4px;">Recommendation</div>
       <div style="font-size:0.88rem;color:rgba(255,255,255,0.8);">
-        Based on your ${gymTypeLabel === '—' ? 'gym' : gymTypeLabel.toLowerCase()} setup with ${sizeNames[size] || 'your team'} focusing on ${(problemNames[problem] || 'growth').toLowerCase()},
-        we recommend starting with the ${size === 'solo' ? 'Lite' : size === 'large' ? 'Enterprise' : 'Pro'} package.
+        Based on your ${gymTypeLabel === '—' ? 'gym' : gymTypeLabel.toLowerCase()} setup at ${sizeLabel === '—' ? 'your scale' : sizeLabel.toLowerCase()} focusing on ${problemLabel === '—' ? 'growth' : problemLabel.toLowerCase()},
+        we recommend starting with the ${pkg} package.
         Try the demo below to see your AI team in action.
       </div>
     </div>
@@ -2842,20 +2873,25 @@ function calcROI() {
 function showApp() {
   document.getElementById('landingWrapper').classList.add('hidden');
   document.getElementById('appWrapper').classList.add('active');
-  window.scroll(0, 0); // scrollTo helper shadowed · scroll() unshadowed alias
+  window.scroll(0, 0); // use scroll() · helper goToSection() exists but window.scrollTo is safer here
 }
 
 function exitApp() {
   document.getElementById('landingWrapper').classList.remove('hidden');
   document.getElementById('appWrapper').classList.remove('active');
-  window.scroll(0, 0); // scrollTo helper shadowed · scroll() unshadowed alias
+  window.scroll(0, 0); // use scroll() · helper goToSection() exists but window.scrollTo is safer here
 }
 
-function switchAppTab(tab) {
+function switchAppTab(tab, el) {
   document.querySelectorAll('.app-tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.app-panel').forEach(p => p.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-  document.getElementById('panel-' + tab).classList.add('active');
+  // resolve target · prefer explicit el · fall back to event.currentTarget (live click) · then query
+  const target = el
+    || (typeof event !== 'undefined' && event && event.currentTarget)
+    || document.querySelector(`.app-tab[onclick*="switchAppTab('${tab}'"]`);
+  if (target && target.classList) target.classList.add('active');
+  const panel = document.getElementById('panel-' + tab);
+  if (panel) panel.classList.add('active');
   if (tab === 'onboarding') obRender();
 }
 
@@ -2908,10 +2944,10 @@ const OB_MODULES = [
       'Hand over admin login to client'
     ],
     providers:[
-      { id:'brevo', name:'Brevo', cost:'free → £12/mo', recommended:true, note:'cheap · 300/day free · best starter' },
-      { id:'mailchimp', name:'Mailchimp', cost:'£11+ /mo (scales hard)', note:'expensive at volume' },
-      { id:'convertkit', name:'Kit / ConvertKit', cost:'free → £25/mo', note:'creator-focused' },
-      { id:'activecampaign', name:'ActiveCampaign', cost:'£15+/mo', note:'automation-heavy' }
+      { id:'brevo', name:'Brevo', cost:'free → $15/mo', recommended:true, note:'cheap · 300/day free · best starter' },
+      { id:'mailchimp', name:'Mailchimp', cost:'$14+ /mo (scales hard)', note:'expensive at volume' },
+      { id:'convertkit', name:'Kit / ConvertKit', cost:'free → $31/mo', note:'creator-focused' },
+      { id:'activecampaign', name:'ActiveCampaign', cost:'$19+/mo', note:'automation-heavy' }
     ]
   },
   { id:'social', phase:1, icon:'📱', title:'Social Media Automation', owner:'ζ Marketing Coordinator',
@@ -2935,9 +2971,9 @@ const OB_MODULES = [
       'Weekly review meeting · adjust based on what worked'
     ],
     providers:[
-      { id:'buffer', name:'Buffer', cost:'free → £6/mo', recommended:true, note:'simplest scheduling' },
-      { id:'later', name:'Later', cost:'£17+/mo', note:'visual calendar · Instagram-first' },
-      { id:'hootsuite', name:'Hootsuite', cost:'£89+/mo', note:'overkill for one gym' },
+      { id:'buffer', name:'Buffer', cost:'free → $7.5/mo', recommended:true, note:'simplest scheduling' },
+      { id:'later', name:'Later', cost:'$21+/mo', note:'visual calendar · Instagram-first' },
+      { id:'hootsuite', name:'Hootsuite', cost:'$111+/mo', note:'overkill for one gym' },
       { id:'gymos-builtin', name:'GymOps Content tab', cost:'included', note:'caption + image gen · still needs scheduler' }
     ]
   },
@@ -2961,7 +2997,7 @@ const OB_MODULES = [
     ],
     providers:[
       { id:'gymos-builtin', name:'GymOps Content tab', cost:'included', recommended:true, note:'already built · uses your API key' },
-      { id:'claude-api', name:'Direct Anthropic key', cost:'~£0.01-0.10/post', note:'cheapest at volume · gym pays' }
+      { id:'claude-api', name:'Direct Anthropic key', cost:'~$0.013-0.10/post', note:'cheapest at volume · gym pays' }
     ]
   },
 
@@ -2989,10 +3025,10 @@ const OB_MODULES = [
       'Monitor first week · tune responses'
     ],
     providers:[
-      { id:'twilio', name:'Twilio', cost:'£0.04-0.10/msg + £20/mo platform', recommended:true, note:'most reliable · per-conversation fees' },
+      { id:'twilio', name:'Twilio', cost:'$0.05-0.10/msg + $25/mo platform', recommended:true, note:'most reliable · per-conversation fees' },
       { id:'360dialog', name:'360Dialog', cost:'€49+/mo + Meta fees', note:'official Meta partner · simpler pricing' },
-      { id:'wati', name:'WATI', cost:'£35+/mo', note:'no-code UI · good for non-devs' },
-      { id:'gupshup', name:'Gupshup', cost:'£0.005-0.05/msg', note:'cheap at scale' }
+      { id:'wati', name:'WATI', cost:'$44+/mo', note:'no-code UI · good for non-devs' },
+      { id:'gupshup', name:'Gupshup', cost:'$0.006-0.05/msg', note:'cheap at scale' }
     ]
   },
   { id:'crm', phase:2, icon:'📋', title:'CRM / Lead Management', owner:'η Admin Assistant',
@@ -3016,10 +3052,10 @@ const OB_MODULES = [
       'Hand over admin access'
     ],
     providers:[
-      { id:'gohighlevel', name:'GoHighLevel', cost:'£82+/mo (SaaS mode)', recommended:true, note:'all-in-one · CRM + SMS + email + funnels' },
-      { id:'hubspot', name:'HubSpot', cost:'free → £41+/mo', note:'free tier works for small gyms' },
-      { id:'airtable', name:'Airtable', cost:'£8+/mo', note:'spreadsheet-feel · cheaper · less automation' },
-      { id:'pipedrive', name:'Pipedrive', cost:'£12+/mo', note:'sales-pipeline focused' }
+      { id:'gohighlevel', name:'GoHighLevel', cost:'$102+/mo (SaaS mode)', recommended:true, note:'all-in-one · CRM + SMS + email + funnels' },
+      { id:'hubspot', name:'HubSpot', cost:'free → $51+/mo', note:'free tier works for small gyms' },
+      { id:'airtable', name:'Airtable', cost:'$10+/mo', note:'spreadsheet-feel · cheaper · less automation' },
+      { id:'pipedrive', name:'Pipedrive', cost:'$15+/mo', note:'sales-pipeline focused' }
     ]
   },
   { id:'booking', phase:2, icon:'📅', title:'Class Booking / Scheduling', owner:'η Admin Assistant',
@@ -3040,11 +3076,11 @@ const OB_MODULES = [
       'Capacity alerts → social media (post when classes near full)'
     ],
     providers:[
-      { id:'existing', name:'Keep existing', cost:'£0', recommended:true, note:'integrate · don\'t migrate · less risk' },
-      { id:'mindbody', name:'Mindbody', cost:'£100+/mo', note:'industry standard · pricey' },
-      { id:'zenplanner', name:'ZenPlanner', cost:'£100+/mo', note:'gym-specific · martial arts strong' },
-      { id:'pushpress', name:'PushPress', cost:'£99+/mo', note:'CrossFit / strength gyms' },
-      { id:'calendly', name:'Calendly', cost:'free → £10/mo', note:'1-on-1 trials only · not classes' }
+      { id:'existing', name:'Keep existing', cost:'$0', recommended:true, note:'integrate · don\'t migrate · less risk' },
+      { id:'mindbody', name:'Mindbody', cost:'$125+/mo', note:'industry standard · pricey' },
+      { id:'zenplanner', name:'ZenPlanner', cost:'$125+/mo', note:'gym-specific · martial arts strong' },
+      { id:'pushpress', name:'PushPress', cost:'$124+/mo', note:'CrossFit / strength gyms' },
+      { id:'calendly', name:'Calendly', cost:'free → $12/mo', note:'1-on-1 trials only · not classes' }
     ]
   },
 
@@ -3071,10 +3107,10 @@ const OB_MODULES = [
       'Set max-cost guardrail (£X/mo cap before fallback to voicemail)'
     ],
     providers:[
-      { id:'vapi', name:'VAPI', cost:'£0.05-0.15/min', recommended:true, note:'most flexible · dev-friendly' },
-      { id:'bland', name:'Bland AI', cost:'£0.07/min', note:'easier setup · less customisation' },
-      { id:'retell', name:'Retell AI', cost:'£0.06/min + £20/mo', note:'good quality · CRM integrations built-in' },
-      { id:'elevenlabs', name:'ElevenLabs Agents', cost:'£0.10+/min', note:'best voice quality · pricier' }
+      { id:'vapi', name:'VAPI', cost:'$0.062-0.15/min', recommended:true, note:'most flexible · dev-friendly' },
+      { id:'bland', name:'Bland AI', cost:'$0.088/min', note:'easier setup · less customisation' },
+      { id:'retell', name:'Retell AI', cost:'$0.075/min + $25/mo', note:'good quality · CRM integrations built-in' },
+      { id:'elevenlabs', name:'ElevenLabs Agents', cost:'$0.125+/min', note:'best voice quality · pricier' }
     ]
   },
   { id:'retention', phase:3, icon:'💪', title:'Retention Automation', owner:'δ Retention Specialist',
@@ -3356,11 +3392,15 @@ function obDownload(name, content, type) {
 // Boot onboarding state on load
 obLoad();
 
-function switchSettings(section) {
+function switchSettings(section, el) {
   document.querySelectorAll('.settings-menu-item').forEach(m => m.classList.remove('active'));
   document.querySelectorAll('.settings-section').forEach(s => s.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-  document.getElementById('settings-' + section).classList.add('active');
+  const target = el
+    || (typeof event !== 'undefined' && event && event.currentTarget)
+    || document.querySelector(`.settings-menu-item[onclick*="switchSettings('${section}'"]`);
+  if (target && target.classList) target.classList.add('active');
+  const sect = document.getElementById('settings-' + section);
+  if (sect) sect.classList.add('active');
   hydrateConnectionFields();
 }
 
@@ -3431,14 +3471,15 @@ function updateConnectionBadges() {
 document.addEventListener('DOMContentLoaded', () => setTimeout(() => { hydrateConnectionFields(); }, 100));
 
 // ═══════════ API CARDS ═══════════
-function toggleApiCard(card) {
-  if (event.target.closest('.api-form') || event.target.closest('.api-btn')) return;
+function toggleApiCard(card, evt) {
+  const e = evt || (typeof event !== 'undefined' && event) || null;
+  if (e && e.target && (e.target.closest('.api-form') || e.target.closest('.api-btn'))) return;
   card.classList.toggle('expanded');
 }
 
 // ═══════════ API KEY MANAGEMENT ═══════════
 function saveApiKey(provider) {
-  event.stopPropagation();
+  if (typeof event !== 'undefined' && event && event.stopPropagation) event.stopPropagation();
   const keys = state.apiKeys;
 
   switch (provider) {
@@ -3497,7 +3538,7 @@ function setStatus(id, connected) {
 
 // ═══════════ API TEST FUNCTIONS ═══════════
 async function testApiKey(provider) {
-  event.stopPropagation();
+  if (typeof event !== 'undefined' && event && event.stopPropagation) event.stopPropagation();
   const keys = state.apiKeys;
   toast('Testing connection...', 'success');
 
@@ -3552,7 +3593,7 @@ async function testApiKey(provider) {
 }
 
 async function testMetaConnection() {
-  event.stopPropagation();
+  if (typeof event !== 'undefined' && event && event.stopPropagation) event.stopPropagation();
   const k = state.apiKeys;
   if (!k.metaToken || !k.metaPageId) { toast('Enter token and Page ID first', 'error'); return; }
   toast('Testing Meta connection...', 'success');
@@ -3571,7 +3612,7 @@ async function testMetaConnection() {
 }
 
 async function testGoogleConnection() {
-  event.stopPropagation();
+  if (typeof event !== 'undefined' && event && event.stopPropagation) event.stopPropagation();
   const k = state.apiKeys;
   if (!k.googleClientId || !k.googleRefresh) { toast('Enter OAuth credentials first', 'error'); return; }
   // Exchange refresh token for access token
@@ -3595,7 +3636,7 @@ async function testGoogleConnection() {
 }
 
 async function testWhatsAppConnection() {
-  event.stopPropagation();
+  if (typeof event !== 'undefined' && event && event.stopPropagation) event.stopPropagation();
   const k = state.apiKeys;
   if (!k.whatsappToken || !k.whatsappPhoneId) { toast('Enter token and Phone ID first', 'error'); return; }
   toast('Testing WhatsApp connection...', 'success');
@@ -3614,7 +3655,7 @@ async function testWhatsAppConnection() {
 }
 
 async function testEmailConnection() {
-  event.stopPropagation();
+  if (typeof event !== 'undefined' && event && event.stopPropagation) event.stopPropagation();
   const k = state.apiKeys;
   if (!k.emailApi) { toast('Enter SendGrid API key first', 'error'); return; }
   toast('Testing email connection...', 'success');
@@ -3755,7 +3796,23 @@ function adaptContent(platform) {
 function copyContent() {
   const content = document.getElementById('contentOutput').value;
   if (!content) { toast('Nothing to copy', 'error'); return; }
-  navigator.clipboard.writeText(content).then(() => toast('Copied to clipboard', 'success'));
+  const ok = () => toast('Copied to clipboard', 'success');
+  const fallback = () => {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = content; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta);
+      ok();
+    } catch (_) {
+      toast('Copy failed · select text manually', 'error');
+    }
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(content).then(ok).catch(fallback);
+  } else {
+    fallback();
+  }
 }
 
 function scheduleContent() {
@@ -3803,7 +3860,11 @@ async function postContent() {
     }
   } else {
     toast('Connect Facebook in Settings to post directly. Content copied to clipboard.', 'error');
-    navigator.clipboard.writeText(content);
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(content).catch(() => {});
+      }
+    } catch (_) {}
   }
 }
 
@@ -4051,8 +4112,8 @@ window.addEventListener('scroll', () => {
     name: "GymOps",
     prime: 29,
     layers: 7,
-    built: '2026-05-27',
-    branded_by: 'gymops',
+    built: '2026-06-07',
+    branded_by: 'gymos',
     master_prime: 23
   };
 </script>
@@ -4369,26 +4430,7 @@ window.addEventListener('scroll', () => {
 <!-- /◊·κ KONOMI LICENCE -->
 
 <!-- ◊·κ KCC LEDGER v3 — Konomi Cube Coin + OnlyBrains client (drop-in, no deps) -->
-<!--
-  Ω(KCC) v18 · proof of contribution · not speculation
-    earn by: compute(R0)·signal(R1)·filter(R2)·care(R3)·build(R4)·verify(R5)·govern(R6)
-    spend: you don't · KCC accumulates · revenue finds you
-    ledger: tools themselves · local-first + OnlyBrains REST anchor
-    bloom IS identity · the shape of your contribution IS your address
-
-  OnlyBrains REST client exposed on window.kcc:
-    .reason(problem, strategy?)   → POST /api/reason       · 10 $KONO · 7 strategies
-    .oracle()                     → POST /api/fn/exec ORACLE · 5 $KONO
-    .anchor(type, params)         → POST /api/fn/exec     · varies · BSV chain anchor
-    .mintNft(id, mime, hash, meta)→ POST /api/fn/exec NFT · 100 $KONO
-    .queryTags(q?)                → GET  /api/tags        · 1 $KONO
-    .quote(model, tokens, asset)  → GET  /api/xchg/quote  · free
-    .swap(model, tokens, asset)   → POST /api/xchg/swap   · 0 $KONO (it's the swap)
-    .rates() / .tiers() / .chain() / .wallet() / .syncOnlyBrains() / .fnList()
-
-  Mesh: 4 BroadcastChannels (fall-kcc + kcc-mesh + onlybrains-mesh + ass-os-mesh)
-  Depends on: window.NODE (mesh shim)
--->
+<!-- Director -->
 <script>
 (function kccShim(){
   if (!window.NODE) return;
@@ -4727,6 +4769,110 @@ window.addEventListener('scroll', () => {
   });
   if (window.kccChannels.length > 0) window.kccChannel = window.kccChannels[0];
 
+  // ── Quarterly bloom report (formal cognitive contribution statement) ──
+  function exportBloomReport(opts){
+    opts = opts || {};
+    var quarterStart = opts.since || (function(){
+      var d = new Date(); var q = Math.floor(d.getMonth() / 3);
+      return new Date(d.getFullYear(), q * 3, 1).getTime();
+    })();
+    var quarterEnd = opts.until || Date.now();
+    var qEvents = LEDGER.events.filter(function(e){ return e.t >= quarterStart && e.t <= quarterEnd; });
+    var qBloom = [0,0,0,0,0,0,0];
+    var topActions = {};
+    var anchoredCount = 0;
+    qEvents.forEach(function(ev){
+      qBloom[ev.ring] = (qBloom[ev.ring] || 0) + (ev.weight || 1);
+      topActions[ev.action] = (topActions[ev.action] || 0) + (ev.weight || 1);
+    });
+    (LEDGER.anchors || []).forEach(function(a){ if (a.at >= quarterStart && a.at <= quarterEnd) anchoredCount++; });
+    var totalEvents = qEvents.length;
+    var totalContribution = qBloom.reduce(function(a,x){ return a+x; }, 0);
+    var peakIdx = qBloom.indexOf(Math.max.apply(null, qBloom));
+    var shapeName = totalContribution === 0 ? 'unbloomed' : RINGS[peakIdx].verb;
+    var primesProduct = (function(){
+      var primes = [2,3,5,7,11,13,17];
+      var prod = 1n;
+      for (var i = 0; i < 7; i++) for (var j = 0; j < Math.floor(qBloom[i]); j++) prod *= BigInt(primes[i]);
+      return prod.toString();
+    })();
+    var startDate = new Date(quarterStart).toISOString().slice(0,10);
+    var endDate = new Date(quarterEnd).toISOString().slice(0,10);
+    var topList = Object.entries(topActions).sort(function(a,b){ return b[1]-a[1]; }).slice(0, 10);
+
+    var format = opts.format || 'markdown';
+    if (format === 'json') {
+      var payload = {
+        v: 1, type: 'bloom_quarterly_report',
+        tool: NODE.id, tool_name: NODE.name, tool_prime: NODE.prime,
+        period: { from: startDate, to: endDate, ms: quarterEnd - quarterStart },
+        bloom_vec: qBloom, bloom_sum: totalContribution, bloom_shape: shapeName,
+        peak_ring: RINGS[peakIdx],
+        prime_product: primesProduct,
+        events_total: totalEvents,
+        anchors_total: anchoredCount,
+        top_actions: topList,
+        kcc_key: KEY,
+        onlybrains_balance: LEDGER.ob_balance,
+        issued_at: new Date().toISOString()
+      };
+      return payload;
+    }
+
+    // Markdown report
+    var lines = [];
+    lines.push('# ◊·κ Quarterly Bloom Report');
+    lines.push('');
+    lines.push('**Tool:** ' + NODE.name + ' · prime ' + NODE.prime + ' · `' + NODE.id + '`');
+    lines.push('**Period:** ' + startDate + ' → ' + endDate);
+    lines.push('**Issued:** ' + new Date().toISOString());
+    lines.push('');
+    lines.push('---');
+    lines.push('');
+    lines.push('## Headline');
+    lines.push('');
+    lines.push('- **Total events:** ' + totalEvents);
+    lines.push('- **Contribution weight:** ' + totalContribution);
+    lines.push('- **Bloom shape:** ' + shapeName + ' (peak in ' + RINGS[peakIdx].v + ' · ' + RINGS[peakIdx].anat + ')');
+    lines.push('- **BSV anchors this period:** ' + anchoredCount);
+    if (LEDGER.ob_balance) {
+      lines.push('- **$KONO balance:** ' + LEDGER.ob_balance.balance);
+    }
+    lines.push('');
+    lines.push('## Bloom signature');
+    lines.push('');
+    lines.push('```');
+    lines.push('Ring   Anatomy   Earning verb   Count   %');
+    lines.push('────   ───────   ────────────   ─────   ────');
+    RINGS.forEach(function(r, i){
+      var n = qBloom[i];
+      var pct = totalContribution > 0 ? (n / totalContribution * 100).toFixed(1) + '%' : '—';
+      lines.push(r.v + '    ' + r.anat.padEnd(9) + r.verb.padEnd(14) + ' ' + String(n).padStart(5) + '   ' + pct);
+    });
+    lines.push('```');
+    lines.push('');
+    lines.push('## Bloom prime-product (identity)');
+    lines.push('');
+    lines.push('`' + primesProduct + '`');
+    lines.push('');
+    lines.push('_This integer is your tool\'s unique cognitive contribution signature for the period._');
+    lines.push('');
+    lines.push('## Top 10 actions');
+    lines.push('');
+    topList.forEach(function(t){ lines.push('- `' + t[0] + '` × ' + t[1]); });
+    lines.push('');
+    lines.push('## Verification');
+    lines.push('');
+    lines.push('- KCC key: `' + KEY + '`');
+    lines.push('- Ledger head: `' + (LEDGER.head || '∅') + '`');
+    lines.push('- Anchors written to BSV: ' + anchoredCount);
+    lines.push('');
+    lines.push('---');
+    lines.push('');
+    lines.push('_Generated by KCC shim v3 · Ω(KCC) v18 · part of the Fall* estate._');
+    return lines.join('\n');
+  }
+
   // ── public API ────────────────────────────────
   window.kcc = {
     emit: emit, bloom: bloom, shape: shape, exportProof: exportProof, rings: RINGS,
@@ -4735,6 +4881,7 @@ window.addEventListener('scroll', () => {
     showLedger: showLedger,
     kccKey: function(){ return KEY; },
     onlybrains: function(){ return LEDGER.ob_balance; },
+    exportBloomReport: exportBloomReport,
     // OnlyBrains REST client
     syncOnlyBrains: syncOnlyBrains,
     reason: reason, anchor: anchor, oracle: oracle, mintNft: mintNft,
@@ -4782,8 +4929,9 @@ window.addEventListener('scroll', () => {
   var STATE = {
     keys: {},                  // { anthropic: 'sk-ant-...', openai: '...', google: '...' }
     webllm: { status: 'not-loaded', model: null, progress: 0, message: '' },
-    // T1 user keys → T3 OnlyBrains → T4 WebLLM (if loaded) → T2 mesh (slow, last) → T0 fallback
-    preferred: ['anthropic', 'openai', 'google', 'onlybrains', 'webllm', 'mesh', 't0'],
+    // T1 FallCore (local proxy) → T1 user keys → T3 OnlyBrains → T4 WebLLM → T2 mesh → T0 fallback
+    preferred: ['fallcore', 'anthropic', 'openai', 'google', 'onlybrains', 'webllm', 'mesh', 't0'],
+    fallcore_endpoint: '',   // e.g. 'http://localhost:11434' or 'https://ai.acme.internal'
     log: []                    // last 50 calls: { t, provider, tier, ms, ok, prompt_chars }
   };
   try {
@@ -4811,6 +4959,37 @@ window.addEventListener('scroll', () => {
 
   // ── T1 providers — direct from browser (CORS-allowed endpoints) ──
   var T1 = {
+    // FallCore: company's on-prem brain · same API shape as Anthropic
+    // If configured, this tries FIRST · transparent fallthrough if low confidence
+    fallcore: {
+      tier: 'T1',
+      label: 'FallCore (on-prem)',
+      available: function(){ return !!STATE.fallcore_endpoint; },
+      hasKey: function(){ return !!STATE.fallcore_endpoint; },
+      ask: async function(prompt, opts){
+        if (!STATE.fallcore_endpoint) throw new Error('no fallcore endpoint');
+        var url = STATE.fallcore_endpoint.replace(/\/$/, '') + '/v1/messages';
+        var r = await withTimeout(fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': STATE.keys.anthropic || 'fallcore-cascade',
+            'anthropic-version': '2023-06-01',
+            'x-fallcore-tool': (window.NODE ? window.NODE.id : 'anon')
+          },
+          body: JSON.stringify({
+            model: opts.model || 'claude-sonnet-4-20250514',  // FallCore picks local first regardless
+            max_tokens: opts.max_tokens || 2048,
+            system: opts.system || 'You are a helpful assistant for ' + (window.NODE ? window.NODE.name : 'this app') + '. Reply concisely.',
+            messages: [{ role: 'user', content: prompt }],
+            fallcore_options: opts.fallcore_options || {}
+          })
+        }), 60000, 'fallcore');
+        if (!r.ok) throw new Error('fallcore ' + r.status);
+        var j = await r.json();
+        return j.content[0].text;
+      }
+    },
     anthropic: {
       tier: 'T1',
       label: 'Anthropic',
@@ -5066,6 +5245,8 @@ window.addEventListener('scroll', () => {
 
   function providers() {
     return {
+      fallcore: !!STATE.fallcore_endpoint,
+      fallcore_endpoint: STATE.fallcore_endpoint,
       anthropic: !!STATE.keys.anthropic,
       openai: !!STATE.keys.openai,
       google: !!STATE.keys.google,
@@ -5083,10 +5264,16 @@ window.addEventListener('scroll', () => {
     persist();
     updateUI();
   }
+  function setFallcoreEndpoint(url) {
+    STATE.fallcore_endpoint = String(url || '').trim();
+    persist();
+    updateUI();
+  }
 
   function currentTier() {
     // Highest-priority tier that will ACTUALLY answer (mesh excluded since it's peer-dependent)
     var prov = providers();
+    if (prov.fallcore) return 'T1·FallCore';
     if (prov.anthropic || prov.openai || prov.google) return 'T1';
     if (prov.onlybrains) return 'T3';
     if (prov.webllm_status === 'ready') return 'T4';
@@ -5122,6 +5309,14 @@ window.addEventListener('scroll', () => {
   function showCascadeUI(){
     var prov = providers();
     var tier = currentTier();
+    var fallcoreHtml = '<div style="background:#0c0e12;border:1px solid #2a2f3a;border-radius:6px;padding:10px;margin-bottom:10px;font-size:12px">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><strong style="color:#22c55e">⚡ FallCore (on-prem brain)</strong><span style="color:#8a8a8a;font-size:11px">' + (STATE.fallcore_endpoint ? STATE.fallcore_endpoint : 'not set') + '</span></div>' +
+      '<div style="font-size:11px;color:#a8b0bc;margin-bottom:8px">Point at your company’s on-prem brain. Cascades local-first, falls through to frontier only on low confidence. Same API as Anthropic. Self-improves over time from your reviewer corrections.</div>' +
+      '<div style="display:flex;gap:6px;align-items:center">' +
+      '<input type="text" id="llm-fallcore-url" placeholder="https://ai.acme.internal or http://localhost:11434" value="' + (STATE.fallcore_endpoint || '') + '" style="flex:1;background:#0c0e12;color:#dbe1ea;border:1px solid #2a2f3a;border-radius:5px;padding:5px 8px;font-family:monospace;font-size:11px">' +
+      '<button id="llm-fallcore-save" style="background:#22c55e;color:#000;border:none;padding:5px 12px;border-radius:5px;cursor:pointer;font-size:11px;font-weight:600">save</button>' +
+      (STATE.fallcore_endpoint ? '<button id="llm-fallcore-clear" style="background:transparent;color:#ef4444;border:1px solid #ef4444;padding:5px 10px;border-radius:5px;cursor:pointer;font-size:11px">clear</button>' : '') +
+      '</div></div>';
     var keysHtml = ['anthropic','openai','google'].map(function(p){
       var has = !!STATE.keys[p];
       var label = p[0].toUpperCase() + p.slice(1);
@@ -5147,7 +5342,9 @@ window.addEventListener('scroll', () => {
     modal.innerHTML='<div style="background:#161821;border:1px solid #2a2f3a;border-radius:12px;padding:22px;max-width:580px;width:100%;color:#dbe1ea;max-height:90vh;overflow:auto">' +
       '<h3 style="margin:0 0 4px;color:#e6e8ee">◊·κ LLM Cascade</h3>' +
       '<p style="margin:0 0 12px;font-size:12px;color:#8a8a8a">Current tier: <strong style="color:' + (tier==='T1'?'#22c55e':tier==='T2'?'#8b5cf6':tier==='T3'?'#d4af37':tier==='T4'?'#f59e0b':'#8a8a8a') + '">' + tier + '</strong> · fallback order: ' + STATE.preferred.join(' → ') + '</p>' +
-      '<h4 style="font-size:11px;color:#8a8a8a;letter-spacing:.08em;text-transform:uppercase;margin:8px 0 6px">T1 · your API keys (browser-only, never leaves device)</h4>' +
+      '<h4 style="font-size:11px;color:#8a8a8a;letter-spacing:.08em;text-transform:uppercase;margin:8px 0 6px">T1 · FallCore (your on-prem brain)</h4>' +
+      fallcoreHtml +
+      '<h4 style="font-size:11px;color:#8a8a8a;letter-spacing:.08em;text-transform:uppercase;margin:12px 0 6px">T1 · direct API keys (browser-only, never leaves device)</h4>' +
       keysHtml +
       '<h4 style="font-size:11px;color:#8a8a8a;letter-spacing:.08em;text-transform:uppercase;margin:14px 0 6px">T4 · WebLLM offline</h4>' +
       webllmHtml +
@@ -5159,6 +5356,18 @@ window.addEventListener('scroll', () => {
     document.body.appendChild(modal);
     modal.querySelector('#llm-close').onclick = function(){ modal.remove(); };
     modal.onclick = function(e){ if (e.target === modal) modal.remove(); };
+    // FallCore endpoint save/clear
+    var fcSave = modal.querySelector('#llm-fallcore-save');
+    if (fcSave) fcSave.onclick = function(){
+      var url = modal.querySelector('#llm-fallcore-url').value.trim();
+      setFallcoreEndpoint(url);
+      modal.remove(); showCascadeUI();
+    };
+    var fcClear = modal.querySelector('#llm-fallcore-clear');
+    if (fcClear) fcClear.onclick = function(){
+      setFallcoreEndpoint('');
+      modal.remove(); showCascadeUI();
+    };
     modal.querySelectorAll('[data-save]').forEach(function(b){
       b.onclick = function(){
         var p = b.getAttribute('data-save');
@@ -5195,6 +5404,7 @@ window.addEventListener('scroll', () => {
     ask: ask,
     providers: providers,
     setKey: setKey,
+    setFallcoreEndpoint: setFallcoreEndpoint,
     preloadWebLLM: loadWebLLM,
     tier: currentTier,
     config: { preferred: STATE.preferred },
@@ -5204,6 +5414,361 @@ window.addEventListener('scroll', () => {
 })();
 </script>
 <!-- /◊·κ LLM CASCADE -->
+<!-- ◊·κ FALL-API SHIM — inter-tool API surface · cli(cmd) layer
+  Turns every Fall* HTML into an API endpoint other tools (in other tabs)
+  can call without a server. Same-origin BroadcastChannel transport.
+
+  Per Thomas's 5-turtle stack:
+    sys(params) → cmd(sys) → cli(cmd) → api(cli) → mcp(api)
+  This is the cli(cmd) / api(cli) layer for sovereign HTMLs.
+
+  Public API:
+    window.fall_api.register(resource, handler)   — expose a resource
+    window.fall_api.list()                        — what this tool exposes
+    window.fall.call(tool, resource, params)      — call another tool's API
+    window.fall.callMany(...)                     — fan out across mesh
+    window.fall.discover()                        — list all visible Fall* tools + their APIs
+
+  Depends on: window.NODE (mesh shim) for identity + BroadcastChannel.
+-->
+<script>
+(function fallApiShim(){
+  if (!window.NODE) return;
+  if (window.fall_api) return; // already loaded
+
+  var REGISTRY = {};   // resource → handler
+  var PEERS = {};      // tool_id → { last_seen, resources, prime, name }
+  var PEER_TTL = 30000;
+
+  // Open dedicated channel for API traffic (separate from fallmesh events)
+  var channel = null;
+  try { channel = new BroadcastChannel('fall-api'); }
+  catch (_) { return; } // browser too old
+
+  function emit(msg) {
+    try { channel.postMessage(Object.assign({ from: NODE.id, prime: NODE.prime, t: Date.now() }, msg)); } catch (_){}
+  }
+
+  // ── Server side (this tool exposes resources) ──
+  window.fall_api = {
+    register: function(resource, handler, meta) {
+      if (typeof resource !== 'string' || typeof handler !== 'function') return false;
+      REGISTRY[resource] = { handler: handler, meta: meta || {} };
+      // Broadcast discovery
+      emit({ type: 'fall-api:register', resource: resource, name: NODE.name, meta: meta || {} });
+      // Track in KCC (R6 govern — exposing a public surface)
+      if (window.kcc) window.kcc.emit('api:register:' + resource, 6, 0.5);
+      return true;
+    },
+    unregister: function(resource) {
+      delete REGISTRY[resource];
+      emit({ type: 'fall-api:unregister', resource: resource });
+    },
+    list: function() {
+      return Object.keys(REGISTRY).map(function(r){
+        return { resource: r, meta: REGISTRY[r].meta };
+      });
+    }
+  };
+
+  // ── Handle incoming requests ──
+  channel.onmessage = function(e) {
+    var m = e.data;
+    if (!m || m.from === NODE.id) return;
+
+    // Track peer
+    if (m.type && m.from) {
+      PEERS[m.from] = PEERS[m.from] || { resources: {} };
+      PEERS[m.from].last_seen = Date.now();
+      PEERS[m.from].prime = m.prime;
+      PEERS[m.from].name = m.name || PEERS[m.from].name;
+    }
+
+    // Discovery broadcasts
+    if (m.type === 'fall-api:register' && m.from && m.resource) {
+      PEERS[m.from].resources[m.resource] = m.meta || {};
+      return;
+    }
+    if (m.type === 'fall-api:unregister' && m.from && m.resource) {
+      if (PEERS[m.from]) delete PEERS[m.from].resources[m.resource];
+      return;
+    }
+    if (m.type === 'fall-api:hello') {
+      // Reply with our capabilities
+      emit({
+        type: 'fall-api:announce',
+        name: NODE.name,
+        resources: Object.keys(REGISTRY).reduce(function(acc, k){ acc[k] = REGISTRY[k].meta || {}; return acc; }, {})
+      });
+      return;
+    }
+    if (m.type === 'fall-api:announce' && m.from) {
+      PEERS[m.from].resources = m.resources || {};
+      return;
+    }
+
+    // Request targeted at us
+    if (m.type === 'fall-api:request' && m.target === NODE.id) {
+      var entry = REGISTRY[m.resource];
+      if (!entry) {
+        emit({ type: 'fall-api:response', req: m.req, target: m.from, error: 'resource not found: ' + m.resource });
+        return;
+      }
+      try {
+        Promise.resolve(entry.handler(m.params || {}, { caller: m.from, callerPrime: m.callerPrime }))
+          .then(function(result){
+            emit({ type: 'fall-api:response', req: m.req, target: m.from, ok: true, result: result, resource: m.resource });
+            if (window.kcc) window.kcc.emit('api:served:' + m.resource, 4, 1, { caller: m.from });
+          })
+          .catch(function(err){
+            emit({ type: 'fall-api:response', req: m.req, target: m.from, error: err.message || String(err) });
+          });
+      } catch (e) {
+        emit({ type: 'fall-api:response', req: m.req, target: m.from, error: e.message });
+      }
+      return;
+    }
+  };
+
+  // ── Client side (this tool calls another tool's API) ──
+  window.fall = {
+    call: function(tool, resource, params, opts) {
+      opts = opts || {};
+      return new Promise(function(resolve, reject){
+        if (!channel) return reject(new Error('no BroadcastChannel'));
+        var req = 'fr_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
+        var done = false;
+        var handler = function(e) {
+          var m = e.data;
+          if (m && m.type === 'fall-api:response' && m.req === req) {
+            done = true;
+            channel.removeEventListener('message', handler);
+            if (m.error) return reject(new Error(m.error));
+            resolve(m.result);
+          }
+        };
+        channel.addEventListener('message', handler);
+        emit({ type: 'fall-api:request', req: req, target: tool, resource: resource, params: params, callerPrime: NODE.prime });
+        if (window.kcc) window.kcc.emit('api:call:' + tool + '/' + resource, 1, 0.5);
+        setTimeout(function(){
+          if (done) return;
+          channel.removeEventListener('message', handler);
+          reject(new Error('fall.call timeout · ' + tool + '/' + resource));
+        }, opts.timeout || 4000);
+      });
+    },
+
+    // Fan out: ask all peers that expose <resource>
+    callMany: function(resource, params, opts) {
+      var promises = Object.keys(PEERS)
+        .filter(function(p){ return PEERS[p].resources && PEERS[p].resources[resource]; })
+        .map(function(p){
+          return window.fall.call(p, resource, params, opts)
+            .then(function(r){ return { tool: p, ok: true, result: r }; })
+            .catch(function(e){ return { tool: p, ok: false, error: e.message }; });
+        });
+      return Promise.all(promises);
+    },
+
+    // List currently visible peers + their resources
+    discover: function() {
+      var now = Date.now();
+      var live = {};
+      Object.keys(PEERS).forEach(function(p){
+        if (now - PEERS[p].last_seen < PEER_TTL) live[p] = PEERS[p];
+      });
+      return live;
+    },
+
+    // Ask the network "what's out there"
+    refresh: function() {
+      emit({ type: 'fall-api:hello' });
+      return new Promise(function(r){ setTimeout(r, 600); }).then(function(){ return window.fall.discover(); });
+    }
+  };
+
+  // ── Boot · say hello to the network ──
+  (function boot(){
+    function ready(){
+      setTimeout(function(){
+        emit({ type: 'fall-api:hello', name: NODE.name });
+      }, 500);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready, { once:true });
+    else ready();
+  })();
+
+  try { console.log('%c◊·κ fall-api', 'color:#5b8def;font-weight:bold', NODE.name + ' · ready · register handlers via window.fall_api.register()'); } catch(_){}
+})();
+</script>
+<!-- /◊·κ FALL-API SHIM -->
+<!-- ◊·κ FALL-SW SHIM — Service Worker that turns sovereign HTML into an HTTP API
+  fetch('/api/&lt;tool&gt;/&lt;resource&gt;?param=...') from anywhere in this origin
+  → SW catches it → routes to whichever Fall* tab owns &lt;tool&gt; via the
+  fall-api channel → returns JSON Response.
+
+  Per Thomas's 5-turtle stack:
+    sys(params) → cmd(sys) → cli(cmd) → api(cli) → mcp(api)
+  This is the api(cli) layer · turns the cli into an HTTP-callable surface.
+
+  Browser-compatible. Requires:
+    · Service Workers (Chrome 40+, Safari 11.1+, Firefox 44+)
+    · BroadcastChannel API (already required by fall-api)
+
+  External callers (other tabs, native apps via localhost proxy, even other
+  domains via CORS) can now `fetch('https://your-host/api/gymos/members')`
+  and get a response — without any backend server.
+
+  Caveats:
+    · Same-origin only (this IS the sovereignty: no cross-origin to 3rd parties)
+    · Works only while AT LEAST ONE Fall* tab is open in the browser
+    · First request to /api/* requires SW to be installed (auto on first page load)
+-->
+<script>
+(function fallSwShim(){
+  if (!window.NODE) return;
+  if (!('serviceWorker' in navigator)) {
+    try { console.log('%c◊·κ fall-sw', 'color:#8a8a8a', 'Service Workers not available · API surface is BroadcastChannel-only (no /api/* fetch interception)'); } catch(_){}
+    return;
+  }
+  if (window._fall_sw_installed) return;
+  window._fall_sw_installed = true;
+
+  // The SW code, as a string, served via Blob URL
+  var SW_CODE = `
+// ◊·κ FallCore Service Worker · v1
+// Intercepts /api/&lt;tool&gt;/&lt;resource&gt; · routes to clients
+const VERSION = '${Date.now()}';
+const TIMEOUT = 5000;
+
+self.addEventListener('install', function(e){
+  self.skipWaiting();
+});
+self.addEventListener('activate', function(e){
+  e.waitUntil(self.clients.claim());
+});
+
+self.addEventListener('fetch', function(event) {
+  var url = new URL(event.request.url);
+  // Only intercept same-origin /api/* paths
+  if (url.origin !== self.location.origin) return;
+  if (!url.pathname.startsWith('/api/')) return;
+
+  // Parse: /api/&lt;tool&gt;/&lt;resource&gt;
+  var parts = url.pathname.slice(5).split('/');
+  var tool = parts[0];
+  var resource = parts.slice(1).join('/');
+  if (!tool) return;
+
+  // Collect params from query + body
+  event.respondWith((async function(){
+    var params = {};
+    url.searchParams.forEach(function(v, k){ params[k] = v; });
+    if (event.request.method === 'POST') {
+      try {
+        var body = await event.request.json();
+        Object.assign(params, body || {});
+      } catch(_){}
+    }
+    // Ask any client tab to serve this
+    var clientList = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    if (!clientList.length) {
+      return new Response(JSON.stringify({ error: 'no Fall* tab open · open the tool first' }), {
+        status: 503,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    var req = 'sw_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+    var channel = new MessageChannel();
+    var responsePromise = new Promise(function(resolve, reject){
+      var t = setTimeout(function(){ reject(new Error('sw timeout')); }, TIMEOUT);
+      channel.port1.onmessage = function(e){
+        clearTimeout(t);
+        if (e.data && e.data.error) reject(new Error(e.data.error));
+        else resolve(e.data && e.data.result);
+      };
+    });
+    // Broadcast to all clients; the one that owns the tool responds
+    clientList.forEach(function(c){
+      try {
+        c.postMessage({ type: 'sw:api-request', req: req, tool: tool, resource: resource, params: params }, [channel.port2]);
+      } catch(_){}
+    });
+    try {
+      var result = await responsePromise;
+      return new Response(JSON.stringify(result), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json', 'x-fallcore-sw': VERSION, 'Access-Control-Allow-Origin': '*' }
+      });
+    } catch (e) {
+      return new Response(JSON.stringify({ error: e.message }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+  })());
+});
+`;
+
+  // Each page listens for SW messages and forwards via fall-api
+  navigator.serviceWorker.addEventListener('message', function(e) {
+    var m = e.data;
+    if (!m || m.type !== 'sw:api-request') return;
+    var port = e.ports && e.ports[0];
+    if (!port) return;
+    // Only respond if WE own this tool
+    if (m.tool !== NODE.id) {
+      // Forward through fall-api BroadcastChannel to whichever tab DOES own it
+      if (!window.fall || !window.fall.call) {
+        port.postMessage({ error: 'no fall-api shim loaded' });
+        return;
+      }
+      window.fall.call(m.tool, m.resource, m.params)
+        .then(function(r){ port.postMessage({ result: r }); })
+        .catch(function(e){ port.postMessage({ error: e.message }); });
+      return;
+    }
+    // We own it: invoke directly
+    if (!window.fall_api || !window.fall_api.list) {
+      port.postMessage({ error: 'no fall_api registry' });
+      return;
+    }
+    // Pretend we're another tab and use fall.call to ourselves (cleanest path through the registry)
+    if (window.fall && window.fall.call) {
+      window.fall.call(NODE.id, m.resource, m.params)
+        .then(function(r){ port.postMessage({ result: r }); })
+        .catch(function(e){ port.postMessage({ error: e.message }); });
+    } else {
+      port.postMessage({ error: 'fall registry unavailable' });
+    }
+  });
+
+  // Register the SW from inline Blob (scope: this page's directory; for tools at root, this is the whole origin)
+  function registerSw() {
+    try {
+      var blob = new Blob([SW_CODE], { type: 'application/javascript' });
+      var swUrl = URL.createObjectURL(blob);
+      // Note: SW scope is restricted to its URL path. Inline SWs scope only to the page that registered them.
+      // For full /api/* origin scope, the SW needs to be served from the origin root with proper Service-Worker-Allowed header.
+      // This v1 ships scope-limited; v2 will deploy a real /sw.js to each Pages root.
+      navigator.serviceWorker.register(swUrl, { scope: './' })
+        .then(function(reg){
+          try { console.log('%c◊·κ fall-sw', 'color:#5b8def;font-weight:bold', NODE.name + ' · Service Worker registered at scope ' + reg.scope); } catch(_){}
+          if (window.kcc) window.kcc.emit('sw:registered', 6, 1, { scope: reg.scope });
+        })
+        .catch(function(e){
+          try { console.log('%c◊·κ fall-sw', 'color:#c84a4a', 'SW registration failed: ' + e.message + ' (fine · fall-api still works via BroadcastChannel)'); } catch(_){}
+        });
+    } catch (e) {
+      try { console.log('%c◊·κ fall-sw', 'color:#c84a4a', 'SW unavailable: ' + e.message); } catch(_){}
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', registerSw, { once:true });
+  else registerSw();
+})();
+</script>
+<!-- /◊·κ FALL-SW SHIM -->
 
 <script>
 (function gymSeed(){
@@ -5246,20 +5811,6 @@ window.addEventListener('scroll', () => {
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tryPrefill, { once:true });
   else tryPrefill();
-})();
-</script>
-
-<script>
-(function preActivate(){
-  function ap(){
-    try {
-      var k = 'konomi_licence_' + "gymops";
-      if (localStorage.getItem(k)) return;
-      localStorage.setItem(k, "eyJwYXlsb2FkIjp7InYiOjEsImZvcmdlX2lkIjoiZmdfZ3ltXzRmNDE5YmQ3ZGY3NSIsInRvb2xfaWQiOiJneW1vcHMiLCJ0b29sX3ByaW1lIjoyOSwidGllciI6InRyaWFsIiwiZmVhdHVyZXMiOlsiY29yZSIsIm1lc2hfaW5ib3VuZCIsIm9uYm9hcmRpbmdfY29uc29sZSJdLCJpc3N1ZWQiOiIyMDI2LTA1LTI3VDAxOjE4OjA0LjE2OFoiLCJleHBpcmVzIjoiMjAyNi0wNi0yNlQwMToxODowNC4xNjhaIiwiaXNzdWVyIjoia29ub21pIn0sInNpZyI6ImczWW5YZXpPQ04yTGx5dDJld2NUWmo3RzkzNWs3Y2R2OWN1TUxuT2d5aUFPcDhBaVRhcWxWdGM3RVUvQ0lNa0JRUzZybEx5UkFRSjFoYWFyaUpDVUFRPT0ifQ==");
-    } catch(_){}
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ap, { once:true });
-  else ap();
 })();
 </script>
 </body>
